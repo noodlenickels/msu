@@ -46,32 +46,32 @@ const closeForm = () => {
     </div>
     <div class="grid grid-cols-3 gap-[25px]">
       <a class="block" href="http://kremlin.ru/">
-        <div class="bg-gray-300 rounded-[15px] flex justify-center">
+        <div class="bg-gray-200 rounded-[15px] flex justify-center">
           <img src="@/assets/sites/site1.png" />
         </div>
       </a>
       <a class="block" href="http://government.ru/">
-        <div class="bg-gray-300 rounded-[15px] flex justify-center">
+        <div class="bg-gray-200 rounded-[15px] flex justify-center">
           <img src="@/assets/sites/site2.png" />
         </div>
       </a>
       <a class="block" href="http://duma.gov.ru/">
-        <div class="bg-gray-300 rounded-[15px] flex justify-center">
+        <div class="bg-gray-200 rounded-[15px] flex justify-center">
           <img src="@/assets/sites/site3.png" />
         </div>
       </a>
       <a class="block" href="http://council.gov.ru/">
-        <div class="bg-gray-300 rounded-[15px] flex justify-center">
+        <div class="bg-gray-200 rounded-[15px] flex justify-center">
           <img src="@/assets/sites/site4.png" />
         </div>
       </a>
       <a class="block" href="https://oprf.ru/">
-        <div class="bg-gray-300 rounded-[15px] flex justify-center">
+        <div class="bg-gray-200 rounded-[15px] flex justify-center">
           <img src="@/assets/sites/site5.png" />
         </div>
       </a>
       <a class="block" href="https://объясняем.рф/">
-        <div class="bg-gray-300 rounded-[15px] flex justify-center">
+        <div class="bg-gray-200 rounded-[15px] flex justify-center">
           <img src="@/assets/sites/site6.png" />
         </div>
       </a>

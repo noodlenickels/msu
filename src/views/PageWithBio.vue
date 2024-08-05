@@ -51,7 +51,7 @@ const closeForm = () => {
       <div class="grid grid-cols-4 gap-[25px]">
         <div class="col-span-2 flex flex-col gap-[15px]">
           <div class="flex items-end mb-[15px] gap-[15px] w100">
-            <div class="text-[18px] font-somic text-black font-semibold">Мнение</div>
+            <div class="h-[21px] text-[18px] font-somic text-black font-semibold">Мнение</div>
             <div class="flex-grow border-b-[2px] border-gray"></div>
           </div>
           <img src="@/assets/icons/pic.png" class=""/>
