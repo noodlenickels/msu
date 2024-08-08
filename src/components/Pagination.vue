@@ -1,6 +1,6 @@
 <script setup>
 import {computed, ref, onMounted} from 'vue';
-import Card from '@/components/Card.vue';
+import Card from '@/components/cards/Card.vue';
 import SearchPanel from '@/components/SearchPanel.vue';
 // const props = defineProps({
 //   modelValue: {

@@ -1,6 +1,6 @@
 <script setup>
 import {computed, ref, onMounted} from 'vue';
-import NewsCard from '@/components/NewsCard.vue';
+import NewsCard from '@/components/cards/NewsCard.vue';
 import SearchPanel from '@/components/SearchPanel.vue';
 import Pagination from '@/components/Pagination.vue';
 
@@ -41,9 +41,9 @@ const closeForm = () => {
 </script>
 
 <template>
-  <div class="w100 px-[10%] h-[855px]">
-    <div class="grid grid-cols-7 flex items-end mb-[30px] gap-[15px] w100">
-      <div class="col-span-1 text-[18px] font-somic text-black font-semibold">Новости регионов</div>
+  <div class="w100 px-[10%]">
+    <div class="flex items-end mb-[30px] gap-[15px] w100">
+      <div class="w-auto text-[18px] font-somic text-black font-semibold">Новости регионов</div>
       <div class="flex-grow col-span-6 border-b-[2px] border-gray"></div>
     </div>
     <div class="grid grid-cols-3 gap-[25px]">

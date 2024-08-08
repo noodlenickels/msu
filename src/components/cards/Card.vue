@@ -28,7 +28,8 @@ const props = defineProps({
   },
   img: {
     type: String,
-    required: false
+    required: false,
+    default: 'shevchenko.jpg'
   }
 });
 
@@ -66,13 +67,13 @@ const imgLink = computed(() => {
 
     <div class="w100">
       <div v-if="props.caption" class="flex items-end mb-[30px] gap-[15px] w100">
-        <div class="text-[18px] font-somic text-black font-semibold">{{ props.caption }}</div>
+        <div class="w-auto text-[18px] font-somic text-black font-semibold">{{ props.caption }}</div>
         <div class="flex-grow border-b-[2px] border-gray"></div>
       </div>
       <div class="flex flex-col gap-[10px]">
         <div class="relative">
-          <img :src="imgLink" class=""/>
-          <div class="absolute w-auto h-[20px] text-[14px] font-somic bg-gray-100 rounded-[10px] text-black z-10	bottom-4 right-5 px-[10px]">Стелла Штань</div>
+          <img :src="imgLink" class="w-full"/>
+          <div class="absolute w-auto h-[24px] text-[16px] font-somic bg-gray-100 rounded-[10px] text-black z-10	bottom-5 right-5 px-[10px]">Стелла Штань</div>
         </div>
         <div class="text-[17.4px] font-somic text-black">
           {{ props.name }}

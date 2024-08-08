@@ -1,6 +1,6 @@
 <script setup>
 import {computed, ref, onMounted} from 'vue';
-import Card from '@/components/Card.vue';
+import Card from '@/components/cards/Card.vue';
 import SearchPanel from '@/components/SearchPanel.vue';
 // const props = defineProps({
 //   modelValue: {
@@ -40,9 +40,9 @@ const closeForm = () => {
 
 <template>
   <div class="w100 px-[10%]">
-    <div class="grid grid-cols-9 flex items-end mb-[30px] gap-[5px] w100">
-      <div class="col-span-1 text-[18px] font-somic text-black font-semibold">Точка зрения</div>
-      <div class="col-span-8 flex-grow border-b-[2px] border-gray"></div>
+    <div class="flex items-end mb-[30px] gap-[15px] w100">
+      <div class="w-auto text-[18px] font-somic text-black font-semibold">Точка зрения</div>
+      <div class="flex-grow border-b-[2px] border-gray"></div>
     </div>
     <div class="grid grid-cols-2 gap-[25px]">
         <Card :img="'man2.png'" :title="'Развивая привлекательность города, мы делаем Казань комфортнее'" :text="'Город заметно изменился'" :name="'Ильсур Метшин'"/>

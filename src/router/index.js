@@ -21,6 +21,11 @@ const router = createRouter({
       component: Videos
     },
     {
+      path: '/knowledge_base',
+      name: 'base',
+      component: ListView
+    },
+    {
       path: '/interview',
       name: 'interview',
       component: ListView

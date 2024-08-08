@@ -49,7 +49,7 @@ const closeForm = () => {
   <div class="flex flex-col gap-[125px] px-[10%] gap-[25px] mb-[125px]">
     <div class="grid grid-cols-4 gap-[25px]">
       <div class="col-span-3 flex flex-col gap-[30px]">
-        <div class="flex gap-x-[25px] gap-y-[20px]">
+        <div class="flex gap-x-[20px] gap-y-[20px]">
           <div class="w-auto text-[18px] font-somic text-black font-semibold">Интервью</div>
           <div class="flex-grow border-b-[2px] border-gray"></div>
         </div>

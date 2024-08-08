@@ -3,7 +3,7 @@ import {computed, ref, onMounted} from 'vue';
 import Header from '@/components/Header.vue';
 import TopMenu from '@/components/TopMenu.vue';
 import Selection from "@/components/Selection.vue";
-import Card from "@/components/Card.vue";
+import Card from "@/components/cards/Card.vue";
 import Footer from "@/components/Footer.vue";
 import AddsBlock from "@/components/AddsBlock.vue";
 
@@ -47,10 +47,12 @@ const closeForm = () => {
   <Header />
   <TopMenu />
   <div class="flex flex-col gap-[125px] px-[10%] gap-[25px] mb-[125px]">
+    <div class="flex gap-[15px]">
+      <div class="w-auto text-[18px] font-somic text-black font-semibold">Видео</div>
+      <div class="flex-grow border-b-[2px] border-gray"></div>
+    </div>
     <div class="grid grid-cols-4 gap-[25px]">
       <div class="col-span-3 grid grid-cols-12 gap-x-[25px] gap-y-[40px]">
-          <div class="col-span-1 text-[18px] font-somic text-black font-semibold">Видео</div>
-          <div class="flex-grow col-span-11 border-b-[2px] border-gray"></div>
         <Card class="col-span-6" :mode="'video'" :title="'Рейд по неблагополучным семьям представителей администрации города Саратов'" :source="'Пресс-агенство Информцентр'"/>
         <Card class="col-span-6" :mode="'video'" :title="'Рейд по неблагополучным семьям представителей администрации города Саратов'" :source="'Пресс-агенство Информцентр'"/>
         <Card class="col-span-6" :mode="'video'" :title="'Рейд по неблагополучным семьям представителей администрации города Саратов'" :source="'Пресс-агенство Информцентр'"/>

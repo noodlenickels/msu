@@ -1,6 +1,6 @@
 <script setup>
 import {computed, ref, onMounted} from 'vue';
-import SiteCard from '@/components/SiteCard.vue';
+import SiteCard from '@/components/cards/SiteCard.vue';
 
 // const props = defineProps({
 //   modelValue: {

@@ -4,7 +4,7 @@ import Header from '@/components/Header.vue';
 import TopMenu from '@/components/TopMenu.vue';
 import NewsBlock from "@/components/NewsBlock.vue";
 import NewsWithLinks from "@/components/NewsWithLinks.vue";
-import Card from "@/components/Card.vue";
+import RandomCard from "@/components/cards/RandomCard.vue";
 import RegionNews from "@/components/RegionNews.vue";
 import PointOfView from "@/components/PointOfView.vue";
 import OfficialSites from "@/components/OfficialSites.vue";
@@ -52,16 +52,16 @@ const closeForm = () => {
   <div class="flex flex-col gap-[125px]">
     <NewsBlock/>
     <div class="grid grid-cols-4 px-[10%] gap-[25px]">
-      <Card :img="'pic.png'"
+      <RandomCard :img="'pic.png'"
             :caption="'Мнения'" :title="'Глава Ульяновска Марина Беспалова: \'Решение проблем ЖКХ\''"
             :text="'Деятельность предприятий ЖКХ давно уже стала одной из самых остросоциально-экономических и, пожалуй, политических проблем больинства регионов России.'"/>
-      <Card :img="'man1.png'"
+      <RandomCard :img="'man1.png'"
             :caption="'Персона'" :title="'Глава города Нижний Новгород Олег Сорокин'"
             :text="'Деятельность предприятий ЖКХ давно уже стала одной из самых остросоциально-экономических и, пожалуй, политических проблем больинства регионов России.'"/>
-      <Card :img="'woman1.png'"
+      <RandomCard :img="'woman1.png'"
             :caption="'Интервью'" :title="'Стелла Штань: \'Политикам-мужчинам прощается многое\''"
             :text="'Деятельность предприятий ЖКХ давно уже стала одной из самых остросоциально-экономических и, пожалуй, политических проблем больинства регионов России.'"/>
-      <Card :img="'region.png'"
+      <RandomCard :img="'region.png'"
             :caption="'Регион'" :title="'Карачаево-Черкесская Республика'"
             :text="'Деятельность предприятий ЖКХ давно уже стала одной из самых остросоциально-экономических и, пожалуй, политических проблем больинства регионов России.'"/>
     </div>
