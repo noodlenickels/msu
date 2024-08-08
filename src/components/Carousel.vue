@@ -1,6 +1,6 @@
 <script setup>
 import {computed, ref, onMounted} from 'vue';
-import SideCarouselNews from '@/components/SideCarouselNews.vue';
+import SideCarouselNews from '@/components/SideCarouselNewsBlock.vue';
 
 // const props = defineProps({
 //   modelValue: {
@@ -22,7 +22,24 @@ const fd = ref({});
 
 const dataLoaded = ref(false);
 
-const isInvalid = ref(true);
+const carousel = ref({
+  image: 'didenko.jpg',
+  title: 'Избран глава союзов городов Центра и Северо-Запада Российской Федерации',
+  text: 'В Великом Новгороде прошло отчетно-выборное общее собрание Союза городов Центра и Северо-Запада России. Одним из пунктов повестки дня были выборы главы СГЦСЗР. По итогам голосования президентом Союза был переизбран новгородский мэр Юрий Бобрышев - его кандидатуру выдвинул глава Пскова Иван Цецерский. Вице-президентами СГЦСЗР были избраны мэры Вологды  и Твери - Евгений Шулепов и Александр Корзин. В состав правления помимо Цецерского вошли глава Калининграда Александр Ярошук, мэр Череповца Юрий Кузин, председатель Ивановской городской думы Александр Кузьмичев и исполняющий обязанности мэра Ярославля Алексей Малютин. На сегодняшний день Союз городов Центра и Северо-Запада России объединяет 27 городов с населением около шести миллионов жителей. Его территория простирается от Калининграда до Сыктывкара с запада на восток и от Нарьян-Мара до Владимира с севера на юг. Основная задача Союза - обмен опытом в области местного управления. Юрий Бобрышев занимает пост главы СГЦСЗР с 2012 года. Источник: СГЦСЗР'
+});
+
+const carouselList = [
+  {
+    image: 'didenko.jpg',
+    title: 'Избран глава союзов городов Центра и Северо-Запада Российской Федерации',
+    text: 'В Великом Новгороде прошло отчетно-выборное общее собрание Союза городов Центра и Северо-Запада России. Одним из пунктов повестки дня были выборы главы СГЦСЗР. По итогам голосования президентом Союза был переизбран новгородский мэр Юрий Бобрышев - его кандидатуру выдвинул глава Пскова Иван Цецерский. Вице-президентами СГЦСЗР были избраны мэры Вологды  и Твери - Евгений Шулепов и Александр Корзин. В состав правления помимо Цецерского вошли глава Калининграда Александр Ярошук, мэр Череповца Юрий Кузин, председатель Ивановской городской думы Александр Кузьмичев и исполняющий обязанности мэра Ярославля Алексей Малютин. На сегодняшний день Союз городов Центра и Северо-Запада России объединяет 27 городов с населением около шести миллионов жителей. Его территория простирается от Калининграда до Сыктывкара с запада на восток и от Нарьян-Мара до Владимира с севера на юг. Основная задача Союза - обмен опытом в области местного управления. Юрий Бобрышев занимает пост главы СГЦСЗР с 2012 года. Источник: СГЦСЗР'
+  },
+  {
+    image: 'guseva.jpg',
+    title: 'Дмитрий Азаров: Создать условия для развития ТОС как основы местного самоуправления',
+    text: 'В Великом Новгороде прошло отчетно-выборное общее собрание Союза городов Центра и Северо-Запада России. Одним из пунктов повестки дня были выборы главы СГЦСЗР. По итогам голосования президентом Союза был переизбран новгородский мэр Юрий Бобрышев - его кандидатуру выдвинул глава Пскова Иван Цецерский. Вице-президентами СГЦСЗР были избраны мэры Вологды  и Твери - Евгений Шулепов и Александр Корзин. В состав правления помимо Цецерского вошли глава Калининграда Александр Ярошук, мэр Череповца Юрий Кузин, председатель Ивановской городской думы Александр Кузьмичев и исполняющий обязанности мэра Ярославля Алексей Малютин. На сегодняшний день Союз городов Центра и Северо-Запада России объединяет 27 городов с населением около шести миллионов жителей. Его территория простирается от Калининграда до Сыктывкара с запада на восток и от Нарьян-Мара до Владимира с севера на юг. Основная задача Союза - обмен опытом в области местного управления. Юрий Бобрышев занимает пост главы СГЦСЗР с 2012 года. Источник: СГЦСЗР'
+  }
+];
 
 onMounted(() => {
   // const model = props.modelValue;
@@ -32,8 +49,8 @@ onMounted(() => {
   dataLoaded.value = true;
 });
 
-const closeForm = () => {
-  emits('close');
+const changeCarousel = (i) => {
+  carousel.value = carouselList[i];
 };
 
 </script>
@@ -46,15 +63,15 @@ const closeForm = () => {
     </div>
     <div class="grid grid-cols-4 gap-[25px]">
       <div class="col-span-3 flex flex-col gap-[15px]">
-        <img src="@/assets/icons/pic.png" class="" />
+        <img :src="'/images/'+carousel.image" class="" />
         <div class="text-[30px] font-somic text-black font-bold">
-          Избран глава союзов городов Центра и Северо-Запада Российской Федерации
+          {{ carousel.title }}
         </div>
         <div class="text-[14px] font-somic text-gray-500">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aspernatur cumque deserunt dignissimos dolore ea eos error est eum ex excepturi exercitationem facilis fugit illo illum impedit itaque iure iusto laborum laudantium magnam modi, mollitia necessitatibus non nostrum nulla perspiciatis praesentium quaerat quis reiciendis rem repellat sapiente ullam unde ut veniam voluptatem. Aliquam architecto asperiores at blanditiis cumque dicta enim error eum, explicabo facere harum id impedit ipsam, maxime nam nostrum odio quasi quis quod recusandae repellat sint tenetur ut voluptatem voluptatum? Accusantium consequuntur distinctio dolores dolorum eligendi excepturi illo laudantium magnam minima neque, placeat quibusdam reiciendis vel. Incidunt, totam.
+          {{ carousel.text }}
         </div>
       </div>
-      <SideCarouselNews />
+      <SideCarouselNews @chosen="changeCarousel" />
     </div>
   </div>
 </template>

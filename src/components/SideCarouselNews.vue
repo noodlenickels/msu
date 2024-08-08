@@ -1,15 +1,18 @@
 <script setup>
 import {computed, ref, onMounted} from 'vue';
 
-// const props = defineProps({
-//   modelValue: {
-//     type: Object,
-//     required: false,
-//   },
-//   ...modeProps,
-// });
+const props = defineProps({
+  id: {
+    type: [Number, String],
+    required: false,
+  },
+  text: {
+    type: String,
+    required: false,
+  }
+});
 
-const emits = defineEmits(['submitted', 'closeForm', 'update:model-value']);
+const emits = defineEmits(['chosen'])
 
 const form = ref(null);
 
@@ -31,31 +34,14 @@ onMounted(() => {
   dataLoaded.value = true;
 });
 
-const closeForm = () => {
-  emits('close');
+const sendEmit = () => {
+  emits('chosen', props.id);
 };
 
 </script>
 
 <template>
-  <div class="flex flex-col gap-[20px]">
-    <div class="pl-[15px] border-l-2 text-[14px] text-black font-somic">
-      Избран глава союзов городов Центра и Северо-Запада Российской Федерации
+    <div @mouseover="sendEmit" class="pl-[15px] border-l-2 text-[14px] text-black font-somic hover:text-blue-900 hover:border-blue-900">
+      {{ props.text }}
     </div>
-    <div class="pl-[15px] border-l-2 text-[14px] text-black font-somic">
-      Дмитрий Азаров: "Создать условия для развития ТОС как основы местного самоуправления"
-    </div>
-    <div class="pl-[15px] border-l-2 text-[14px] text-black font-somic">
-      Севастополь посетил сенатор Дмитрий Азаров
-    </div>
-    <div class="pl-[15px] border-l-2 text-[14px] text-black font-somic">
-      Перспективы развития местного самоуправления обсудили в крымском параметре
-    </div>
-    <div class="pl-[15px] border-l-2 text-[14px] text-black font-somic">
-      Дмитрий Азаров: "Создать условия для развития ТОС как основы местного самоуправления"
-    </div>
-    <div class="pl-[15px] border-l-2 text-[14px] text-black font-somic">
-      Перспективы развития местного самоуправления обсудили в крымском параметре
-    </div>
-  </div>
 </template>
