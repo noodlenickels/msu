@@ -40,15 +40,15 @@ const closeForm = () => {
 
 <template>
   <div class="w100 px-[10%]">
-    <div class="grid grid-cols-7 flex items-end mb-[30px] gap-[5px] w100">
+    <div class="grid grid-cols-9 flex items-end mb-[30px] gap-[5px] w100">
       <div class="col-span-1 text-[18px] font-somic text-black font-semibold">Точка зрения</div>
-      <div class="col-span-6 flex-grow border-b-[2px] border-gray"></div>
+      <div class="col-span-8 flex-grow border-b-[2px] border-gray"></div>
     </div>
     <div class="grid grid-cols-2 gap-[25px]">
-        <Card :title="'Развивая привлекательность города, мы делаем Казань комфортнее'" :text="'Город заметно изменился'" :name="'Ильсур Метшин'"/>
-        <Card :title="'Развивая привлекательность города, мы делаем Казань комфортнее'" :text="'Город заметно изменился'" :name="'Ильсур Метшин'"/>
-        <Card :title="'Развивая привлекательность города, мы делаем Казань комфортнее'" :text="'Город заметно изменился'" :name="'Ильсур Метшин'"/>
-        <Card :title="'Развивая привлекательность города, мы делаем Казань комфортнее'" :text="'Город заметно изменился'" :name="'Ильсур Метшин'"/>
+        <Card :img="'man2.png'" :title="'Развивая привлекательность города, мы делаем Казань комфортнее'" :text="'Город заметно изменился'" :name="'Ильсур Метшин'"/>
+        <Card :img="'man3.png'" :title="'Развивая привлекательность города, мы делаем Казань комфортнее'" :text="'Город заметно изменился'" :name="'Ильсур Метшин'"/>
+        <Card :img="'man4.png'" :title="'Развивая привлекательность города, мы делаем Казань комфортнее'" :text="'Город заметно изменился'" :name="'Ильсур Метшин'"/>
+        <Card :img="'man5.png'" :title="'Развивая привлекательность города, мы делаем Казань комфортнее'" :text="'Город заметно изменился'" :name="'Ильсур Метшин'"/>
     </div>
   </div>
 </template>

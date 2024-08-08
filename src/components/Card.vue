@@ -25,6 +25,10 @@ const props = defineProps({
   source: {
     type: String,
     required: false,
+  },
+  img: {
+    type: String,
+    required: false
   }
 });
 
@@ -52,6 +56,9 @@ const closeForm = () => {
   emits('close');
 };
 
+const imgLink = computed(() => {
+  return '/images/'+props.img;
+});
 </script>
 
 <template>
@@ -63,7 +70,10 @@ const closeForm = () => {
         <div class="flex-grow border-b-[2px] border-gray"></div>
       </div>
       <div class="flex flex-col gap-[10px]">
-        <img src="@/assets/icons/pic.png" class=""/>
+        <div class="relative">
+          <img :src="imgLink" class=""/>
+          <div class="absolute w-auto h-[20px] text-[14px] font-somic bg-gray-100 rounded-[10px] text-black z-10	bottom-4 right-5 px-[10px]">Стелла Штань</div>
+        </div>
         <div class="text-[17.4px] font-somic text-black">
           {{ props.name }}
         </div>

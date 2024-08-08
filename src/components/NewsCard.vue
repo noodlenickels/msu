@@ -1,13 +1,12 @@
 <script setup>
 import {computed, ref, onMounted} from 'vue';
 
-// const props = defineProps({
-//   modelValue: {
-//     type: Object,
-//     required: false,
-//   },
-//   ...modeProps,
-// });
+const props = defineProps({
+  img: {
+    type: String,
+    required: false,
+  }
+});
 
 const emits = defineEmits(['submitted', 'closeForm', 'update:model-value']);
 
@@ -21,8 +20,9 @@ const fd = ref({});
 
 const dataLoaded = ref(false);
 
-const isInvalid = ref(true);
-
+const imgLink = computed(() => {
+  return '/images/'+props.img;
+});
 onMounted(() => {
   // const model = props.modelValue;
   // fd.value.contract = model.contract;
@@ -43,7 +43,7 @@ const closeForm = () => {
         <div class="col-span-1 text-gray-400 font-somic">
           25.03
         </div>
-        <img class="col-span-2 rounded-[10px]" src="@/assets/icons/pic.png" />
+        <img class="col-span-2 rounded-[10px]" :src="imgLink" />
         <div class="col-span-9 flex flex-col gap-[5px]">
             <div class="text-[14px] max-w-[150px] bg-gray-200 rounded-[10px] px-[10px] py-[3px] font-somic">
               Южно-Сахалинск
