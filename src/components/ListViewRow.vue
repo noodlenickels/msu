@@ -38,14 +38,14 @@ const closeForm = () => {
 </script>
 
 <template>
-  <div class="w100">
-    <div class="grid grid-cols-12 flex gap-[25px]">
-      <img class="col-span-4" src="@/assets/icons/pic.png" />
-      <div class="col-span-8 flex flex-col gap-[10px]">
+  <div>
+    <div class="grid grid-cols-12 flex gap-[25px] max-h-[220px] w-full">
+      <img class="col-span-4 floated" src="@/assets/icons/pic.png" />
+      <div class="nofloat col-span-8 flex flex-col gap-[10px]">
         <div class="text-[20px] font-somic text-black font-bold">
           Стелла Штань: “Политикам-мужчинам прощается многое”
         </div>
-        <div class="h-auto text-[14px] font-somic text-gray-400 leading-[30px]">
+        <div class="h-auto text-[14px] font-somic text-gray-400 leading-[30px] truncate-text">
           Политика была исключительно мужским занятием на протяжении долгих веков. И даже сейчас, когда женщина в этой сфере – явление отнюдь не новое, в основе образа хорошего политика все же лежит принадлежность к мужскому полу.
           Накануне Всемирного дня мужчин, отмечаемого в этом году 2 ноября, мы решили выяснить, чем же отличаются в работе политики-мужчины с точки зрения политиков-женщин. Об этом мы спросили Председатель Алтайского регионального отделения ВСМС, депутата Алтайского краевого законодательного собрания, зампредседателя комитета по местному самоуправлению Стеллу Штань.
         </div>
@@ -53,3 +53,22 @@ const closeForm = () => {
     </div>
   </div>
 </template>
+
+<style>
+.truncate-text {
+  height: 180px;
+  overflow: hidden;
+  position: relative;
+  font-size:clamp(10px, 14px, 16px);
+}
+
+.floated{
+  float: left;
+}
+
+.nofloat{
+  float:none
+}
+
+
+</style>

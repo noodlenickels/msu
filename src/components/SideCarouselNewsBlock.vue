@@ -45,5 +45,6 @@ const changeCarousel = (i) => {
     <SideCarouselNews @chosen="changeCarousel" :id="3" :text="'Перспективы развития местного самоуправления обсудили в крымском параметре'"/>
     <SideCarouselNews @chosen="changeCarousel" :id="4" :text="'Перспективы развития местного самоуправления обсудили в крымском параметре'"/>
     <SideCarouselNews @chosen="changeCarousel" :id="5" :text="'Перспективы развития местного самоуправления обсудили в крымском параметре'"/>
+    <SideCarouselNews @chosen="changeCarousel" :id="5" :text="'Перспективы развития местного самоуправления обсудили в крымском параметре'"/>
   </div>
 </template>

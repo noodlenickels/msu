@@ -2,10 +2,6 @@
 import {computed, ref, onMounted} from 'vue';
 
 const props = defineProps({
-  mode: {
-    type: String,
-    required: true,
-  },
   caption: {
     type: String,
     required: false,
