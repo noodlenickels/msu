@@ -41,7 +41,7 @@ const sendEmit = () => {
 </script>
 
 <template>
-    <div @mouseover="sendEmit" class="pl-[15px] border-l-2 text-[14px] text-black font-somic hover:text-blue-900 hover:border-blue-900">
+    <div @mouseover="sendEmit" class="pl-[15px] border-l-2 md:text-[14px] text-[11px] text-black font-somic hover:text-blue-900 hover:border-blue-900">
       {{ props.text }}
     </div>
 </template>

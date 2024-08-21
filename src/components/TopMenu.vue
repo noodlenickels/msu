@@ -39,8 +39,8 @@ const menuItem = ref('Главная');
 </script>
 
 <template>
-  <div class="w100 mb-[100px]">
-    <div class="grid grid-cols-6 font-somic text-[15px] flex gap-[7%] justify-between h-[50px] px-[10%] items-center border-b-2">
+  <div class="w100 md:mb-[50px] mb-[20px]">
+    <div class="grid grid-cols-6 font-somic md:text-[15px] text-[12px] flex gap-[7%] justify-between h-[50px] px-[10%] items-center border-b-2">
       <RouterLink to="/">
       <div class="flex justify-center hover:text-blue-950" :class="currentRouteName === 'home' ? 'text-black' : 'text-gray-400'">Главная</div>
       </RouterLink>

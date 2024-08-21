@@ -39,38 +39,38 @@ const closeForm = () => {
 </script>
 
 <template>
-  <div class="w100 px-[10%]">
-    <div class="grid grid-cols-6 flex items-end mb-[30px] gap-[15px] w100">
-      <div class="col-span-1 text-[18px] font-somic text-black font-semibold">Официальные сайты</div>
-      <div class="flex-grow col-span-5 border-b-[2px] border-gray"></div>
+  <div class="px-[10%]">
+    <div class="flex items-end mb-[30px] gap-[15px] w100">
+      <div class="text-[18px] font-somic text-black font-semibold">Официальные сайты</div>
+      <div class="flex-grow border-b-[2px] border-gray"></div>
     </div>
     <div class="grid grid-cols-3 gap-[25px]">
-      <a class="block" href="http://kremlin.ru/">
+      <a class="block md:col-span-1 col-span-3" href="http://kremlin.ru/">
         <div class="bg-gray-200 rounded-[15px] flex justify-center">
           <img src="@/assets/sites/site1.png" />
         </div>
       </a>
-      <a class="block" href="http://government.ru/">
+      <a class="block md:col-span-1 col-span-3" href="http://government.ru/">
         <div class="bg-gray-200 rounded-[15px] flex justify-center">
           <img src="@/assets/sites/site2.png" />
         </div>
       </a>
-      <a class="block" href="http://duma.gov.ru/">
+      <a class="block md:col-span-1 col-span-3" href="http://duma.gov.ru/">
         <div class="bg-gray-200 rounded-[15px] flex justify-center">
           <img src="@/assets/sites/site3.png" />
         </div>
       </a>
-      <a class="block" href="http://council.gov.ru/">
+      <a class="block md:col-span-1 col-span-3" href="http://council.gov.ru/">
         <div class="bg-gray-200 rounded-[15px] flex justify-center">
           <img src="@/assets/sites/site4.png" />
         </div>
       </a>
-      <a class="block" href="https://oprf.ru/">
+      <a class="block md:col-span-1 col-span-3" href="https://oprf.ru/">
         <div class="bg-gray-200 rounded-[15px] flex justify-center">
           <img src="@/assets/sites/site5.png" />
         </div>
       </a>
-      <a class="block" href="https://объясняем.рф/">
+      <a class="block md:col-span-1 col-span-3" href="https://объясняем.рф/">
         <div class="bg-gray-200 rounded-[15px] flex justify-center">
           <img src="@/assets/sites/site6.png" />
         </div>

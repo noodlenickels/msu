@@ -56,10 +56,12 @@ const closeForm = () => {
 
 <style>
 .truncate-text {
-  height: 180px;
   overflow: hidden;
-  position: relative;
-  font-size:clamp(10px, 14px, 16px);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  line-height: 1.3em;
+  height: 3.9em;
 }
 
 .floated{

@@ -83,20 +83,20 @@ const changeCarousel = (i) => {
 <template>
   <div class="w100">
     <div class="flex items-end mb-[30px] gap-[15px]">
-      <div class="w-auto text-[18px] font-somic text-black font-semibold">Главные новости</div>
+      <div class="w-auto md:text-[18px] text-[26px] font-somic text-black font-semibold">Главные новости</div>
       <div class="flex-grow border-b-[2px] border-gray"></div>
     </div>
     <div class="grid grid-cols-4 gap-[25px]">
-      <div class="col-span-3 flex flex-col gap-[15px]">
+      <div class="md:col-span-3 col-span-4 flex flex-col gap-[15px]">
         <img :src="'/images/'+carousel.image" class="" />
-        <div class="text-[30px] font-somic text-black font-bold">
+        <div class="md:text-[30px] text-[26px] font-somic text-black font-bold">
           {{ carousel.title }}
         </div>
-        <div class="text-[14px] font-somic text-gray-500 h-[236px] truncate-text">
+        <div class="md:text-[14px] text-[11px] font-somic text-gray-500 h-[236px]">
           {{ carousel.text }}
         </div>
       </div>
-      <SideCarouselNews @chosen="changeCarousel" />
+      <SideCarouselNews class="md:flex hidden" @chosen="changeCarousel" />
     </div>
   </div>
 </template>
@@ -109,6 +109,7 @@ const changeCarousel = (i) => {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-  height: 236px;
+  line-height: 1.3em;
+  height: 3.9em;
 }
 </style>

@@ -41,8 +41,8 @@ const closeForm = () => {
 <template>
   <div class="w100 px-[10%]">
     <div class="grid grid-cols-5 gap-[25px]">
-        <Carousel class="col-span-4"/>
-        <AddsBlock />
+        <Carousel class="l:col-span-4 col-span-5 l:mb-0 mb-[50px]"/>
+        <AddsBlock class="l:col-span-1 col-span-5"/>
       </div>
     </div>
 </template>

@@ -38,13 +38,13 @@ const closeForm = () => {
 </script>
 
 <template>
-  <div class="w100">
-      <div class="grid grid-cols-12 flex gap-[15px]">
-        <div class="col-span-1 text-gray-400 font-somic">
+  <div>
+      <div class="grid md:grid-cols-12 grid-cols-6 flex gap-[15px]">
+        <div class="col-span-1 text-[14px] text-gray-400 font-somic">
           25.03
         </div>
         <img class="col-span-2 rounded-[10px]" :src="imgLink" />
-        <div class="col-span-9 flex flex-col gap-[5px]">
+        <div class="md:col-span-9 col-span-3 flex flex-col gap-[5px]">
             <div class="text-[14px] max-w-[150px] bg-gray-200 rounded-[10px] px-[10px] py-[3px] font-somic">
               Южно-Сахалинск
             </div>

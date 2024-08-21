@@ -61,21 +61,21 @@ const imgLink = computed(() => {
 <template>
   <RouterLink to="/point_of_view/1">
 
-    <div class="w100">
-      <div v-if="props.caption" class="flex items-end mb-[30px] gap-[15px] w100">
-        <div class="w-auto text-[18px] font-somic text-black font-semibold">{{ props.caption }}</div>
+    <div>
+      <div v-if="props.caption" class="flex items-end mb-[30px] md:gap-[15px] gap-[7px]">
+        <div class="w-auto md:text-[18px] text-[26px] font-somic text-black font-semibold">{{ props.caption }}</div>
         <div class="flex-grow border-b-[2px] border-gray"></div>
       </div>
       <div class="flex flex-col gap-[10px]">
         <img :src="imgLink" class=""/>
-        <div class="text-[17.4px] font-somic text-black">
+        <div class="md:text-[17.4px] font-somic text-black">
           {{ props.name }}
         </div>
         <!--        :class="props.mode === 'news' ? 'font-bold' : ''"-->
-        <div class="text-[20px] font-somic text-black font-bold">
+        <div class="md:text-[20px] text-[27px] font-somic text-black font-bold">
           {{ props.title }}
         </div>
-        <div class="text-[14px] font-somic text-gray-500">
+        <div class="md:text-[14px] text-[20px] font-somic text-gray-500">
           {{ props.text }}
         </div>
         <div class="w-[250px] text-[14px] font-somic bg-gray-200 text-black rounded-[10px] px-[10px] inline-block">

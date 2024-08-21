@@ -61,12 +61,12 @@ const imgLink = computed(() => {
 <template>
   <RouterLink to="/point_of_view/1">
 
-    <div class="w100">
-      <div v-if="props.caption" class="flex items-end mb-[30px] gap-[15px] w100">
+    <div>
+      <div v-if="props.caption" class="flex items-end mb-[30px] gap-[15px]">
         <div class="w-auto text-[18px] font-somic text-black font-semibold">{{ props.caption }}</div>
         <div class="flex-grow border-b-[2px] border-gray"></div>
       </div>
-      <div class="flex flex-col gap-[10px]">
+      <div class="flex flex-col md:gap-[10px] gap-[5px]">
         <div class="relative">
           <img :src="imgLink" class="w-full"/>
           <div class="absolute w-auto h-[24px] text-[16px] font-somic bg-gray-100 rounded-[10px] text-black z-10	bottom-5 right-5 px-[10px]">Стелла Штань</div>

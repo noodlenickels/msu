@@ -7,6 +7,14 @@ export default {
       ...theme('colors'),
       'primary': '#334374',
     }),
+    screens: {
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'l': '1130px',
+      'xl': '1280px',
+      '2xl': '1536px',
+    },
     extend: {
       fontFamily: {
         somic: ['"NT-Somic"', "somic"],
