@@ -3,7 +3,7 @@ const WebpackAssetsManifest = require('webpack-assets-manifest');
 const fs = require("fs");
 
 module.exports = defineConfig({
-  outputDir: '/home/t/teleklass/msu-russia.ru/public_html',
+  outputDir: 'dist',
   transpileDependencies: true,
   configureWebpack: config => {
     config.plugins = config.plugins.concat(
