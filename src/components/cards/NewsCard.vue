@@ -5,6 +5,10 @@ const props = defineProps({
   img: {
     type: String,
     required: false,
+  },
+  data: {
+    type: Object,
+    required: true,
   }
 });
 
@@ -41,16 +45,16 @@ const closeForm = () => {
   <div>
       <div class="grid md:grid-cols-12 grid-cols-6 flex gap-[15px]">
         <div class="col-span-1 text-[14px] text-gray-400 font-somic">
-          25.03
+          {{ data.date }}
         </div>
         <img class="col-span-2 rounded-[10px]" :src="imgLink" />
         <div class="md:col-span-9 col-span-3 flex flex-col gap-[5px]">
             <div class="text-[14px] max-w-[150px] bg-gray-200 rounded-[10px] px-[10px] py-[3px] font-somic">
-              Южно-Сахалинск
+              {{ data.title }}
             </div>
 
           <div class="text-[14px] font-somic">
-            В городе применяют новые технологии при текущем ремонте дорог
+            {{ data.text}}
           </div>
         </div>
       </div>

@@ -30,6 +30,54 @@ const dataLoaded = ref(false);
 
 const isInvalid = ref(true);
 
+const regionsNewsList = [
+  {
+    date: '25.08',
+    title: 'Южно-Сахалинск',
+    text: 'В городе применяют новые технологии при текущем ремонте дорог'
+  },
+  {
+    date: '25.08',
+    title: 'Курган',
+    text: 'Город развивается'
+  },
+  {
+    date: '25.08',
+    title: 'Артем',
+    text: 'В городе еще больше молодных семей сможет приобрести долгожданное жилье'
+  },
+  {
+    date: '25.08',
+    title: 'Хабаровск',
+    text: 'Реализация программы по капитальному ремонту общего имущества многоквартирных домов продолжается в городе в 2016 году'
+  },
+  {
+    date: '25.08',
+    title: 'Ханты-Мансийск',
+    text: 'Хантымансийцы поставили муниципальным чиновникам «четыре с плюсом»'
+  },
+  {
+    date: '25.08',
+    title: 'Братск',
+    text: 'Вопросы обеспечения безопасности города обсудила сегодня городская антитеррористическая комиссия'
+  },
+  {
+    date: '25.08',
+    title: 'Томск',
+    text: 'В городе продолжается работа консультативно-мотивационного кабинета'
+  },
+  {
+    date: '25.08',
+    title: 'Ханты-Мансийск',
+    text: 'Незаконной наружной рекламы на улицах города стало в 10 раз меньше, чем в предыдущие годы'
+  },
+  {
+    date: '25.08',
+    title: 'Красноярск',
+    text: 'Глава города Эдхам Акбулатов: “Развитие высокотехнологичных производств - важное условие экономической стабильности города”'
+  }
+];
+
 onMounted(async () => {
   // if ( formMode.value === 'edit' ) {
   const contractData = await getContractById();
@@ -58,13 +106,7 @@ const closeForm = () => {
     <div class="grid grid-cols-3 gap-[25px]">
       <div class="md:col-span-2 col-span-3">
         <div class="flex flex-col gap-[20px] mb-[25px]">
-          <NewsCard :img="'woman1.png'" class="col-span-2" />
-          <NewsCard :img="'woman1.png'" class="col-span-2" />
-          <NewsCard :img="'woman1.png'" class="col-span-2" />
-          <NewsCard :img="'woman1.png'" class="col-span-2" />
-          <NewsCard :img="'woman1.png'" class="col-span-2" />
-          <NewsCard :img="'woman1.png'" class="col-span-2" />
-          <NewsCard :img="'woman1.png'" class="col-span-2" />
+          <NewsCard v-for="news in regionsNewsList" :img="'woman1.png'" :data="news" class="col-span-2" />
         </div>
         <Pagination />
       </div>
