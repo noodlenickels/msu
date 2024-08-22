@@ -67,7 +67,7 @@ const closeForm = () => {
 <template>
   <div>
     <div class="flex flex-col md:gap-[20px] gap-[10px]">
-      <div class="text-[16.5px] font-bold text-black font-somic md:h-[90px] h-[60px]">
+      <div class="text-[16.5px] md:text-[14px] l:text-[16.5px] font-bold text-black font-somic md:h-[90px] h-[60px]">
         {{ props.title }}
       </div>
       <div class="flex flex-col gap-[10px]">
@@ -75,7 +75,7 @@ const closeForm = () => {
         <div class="text-[17.35px] text-gray-500 font-somic">
           {{ props.name }}
         </div>
-        <div class="text-[14px] font-somic md:h-[110px] h-[70px]">
+        <div class="text-[14px] md:text-[12px] l:text-[14px] font-somic md:h-[110px] h-[70px]">
           "{{ props.text }}"
         </div>
       </div>

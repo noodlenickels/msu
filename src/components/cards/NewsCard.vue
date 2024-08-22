@@ -25,7 +25,7 @@ const fd = ref({});
 const dataLoaded = ref(false);
 
 const imgLink = computed(() => {
-  return '/images/'+props.img;
+  return '/images/'+props.data.img;
 });
 onMounted(() => {
   // const model = props.modelValue;
