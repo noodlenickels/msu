@@ -6,26 +6,10 @@ const props = defineProps({
     type: String,
     required: false,
   },
-  title: {
-    type: String,
+  data: {
+    type: Object,
     required: true,
-  },
-  text: {
-    type: String,
-    required: false,
-  },
-  name: {
-    type: String,
-    required: false,
-  },
-  source: {
-    type: String,
-    required: false,
-  },
-  img: {
-    type: String,
-    required: false,
-    default: 'shevchenko.jpg'
+    default: null
   }
 });
 
@@ -54,7 +38,7 @@ const closeForm = () => {
 };
 
 const imgLink = computed(() => {
-  return '/images/'+props.img;
+  return '/images/'+props.data.img;
 });
 </script>
 
@@ -62,27 +46,27 @@ const imgLink = computed(() => {
   <RouterLink to="/point_of_view/1">
 
     <div>
-      <div v-if="props.caption" class="flex items-end mb-[30px] gap-[15px]">
-        <div class="w-auto text-[18px] font-somic text-black font-semibold">{{ props.caption }}</div>
+      <div v-if="props.data.caption" class="flex items-end mb-[30px] gap-[15px]">
+        <div class="w-auto text-[18px] font-somic text-black font-semibold">{{ props.data.caption }}</div>
         <div class="flex-grow border-b-[2px] border-gray"></div>
       </div>
       <div class="flex flex-col md:gap-[10px] gap-[5px]">
         <div class="relative">
           <img :src="imgLink" class="w-full"/>
-          <div class="absolute w-auto h-[24px] text-[16px] font-somic bg-gray-100 rounded-[10px] text-black z-10	bottom-5 right-5 px-[10px]">Стелла Штань</div>
+          <div v-if="props.data.role" class="absolute w-auto l:text-[16px] l:h-[26px] md:h-[20px] md:text-[11px] h-[24px] text-[14px] font-somic bg-gray-100 rounded-[10px] text-black z-10	bottom-[7%] right-[5%] px-[7px]">{{ props.data.role }}</div>
         </div>
-        <div class="text-[17.4px] font-somic text-black">
-          {{ props.name }}
+        <div class="l:text-[17.4px] text-[15px] font-somic text-black">
+          {{ props.data.name }}
         </div>
 <!--        :class="props.mode === 'news' ? 'font-bold' : ''"-->
-        <div class="text-[20px] font-somic text-black font-bold">
-          {{ props.title }}
+        <div class="l:text-[20px] text-[17px] font-somic text-black font-bold">
+          {{ props.data.title }}
         </div>
-        <div class="text-[14px] font-somic text-gray-500">
-          {{ props.text }}
+        <div class="l:text-[14px] text-[12px] font-somic text-gray-500">
+          {{ props.data.text }}
         </div>
         <div class="w-[250px] text-[14px] font-somic bg-gray-200 text-black rounded-[10px] px-[10px] inline-block">
-          {{ props.source }}
+          {{ props.data.source }}
         </div>
       </div>
     </div>

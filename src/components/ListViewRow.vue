@@ -1,13 +1,12 @@
 <script setup>
 import {computed, ref, onMounted} from 'vue';
 
-// const props = defineProps({
-//   modelValue: {
-//     type: Object,
-//     required: false,
-//   },
-//   ...modeProps,
-// });
+const props = defineProps({
+  data: {
+    type: Object,
+    required: true
+  }
+});
 
 const emits = defineEmits(['submitted', 'closeForm', 'update:model-value']);
 
@@ -31,6 +30,10 @@ onMounted(() => {
   dataLoaded.value = true;
 });
 
+const imgLink = computed(() => {
+  return '/images/'+props.data.img;
+});
+
 const closeForm = () => {
   emits('close');
 };
@@ -39,15 +42,17 @@ const closeForm = () => {
 
 <template>
   <div>
-    <div class="grid grid-cols-12 flex gap-[25px] max-h-[220px] w-full">
-      <img class="col-span-4 floated" src="@/assets/icons/pic.png" />
+    <div class="grid grid-cols-12 flex gap-[25px] w-full">
+      <div class="relative col-span-4 floated">
+        <img :src="imgLink" class="w-full"/>
+        <div v-if="props.data.role" class="absolute w-auto l:text-[14px] l:h-[24px] md:h-[20px] md:text-[11px] h-[24px] text-[14px] font-somic bg-gray-100 rounded-[10px] text-black z-10	bottom-[7%] right-[5%] px-[7px]">{{ props.data.role }}</div>
+      </div>
       <div class="nofloat col-span-8 flex flex-col gap-[10px]">
         <div class="text-[20px] font-somic text-black font-bold">
-          Стелла Штань: “Политикам-мужчинам прощается многое”
+          {{ props.data.title }}
         </div>
-        <div class="h-auto text-[14px] font-somic text-gray-400 leading-[30px] truncate-text">
-          Политика была исключительно мужским занятием на протяжении долгих веков. И даже сейчас, когда женщина в этой сфере – явление отнюдь не новое, в основе образа хорошего политика все же лежит принадлежность к мужскому полу.
-          Накануне Всемирного дня мужчин, отмечаемого в этом году 2 ноября, мы решили выяснить, чем же отличаются в работе политики-мужчины с точки зрения политиков-женщин. Об этом мы спросили Председатель Алтайского регионального отделения ВСМС, депутата Алтайского краевого законодательного собрания, зампредседателя комитета по местному самоуправлению Стеллу Штань.
+        <div class="text-[14px] font-somic text-gray-400 leading-[20px] truncate-text">
+          {{ props.data.text }}
         </div>
       </div>
     </div>
@@ -60,8 +65,8 @@ const closeForm = () => {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-  line-height: 1.3em;
-  height: 3.9em;
+  line-height: 2em;
+  height: 13.5em;
 }
 
 .floated{

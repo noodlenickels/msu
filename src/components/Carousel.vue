@@ -87,7 +87,7 @@ const changeCarousel = (i) => {
         <div class="md:text-[30px] text-[26px] font-somic text-black font-bold">
           {{ carousel.title }}
         </div>
-        <div class="md:text-[14px] text-[11px] font-somic text-gray-500 h-[236px]">
+        <div class="md:text-[14px] text-[16px] font-somic text-gray-500">
           {{ carousel.text }}
         </div>
       </div>

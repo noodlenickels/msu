@@ -24,6 +24,37 @@ const dataLoaded = ref(false);
 
 const isInvalid = ref(true);
 
+const opinionList = [
+  {
+    title: 'Развивая привлекательность города, мы делаем Казань комфортнее',
+    img: 'man2.png',
+    name: 'Ильсур Метшин',
+    text: 'Город заметно изменился',
+    role: 'мэр г.Казань'
+  },
+  {
+    title: 'Перспектива реформы МСУ в свете бюджетных отношений',
+    img: 'man3.png',
+    name: 'Олег Грищенко',
+    text: 'Престоящая реформа МСУ сегодня один из актуальнейших вопросов',
+    role: 'глава МО “Город Саратов”'
+  },
+  {
+    title: 'О муниципальной полиции',
+    img: 'man4.png',
+    name: 'Олег Грищенко',
+    text: 'Обеспечение общественного порядка и безопасности граждан всгда было для городской власти одним из приоритетов',
+    role: 'глава МО “Город Саратов”'
+  },
+  {
+    title: 'Городская Агломерация — неизбежный путь развития городов',
+    img: 'man5.png',
+    name: 'Игорь Мещеряков',
+    text: 'За 14 лет, которые я работаю в межмуниципальной среде',
+    role: 'руководитель msu-russia.ru'
+  }
+];
+
 onMounted(() => {
   // const model = props.modelValue;
   // fd.value.contract = model.contract;
@@ -45,10 +76,7 @@ const closeForm = () => {
       <div class="flex-grow border-b-[2px] border-gray"></div>
     </div>
     <div class="grid grid-cols-2 gap-[25px]">
-        <Card class="md:col-span-1 col-span-2" :img="'man2.png'" :title="'Развивая привлекательность города, мы делаем Казань комфортнее'" :text="'Город заметно изменился'" :name="'Ильсур Метшин'"/>
-        <Card class="md:col-span-1 col-span-2" :img="'man3.png'" :title="'Развивая привлекательность города, мы делаем Казань комфортнее'" :text="'Город заметно изменился'" :name="'Ильсур Метшин'"/>
-        <Card class="md:col-span-1 col-span-2" :img="'man4.png'" :title="'Развивая привлекательность города, мы делаем Казань комфортнее'" :text="'Город заметно изменился'" :name="'Ильсур Метшин'"/>
-        <Card class="md:col-span-1 col-span-2" :img="'man5.png'" :title="'Развивая привлекательность города, мы делаем Казань комфортнее'" :text="'Город заметно изменился'" :name="'Ильсур Метшин'"/>
+        <Card v-for="opinion in opinionList" class="md:col-span-1 col-span-2" :data="opinion" />
     </div>
   </div>
 </template>
