@@ -109,12 +109,12 @@ export default function useApi() {
   };
 
   const parseResponse = (response, onSuccess, onError) => {
-    if ( response?.data?.status === 'success' && response?.data?.data?.state === 'yes' ) {
+    if ( response?.status === 200 ) {
       if ( onSuccess ) {
-        onSuccess(response.data?.data);
+        onSuccess(response.data);
       }
       return {
-        data: response.data?.data,
+        data: response.data,
         message: null,
         isError: false,
       };

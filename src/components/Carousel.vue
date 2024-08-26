@@ -1,6 +1,7 @@
 <script setup>
 import {computed, ref, onMounted} from 'vue';
 import SideCarouselNews from '@/components/SideCarouselNewsBlock.vue';
+import useApiMain from '@/use/api/main';
 
 // const props = defineProps({
 //   modelValue: {
@@ -11,6 +12,8 @@ import SideCarouselNews from '@/components/SideCarouselNewsBlock.vue';
 // });
 
 const emits = defineEmits(['submitted', 'closeForm', 'update:model-value']);
+
+const {getGrandNews} = useApiMain();
 
 const form = ref(null);
 
@@ -62,10 +65,7 @@ const carouselList = [
 ];
 
 onMounted(() => {
-  // const model = props.modelValue;
-  // fd.value.contract = model.contract;
-  // fd.value.contractor = model.contractor;
-  // fd.value.anticontractor = model.anticontractor;
+  const carouselData = getGrandNews();
   dataLoaded.value = true;
 });
 
@@ -83,28 +83,50 @@ const changeCarousel = (i) => {
     </div>
     <div class="grid grid-cols-4 gap-[25px]">
       <div class="md:col-span-3 col-span-4 flex flex-col gap-[15px]">
-        <img :src="'/images/'+carousel.image" class="" />
-        <div class="md:text-[30px] text-[26px] font-somic text-black font-bold">
+        <img :src="'/images/'+carousel.image" class="carouselImg"/>
+        <div class="md:text-[30px] text-[26px] font-somic text-black font-bold carouselTitle">
           {{ carousel.title }}
         </div>
-        <div class="md:text-[14px] text-[16px] font-somic text-gray-500">
+        <div id="carouselText"
+             class="text-[16px] leading-[25px] font-somic text-gray-500 truncate-carousel">
           {{ carousel.text }}
         </div>
       </div>
-      <SideCarouselNews class="md:flex hidden" @chosen="changeCarousel" />
+      <SideCarouselNews class="md:flex hidden" @chosen="changeCarousel"/>
     </div>
   </div>
 </template>
 
 <style>
-
-
-.truncate-text {
+.truncate-carousel {
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-  line-height: 1.3em;
-  height: 3.9em;
 }
+
 </style>
+
+<script>
+setTimeout(() => compare(), 500);
+
+function compare() {
+  const panels = document.getElementsByClassName('classNews');
+  let panelHeight = -20;
+  for (let i = 0; i<panels.length; i++){
+    console.log(panels[i].offsetHeight)
+    panelHeight += panels[i].offsetHeight + 20;
+  }
+  const carouselHeight = document.getElementsByClassName('carouselImg')[0].height;
+  const titleHeight = document.getElementsByClassName('carouselTitle')[0].offsetHeight;
+  const textHeight = Math.abs(panelHeight - carouselHeight - titleHeight) - (Math.abs(panelHeight - carouselHeight - titleHeight)%25);
+  const textCount = Math.floor(textHeight / 25);
+  console.log(panelHeight - carouselHeight - titleHeight)
+  document.getElementsByClassName('truncate-carousel')[0].style.setProperty('-webkit-line-clamp', textCount);
+  document.getElementsByClassName('truncate-carousel')[0].style.setProperty('height', `${textHeight}px`);
+  document.getElementsByClassName('truncate-carousel')[0].height = `${textHeight}px`;
+}
+
+window.onresize = function () {
+  compare();
+};
+</script>

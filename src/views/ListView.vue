@@ -3,7 +3,7 @@ import {computed, ref, onMounted} from 'vue';
 import Header from '@/components/Header.vue';
 import TopMenu from '@/components/TopMenu.vue';
 import Selection from "@/components/Selection.vue";
-import ListViewRow from "@/components/ListViewRow.vue";
+import ListViewRow from "@/components/cards/ListViewRow.vue";
 import Footer from "@/components/Footer.vue";
 import AddsBlock from "@/components/AddsBlock.vue";
 

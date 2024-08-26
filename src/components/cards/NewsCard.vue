@@ -49,7 +49,7 @@ const closeForm = () => {
         </div>
         <img class="col-span-2 rounded-[10px]" :src="imgLink" />
         <div class="md:col-span-9 col-span-3 flex flex-col gap-[5px]">
-            <div class="text-[14px] max-w-[150px] bg-gray-200 rounded-[10px] px-[10px] py-[3px] font-somic">
+            <div class="text-[14px] mr-auto bg-gray-200 rounded-[10px] px-[10px] py-[3px] font-somic">
               {{ data.title }}
             </div>
 

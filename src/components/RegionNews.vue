@@ -1,6 +1,6 @@
 <script setup>
 import {computed, ref, onMounted} from 'vue';
-import useApiSAIContracts from '@/use/api/saiContract';
+import useApiMain from '@/use/api/main';
 
 import NewsCard from '@/components/cards/NewsCard.vue';
 import SearchPanel from '@/components/SearchPanel.vue';
@@ -18,7 +18,7 @@ const emits = defineEmits(['submitted', 'closeForm', 'update:model-value']);
 
 const form = ref(null);
 
-const { getContractById } = useApiSAIContracts();
+const { getNews } = useApiMain();
 
 const inputLabelWidth = computed(() => 150);
 
@@ -89,7 +89,7 @@ const regionsNewsList = [
 
 onMounted(async () => {
   // if ( formMode.value === 'edit' ) {
-  const contractData = await getContractById();
+  const newsData = await getNews();
   //   if ( contractData ) {
   //     panelData.value = { ...panelData.value, ...contractData };
   //     formData.value = panelData.value;
@@ -119,7 +119,7 @@ const closeForm = () => {
         </div>
         <Pagination />
       </div>
-      <SearchPanel class="hidden md:block"/>
+      <SearchPanel class="hidden md:flex"/>
     </div>
   </div>
 </template>
