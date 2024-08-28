@@ -7,13 +7,12 @@ import ListViewRow from "@/components/cards/ListViewRow.vue";
 import Footer from "@/components/Footer.vue";
 import AddsBlock from "@/components/AddsBlock.vue";
 
-// const props = defineProps({
-//   modelValue: {
-//     type: Object,
-//     required: false,
-//   },
-//   ...modeProps,
-// });
+const props = defineProps({
+  data: {
+    type: Object,
+    required: false,
+  },
+});
 
 const emits = defineEmits(['submitted', 'closeForm', 'update:model-value']);
 
@@ -97,7 +96,7 @@ const closeForm = () => {
           <div class="flex-grow border-b-[2px] border-gray"></div>
         </div>
         <div class="flex flex-col gap-[70px]">
-          <ListViewRow v-for="row in rowList" class="col-span-12" :data="row"/>
+          <ListViewRow v-for="row in props.data" class="col-span-12" :data="row"/>
         </div>
       </div>
       <AddsBlock class="md:col-span-1 col-span-4"/>

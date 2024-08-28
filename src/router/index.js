@@ -4,6 +4,13 @@ import PageWithBio from '@/views/PageWithBio.vue';
 import Videos from '@/views/Videos.vue';
 import ListView from '@/views/ListView.vue';
 
+import useApiMain from '@/use/api/main';
+
+const { getInterviews, getOpinions } = useApiMain();
+
+const interviewsData = await getInterviews();
+const opinionData = await getOpinions();
+
 const router = createRouter({
   scrollBehavior(to, from, savedPosition) {
     return { top: 0 }
@@ -28,12 +35,18 @@ const router = createRouter({
     {
       path: '/interview',
       name: 'interview',
-      component: ListView
+      component: ListView,
+      props: {
+        data: interviewsData
+      }
     },
     {
       path: '/opinion',
       name: 'opinion',
-      component: ListView
+      component: ListView,
+      props: {
+        data: opinionData
+      }
     },
     {
       path: '/person',

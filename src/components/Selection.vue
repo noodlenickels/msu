@@ -1,6 +1,8 @@
 <script setup>
 import {computed, ref, onMounted} from 'vue';
 import RandomCard from "@/components/cards/RandomCard.vue";
+import useApiMain from '@/use/api/main';
+
 // const props = defineProps({
 //   modelValue: {
 //     type: Object,
@@ -23,7 +25,13 @@ const dataLoaded = ref(false);
 
 const isInvalid = ref(true);
 
-onMounted(() => {
+const randomData = ref({});
+
+const {getRandomSection} = useApiMain();
+
+onMounted(async () => {
+  randomData.value = await getRandomSection();
+  console.log(randomData.value)
   // const model = props.modelValue;
   // fd.value.contract = model.contract;
   // fd.value.contractor = model.contractor;
@@ -39,21 +47,6 @@ const closeForm = () => {
 
 <template>
   <div class="grid grid-cols-4 px-[10%] gap-[25px]">
-    <RandomCard class="md:col-span-1 col-span-4"
-                :img="'pic.png'"
-                :caption="'Мнения'" :title="'Глава Ульяновска Марина Беспалова: \'Решение проблем ЖКХ\''"
-                :text="'Деятельность предприятий ЖКХ давно уже стала одной из самых остросоциально-экономических и, пожалуй, политических проблем больинства регионов России.'"/>
-    <RandomCard class="md:col-span-1 col-span-4"
-                :img="'man1.png'"
-                :caption="'Персона'" :title="'Глава города Нижний Новгород Олег Сорокин'"
-                :text="'Деятельность предприятий ЖКХ давно уже стала одной из самых остросоциально-экономических и, пожалуй, политических проблем больинства регионов России.'"/>
-    <RandomCard class="md:col-span-1 col-span-4"
-                :img="'woman1.png'"
-                :caption="'Интервью'" :title="'Стелла Штань: \'Политикам-мужчинам прощается многое\''"
-                :text="'Деятельность предприятий ЖКХ давно уже стала одной из самых остросоциально-экономических и, пожалуй, политических проблем больинства регионов России.'"/>
-    <RandomCard class="md:col-span-1 col-span-4"
-                :img="'region.png'"
-                :caption="'Регион'" :title="'Карачаево-Черкесская Республика'"
-                :text="'Деятельность предприятий ЖКХ давно уже стала одной из самых остросоциально-экономических и, пожалуй, политических проблем больинства регионов России.'"/>
+    <RandomCard v-for="row in randomData" class="md:col-span-1 col-span-4" :data="row"/>
   </div>
 </template>

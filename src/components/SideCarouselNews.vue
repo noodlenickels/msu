@@ -18,8 +18,6 @@ const form = ref(null);
 
 const inputLabelWidth = computed(() => 150);
 
-const cardTitle = computed(() => props.mode === 'add' ? 'Добавление заказа' : 'Редактирование заказа');
-
 const fd = ref({});
 
 const dataLoaded = ref(false);

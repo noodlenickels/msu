@@ -31,7 +31,8 @@ onMounted(() => {
 });
 
 const imgLink = computed(() => {
-  return '/images/'+props.data.img;
+  return '/images/interviews/interview1.png';
+  // +props.data.img
 });
 
 const closeForm = () => {

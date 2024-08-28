@@ -2,6 +2,7 @@
 import {computed, ref, onMounted} from 'vue';
 import Carousel from '@/components/Carousel.vue';
 import AddsBlock from '@/components/AddsBlock.vue';
+
 // const props = defineProps({
 //   modelValue: {
 //     type: Object,
