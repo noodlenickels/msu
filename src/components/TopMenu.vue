@@ -47,9 +47,9 @@ const menuItem = ref('Главная');
       <RouterLink to="/video">
         <div class="flex justify-center hover:text-blue-950" :class="currentRouteName === 'video' ? 'text-black' : 'text-gray-400'">Видео</div>
       </RouterLink>
-      <RouterLink to="/knowledge_base">
-      <div class="flex justify-center hover:text-blue-950" :class="currentRouteName === 'knowledge_base' ? 'text-black' : 'text-gray-400'">База знаний</div>
-      </RouterLink>
+<!--      <RouterLink to="/knowledge_base">-->
+<!--      <div class="flex justify-center hover:text-blue-950" :class="currentRouteName === 'knowledge_base' ? 'text-black' : 'text-gray-400'">База знаний</div>-->
+<!--      </RouterLink>-->
       <RouterLink to="/interview">
       <div class="flex justify-center hover:text-blue-950" :class="currentRouteName === 'interview' ? 'text-black' : 'text-gray-400'">Интервью</div>
       </RouterLink>

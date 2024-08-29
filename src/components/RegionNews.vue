@@ -1,6 +1,6 @@
 <script setup>
 import {computed, ref, onMounted} from 'vue';
-import useApiMain from '@/use/api/main';
+import useApiNews from '@/use/api/news';
 
 import NewsCard from '@/components/cards/NewsCard.vue';
 import SearchPanel from '@/components/SearchPanel.vue';
@@ -18,17 +18,7 @@ const emits = defineEmits(['submitted', 'closeForm', 'update:model-value']);
 
 const form = ref(null);
 
-const { getNews } = useApiMain();
-
-const inputLabelWidth = computed(() => 150);
-
-const cardTitle = computed(() => props.mode === 'add' ? 'Добавление заказа' : 'Редактирование заказа');
-
-const fd = ref({});
-
-const dataLoaded = ref(false);
-
-const isInvalid = ref(true);
+const { getNews, getPagination } = useApiNews();
 
 const regionsNewsList = [
   {
@@ -87,23 +77,34 @@ const regionsNewsList = [
   }
 ];
 
+const newsData = ref([]);
+const perPage = ref(0);
+const totalPages = ref(0);
+const currentPage = ref(1);
+
 onMounted(async () => {
   // if ( formMode.value === 'edit' ) {
-  const newsData = await getNews();
-  //   if ( contractData ) {
-  //     panelData.value = { ...panelData.value, ...contractData };
-  //     formData.value = panelData.value;
-  //     closeEditor();
-  //     showMsg(`Договор изменен`);
-  //   }
-  // }
-  dataLoaded.value = true;
+  newsData.value = await getNews(currentPage.value);
+  const pages = await getPagination();
+
+  perPage.value = pages.per_page;
+  totalPages.value = pages.total_news;
+
+  newsData.value[0].image = 'regions/region1.png';
+  newsData.value[1].image = 'regions/region2.png';
+  newsData.value[2].image = 'regions/region3.png';
+  newsData.value[3].image = 'regions/region4.png';
+  newsData.value[4].image = 'regions/region5.png';
+  newsData.value[5].image = 'regions/region6.png';
+  newsData.value[6].image = 'regions/region7.png';
+  newsData.value[7].image = 'regions/region8.png';
+  newsData.value[8].image = 'regions/region9.png';
+  newsData.value[9].image = 'regions/region1.png';
 });
 
-const closeForm = () => {
-  emits('close');
-};
-
+const changePage = (i) => {
+  currentPage.value = i;
+}
 </script>
 
 <template>
@@ -115,9 +116,9 @@ const closeForm = () => {
     <div class="grid grid-cols-3 gap-[25px]">
       <div class="md:col-span-2 col-span-3">
         <div class="flex flex-col gap-[20px] mb-[25px]">
-          <NewsCard v-for="news in regionsNewsList" :data="news" class="col-span-2" />
+          <NewsCard v-for="news in newsData" :data="news" class="col-span-2" />
         </div>
-        <Pagination />
+        <Pagination @paged="changePage" :perPage="perPage" :totalPages="totalPages" :currentPage="currentPage" />
       </div>
       <SearchPanel class="hidden md:flex"/>
     </div>

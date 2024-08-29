@@ -1,7 +1,8 @@
 <script setup>
 import {computed, ref, onMounted} from 'vue';
 import Card from '@/components/cards/Card.vue';
-import SearchPanel from '@/components/SearchPanel.vue';
+import useApiPoint from '@/use/api/point';
+
 // const props = defineProps({
 //   modelValue: {
 //     type: Object,
@@ -13,6 +14,8 @@ import SearchPanel from '@/components/SearchPanel.vue';
 const emits = defineEmits(['submitted', 'closeForm', 'update:model-value']);
 
 const form = ref(null);
+
+const {getPointOfViewTopFour} = useApiPoint();
 
 const inputLabelWidth = computed(() => 150);
 
@@ -55,9 +58,12 @@ const opinionList = [
   }
 ];
 
-onMounted(() => {
-  // const model = props.modelValue;
-  // fd.value.contract = model.contract;
+const pointTopFour = ref([]);
+
+onMounted(async () => {
+  pointTopFour.value = await getPointOfViewTopFour();
+  console.log(pointTopFour.value)
+  pointTopFour.value[0].image = 'man2.png';
   // fd.value.contractor = model.contractor;
   // fd.value.anticontractor = model.anticontractor;
   dataLoaded.value = true;
@@ -76,7 +82,8 @@ const closeForm = () => {
       <div class="flex-grow border-b-[2px] border-gray"></div>
     </div>
     <div class="grid grid-cols-2 gap-[25px]">
-        <Card v-for="opinion in opinionList" class="md:col-span-1 col-span-2" :data="opinion" />
+<!--      тут поменять на 2 колонки!-->
+        <Card v-for="point in pointTopFour" class="md:col-span-2 col-span-2" :data="point" />
     </div>
   </div>
 </template>

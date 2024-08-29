@@ -1,50 +1,37 @@
 <script setup>
 import {computed, ref, onMounted} from 'vue';
-import Card from '@/components/cards/Card.vue';
-import SearchPanel from '@/components/SearchPanel.vue';
-// const props = defineProps({
-//   modelValue: {
-//     type: Object,
-//     required: false,
-//   },
-//   ...modeProps,
-// });
 
-const emits = defineEmits(['submitted', 'closeForm', 'update:model-value']);
-
-const form = ref(null);
-
-const inputLabelWidth = computed(() => 150);
-
-const cardTitle = computed(() => props.mode === 'add' ? 'Добавление заказа' : 'Редактирование заказа');
-
-const fd = ref({});
-
-const dataLoaded = ref(false);
-
-const isInvalid = ref(true);
-
-onMounted(() => {
-  // const model = props.modelValue;
-  // fd.value.contract = model.contract;
-  // fd.value.contractor = model.contractor;
-  // fd.value.anticontractor = model.anticontractor;
-  dataLoaded.value = true;
+const props = defineProps({
+  perPage: {
+    type: Number,
+    required: false,
+    default: 1
+  },
+  currentPage: {
+    type: Number,
+    required: false,
+    default: 1
+  },
+  totalPages: {
+    type: Number,
+    required: false,
+    default: 1
+  }
 });
 
-const closeForm = () => {
-  emits('close');
-};
+const emits = defineEmits(['paged']);
 
+const pages = computed(() => { return Array.apply(null, {length: Math.ceil(props.totalPages / props.perPage)}).map(Number.call, Number)});
+
+const sendEmit = (i) => {
+  emits('paged', i);
+};
 </script>
 
 <template>
   <div class="w100 flex justify-center gap-[15px]">
-    <div class="h-[30px] w-[30px] text-white rounded-[30px] bg-black text-center pt-0.5">1</div>
-    <div class="h-[30px] w-[30px] rounded-[30px] bg-gray-300 text-center pt-0.5">2</div>
-    <div class="h-[30px] w-[30px] rounded-[30px] bg-gray-300 text-center pt-0.5">3</div>
-    <div class="h-[30px] w-[30px] rounded-[30px] bg-gray-300 text-center pt-0.5">4</div>
-    <div class="h-[30px] w-[30px] rounded-[30px] bg-gray-300 text-center pt-0.5">...</div>
-    <div class="h-[30px] w-[30px] rounded-[30px] bg-gray-300 text-center pt-0.5">57</div>
+    <div @click="sendEmit(page+1)" v-for="page in pages.slice(0, -1)" :key="page" class="h-[30px] w-[30px] rounded-[30px] text-center pt-0.5" :class="props.currentPage === page+1 ? 'bg-black text-white' : 'bg-gray-300'">{{ page+1 }}</div>
+    <div v-if="pages.length > 5" class="h-[30px] w-[30px] rounded-[30px] bg-gray-300 text-center pt-0.5">...</div>
+    <div @click="sendEmit(pages.length)" v-if="pages.length > 1" class="h-[30px] w-[30px] rounded-[30px] text-center pt-0.5" :class="props.currentPage === pages.length ? 'bg-black text-white' : 'bg-gray-300'">{{ pages.length }}</div>
   </div>
 </template>

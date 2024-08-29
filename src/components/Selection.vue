@@ -1,7 +1,7 @@
 <script setup>
 import {computed, ref, onMounted} from 'vue';
 import RandomCard from "@/components/cards/RandomCard.vue";
-import useApiMain from '@/use/api/main';
+import useApiNews from '@/use/api/news';
 
 // const props = defineProps({
 //   modelValue: {
@@ -13,30 +13,21 @@ import useApiMain from '@/use/api/main';
 
 const emits = defineEmits(['submitted', 'closeForm', 'update:model-value']);
 
-const form = ref(null);
-
-const inputLabelWidth = computed(() => 150);
-
-const cardTitle = computed(() => props.mode === 'add' ? 'Добавление заказа' : 'Редактирование заказа');
-
-const fd = ref({});
-
-const dataLoaded = ref(false);
-
-const isInvalid = ref(true);
+const {getRandomSection} = useApiNews();
 
 const randomData = ref({});
 
-const {getRandomSection} = useApiMain();
-
 onMounted(async () => {
   randomData.value = await getRandomSection();
-  console.log(randomData.value)
+  randomData.value.interview.image = 'man1.png';
+  randomData.value.opinion.image = 'pic.png';
+  randomData.value.people.image = 'woman1.png';
+  randomData.value.region.image = 'region.png';
+
   // const model = props.modelValue;
   // fd.value.contract = model.contract;
   // fd.value.contractor = model.contractor;
   // fd.value.anticontractor = model.anticontractor;
-  dataLoaded.value = true;
 });
 
 const closeForm = () => {

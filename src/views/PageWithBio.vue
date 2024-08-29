@@ -41,6 +41,12 @@ const closeForm = () => {
   emits('close');
 };
 
+const bioObject = {
+  image: 'woman1.png',
+  caption: 'Биография',
+  title: 'Марина Беспалова',
+  text: 'Марина Павловна Беспалова член комитета ГД по бюджету и налогам, позднее член Комитета по государственному строительству и законодательству, член фракции Единая Россия'
+}
 </script>
 
 <template>
@@ -54,23 +60,15 @@ const closeForm = () => {
             <div class="h-[21px] text-[18px] font-somic text-black font-semibold">Мнение</div>
             <div class="flex-grow border-b-[2px] border-gray"></div>
           </div>
-          <img src="@/assets/icons/pic.png" class=""/>
+          <img src="/images/videos/video4.png" class=""/>
           <div class="text-[30px] font-somic text-black font-bold">
             Избран глава союзов городов Центра и Северо-Запада Российской Федерации
           </div>
           <div class="text-[14px] font-somic text-gray-500">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aspernatur cumque deserunt dignissimos
-            dolore ea eos error est eum ex excepturi exercitationem facilis fugit illo illum impedit itaque iure iusto
-            laborum laudantium magnam modi, mollitia necessitatibus non nostrum nulla perspiciatis praesentium quaerat
-            quis reiciendis rem repellat sapiente ullam unde ut veniam voluptatem. Aliquam architecto asperiores at
-            blanditiis cumque dicta enim error eum, explicabo facere harum id impedit ipsam, maxime nam nostrum odio
-            quasi quis quod recusandae repellat sint tenetur ut voluptatem voluptatum? Accusantium consequuntur
-            distinctio dolores dolorum eligendi excepturi illo laudantium magnam minima neque, placeat quibusdam
-            reiciendis vel. Incidunt, totam.
+            Деятельность предприятий ЖКХ давно уже стала одной из самых остросоциально-экономических и, пожалуй, политических проблем больинства регионов России.
           </div>
         </div>
-        <Card class="col-span-1" :caption="'Биография'" :title="'Марина Беспалова'"
-              :text="'Мариан Павловна Беспалова член комитета ГД по бюджету и налогам, позднее член Комитета по государственному строительству и законодательству, член фракции Единая Россия'"/>
+        <Card class="col-span-1" :data="bioObject" />
         <AddsBlock class="col-span-1"/>
       </div>
     </div>
@@ -81,10 +79,10 @@ const closeForm = () => {
       </div>
       <div>
         <div class="grid grid-cols-4 gap-[25px]">
-          <Card :title="'Глава Ульяновска Марина Беспалова: \'Решение проблем ЖКХ\''" :text="'Деятельность предприятий ЖКХ давно уже стала одной из самых остросоциально-экономических и, пожалуй, политических проблем больинства регионов России.'" />
-          <Card :title="'Глава города Нижний Новгород Олег Сорокин'" :text="'Деятельность предприятий ЖКХ давно уже стала одной из самых остросоциально-экономических и, пожалуй, политических проблем больинства регионов России.'" />
-          <Card :title="'Стелла Штань: \'Политикам-мужчинам прощается многое\''" :text="'Деятельность предприятий ЖКХ давно уже стала одной из самых остросоциально-экономических и, пожалуй, политических проблем больинства регионов России.'" />
-          <Card :title="'Карачаево-Черкесская Республика'" :text="'Деятельность предприятий ЖКХ давно уже стала одной из самых остросоциально-экономических и, пожалуй, политических проблем больинства регионов России.'" />
+          <Card :data="bioObject" :title="'Глава Ульяновска Марина Беспалова: \'Решение проблем ЖКХ\''" :text="'Деятельность предприятий ЖКХ давно уже стала одной из самых остросоциально-экономических и, пожалуй, политических проблем больинства регионов России.'" />
+          <Card :data="bioObject" :title="'Глава города Нижний Новгород Олег Сорокин'" :text="'Деятельность предприятий ЖКХ давно уже стала одной из самых остросоциально-экономических и, пожалуй, политических проблем больинства регионов России.'" />
+          <Card :data="bioObject" :title="'Стелла Штань: \'Политикам-мужчинам прощается многое\''" :text="'Деятельность предприятий ЖКХ давно уже стала одной из самых остросоциально-экономических и, пожалуй, политических проблем больинства регионов России.'" />
+          <Card :data="bioObject" :title="'Карачаево-Черкесская Республика'" :text="'Деятельность предприятий ЖКХ давно уже стала одной из самых остросоциально-экономических и, пожалуй, политических проблем больинства регионов России.'" />
         </div>
       </div>
     </div>

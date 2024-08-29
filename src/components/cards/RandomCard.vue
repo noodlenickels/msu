@@ -33,7 +33,7 @@ const closeForm = () => {
 };
 
 const imgLink = computed(() => {
-  return '/images/shevchenko.jpg';
+  return '/images/' + props.data.image;
   // +props.img
 });
 </script>

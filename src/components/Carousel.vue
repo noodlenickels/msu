@@ -1,7 +1,7 @@
 <script setup>
 import {computed, ref, onMounted} from 'vue';
-import SideCarouselNews from '@/components/SideCarouselNewsBlock.vue';
-import useApiMain from '@/use/api/main';
+import SideCarouselNewsBlock from '@/components/SideCarouselNewsBlock.vue';
+import useApiNews from '@/use/api/news';
 
 // const props = defineProps({
 //   modelValue: {
@@ -13,7 +13,7 @@ import useApiMain from '@/use/api/main';
 
 const emits = defineEmits(['submitted', 'closeForm', 'update:model-value']);
 
-const {getGrandNews} = useApiMain();
+const {getGrandNews} = useApiNews();
 
 const form = ref(null);
 
@@ -24,21 +24,22 @@ const cardTitle = computed(() => props.mode === 'add' ? 'Добавление з
 const fd = ref({});
 
 const carouselList = ref([]);
+const carousel = ref({});
 
 onMounted(async()=>{
   carouselList.value = await getGrandNews();
+  carousel.value = carouselList.value[0];
+  carouselList.value[0].image = 'azarov-talking.png';
+  carouselList.value[1].image = 'azarov-man.png';
+  carouselList.value[2].image = 'azarov-red.png';
+  carouselList.value[3].image = 'azarov-table.png';
 })
 
 const dataLoaded = ref(false);
 
-const carousel = ref({
-  image: 'main-man.png',
-  title: 'Избран глава союзов городов Центра и Северо-Запада Российской Федерации',
-  text: 'В Великом Новгороде прошло отчетно-выборное общее собрание Союза городов Центра и Северо-Запада России. Одним из пунктов повестки дня были выборы главы СГЦСЗР. По итогам голосования президентом Союза был переизбран новгородский мэр Юрий Бобрышев - его кандидатуру выдвинул глава Пскова Иван Цецерский. Вице-президентами СГЦСЗР были избраны мэры Вологды  и Твери - Евгений Шулепов и Александр Корзин. В состав правления помимо Цецерского вошли глава Калининграда Александр Ярошук, мэр Череповца Юрий Кузин, председатель Ивановской городской думы Александр Кузьмичев и исполняющий обязанности мэра Ярославля Алексей Малютин. На сегодняшний день Союз городов Центра и Северо-Запада России объединяет 27 городов с населением около шести миллионов жителей. Его территория простирается от Калининграда до Сыктывкара с запада на восток и от Нарьян-Мара до Владимира с севера на юг. Основная задача Союза - обмен опытом в области местного управления. Юрий Бобрышев занимает пост главы СГЦСЗР с 2012 года. Источник: СГЦСЗР'
-});
 
 const changeCarousel = (i) => {
-  carousel.value = carouselList.value[i];
+  carousel.value = carouselList.value.find(card => card.id === i);
 };
 
 </script>
@@ -51,7 +52,7 @@ const changeCarousel = (i) => {
     </div>
     <div class="grid grid-cols-4 gap-[25px]">
       <div class="md:col-span-3 col-span-4 flex flex-col gap-[15px]">
-        <img :src="'/images/main-man.png'" class="carouselImg"/>
+        <img :src="'/images/'+carousel.image" class="carouselImg"/>
         <div class="md:text-[30px] text-[26px] font-somic text-black font-bold carouselTitle">
           {{ carousel.title }}
         </div>
@@ -60,7 +61,7 @@ const changeCarousel = (i) => {
           {{ carousel.text }}
         </div>
       </div>
-      <SideCarouselNews class="md:flex hidden" @chosen="changeCarousel"/>
+      <SideCarouselNewsBlock :data="carouselList" class="md:flex hidden" @chosen="changeCarousel"/>
     </div>
   </div>
 </template>
@@ -81,14 +82,19 @@ function compare() {
   const panels = document.getElementsByClassName('classNews');
   let panelHeight = -20;
   for (let i = 0; i<panels.length; i++){
-    console.log(panels[i].offsetHeight)
     panelHeight += panels[i].offsetHeight + 20;
   }
+  let textHeight, textCount;
   const carouselHeight = document.getElementsByClassName('carouselImg')[0].height;
   const titleHeight = document.getElementsByClassName('carouselTitle')[0].offsetHeight;
-  const textHeight = Math.abs(panelHeight - carouselHeight - titleHeight) - (Math.abs(panelHeight - carouselHeight - titleHeight)%25);
-  const textCount = Math.floor(textHeight / 25);
-  console.log(panelHeight - carouselHeight - titleHeight)
+  if (panelHeight - carouselHeight - titleHeight >= 0) {
+    textHeight = (panelHeight - carouselHeight - titleHeight) - ((panelHeight - carouselHeight - titleHeight)%25);
+    textCount = Math.floor(textHeight / 25);
+  }
+  else {
+    textHeight = 100;
+    textCount = 4;
+  }
   document.getElementsByClassName('truncate-carousel')[0].style.setProperty('-webkit-line-clamp', textCount);
   document.getElementsByClassName('truncate-carousel')[0].style.setProperty('height', `${textHeight}px`);
   document.getElementsByClassName('truncate-carousel')[0].height = `${textHeight}px`;

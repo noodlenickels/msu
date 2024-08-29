@@ -38,7 +38,7 @@ const closeForm = () => {
 };
 
 const imgLink = computed(() => {
-  return '/images/'+props.data.img;
+  return '/images/'+props.data.image;
 });
 </script>
 

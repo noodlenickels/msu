@@ -55,7 +55,7 @@ const closeForm = () => {
       </div>
       <input class="h-[40px] rounded-[15px] pl-[20px] pr-[5px]" placeholder="Найти регион" type="search" name="" />
     </div>
-    <div class="flex flex-col gap-[10px] px-[10px] h-[580px] overflow-scroll">
+    <div class="flex flex-col gap-[10px] px-[10px] h-[580px] overflow-y-scroll">
       <div v-for="el in regionData">
         <input class="m-2" type="checkbox" :id="el.id" />
         <label :for="el.id">{{ el.name }}</label>

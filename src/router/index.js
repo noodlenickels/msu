@@ -5,11 +5,15 @@ import Videos from '@/views/Videos.vue';
 import ListView from '@/views/ListView.vue';
 
 import useApiMain from '@/use/api/main';
+import useApiPeople from '@/use/api/person';
 
 const { getInterviews, getOpinions } = useApiMain();
+const { getPeople } = useApiPeople();
+
 
 const interviewsData = await getInterviews();
 const opinionData = await getOpinions();
+const peopleData = await getPeople();
 
 const router = createRouter({
   scrollBehavior(to, from, savedPosition) {
@@ -51,7 +55,10 @@ const router = createRouter({
     {
       path: '/person',
       name: 'person',
-      component: ListView
+      component: ListView,
+      props: {
+        data: peopleData
+      }
     },
     {
       path: '/point_of_view/:id',
