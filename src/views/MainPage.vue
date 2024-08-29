@@ -53,7 +53,7 @@ const closeForm = () => {
     <Selection />
     <RegionNews/>
     <PointOfView/>
-    <div class="grid grid-cols-3 px-[10%] md:gap-[25px] gap-[50px]">
+    <div class="grid grid-cols-3 px-[10%] md:gap-[20px] gap-[50px]">
       <NewsWithLinks
           class="md:col-span-1 col-span-3"
           :title="'Комитет Совета Федерации по федеративному устройству,  региональной политике, местному самоуправлению и делам Севера'"

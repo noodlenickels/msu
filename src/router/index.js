@@ -41,7 +41,8 @@ const router = createRouter({
       name: 'interview',
       component: ListView,
       props: {
-        data: interviewsData
+        data: interviewsData,
+        caption: 'Интервью'
       }
     },
     {
@@ -49,7 +50,8 @@ const router = createRouter({
       name: 'opinion',
       component: ListView,
       props: {
-        data: opinionData
+        data: opinionData,
+        caption: 'Мнения'
       }
     },
     {
@@ -57,7 +59,8 @@ const router = createRouter({
       name: 'person',
       component: ListView,
       props: {
-        data: peopleData
+        data: peopleData,
+        caption: 'Персона'
       }
     },
     {

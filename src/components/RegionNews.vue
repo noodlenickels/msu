@@ -102,8 +102,26 @@ onMounted(async () => {
   newsData.value[9].image = 'regions/region1.png';
 });
 
-const changePage = (i) => {
+const changePage = async (i) => {
   currentPage.value = i;
+  newsData.value = await getNews(currentPage.value);
+  if (newsData.value[5]) {
+    newsData.value[0].image = 'regions/region1.png';
+    newsData.value[1].image = 'regions/region2.png';
+    newsData.value[2].image = 'regions/region3.png';
+    newsData.value[3].image = 'regions/region4.png';
+    newsData.value[4].image = 'regions/region5.png';
+    newsData.value[5].image = 'regions/region6.png';
+    newsData.value[6].image = 'regions/region7.png';
+    newsData.value[7].image = 'regions/region8.png';
+    newsData.value[8].image = 'regions/region9.png';
+    newsData.value[9].image = 'regions/region1.png';
+  }
+  else{
+    newsData.value[0].image = 'regions/region1.png';
+    newsData.value[1].image = 'regions/region2.png';
+    newsData.value[2].image = 'regions/region3.png';
+  }
 }
 </script>
 
