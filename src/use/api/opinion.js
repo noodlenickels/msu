@@ -1,18 +1,18 @@
 import useApi from '@/use/api';
 
 const {get$} = useApi();
-export default function useApiPoint() {
+export default function useApiOption() {
 
-    const getPointOfView = async () => {
-        const fetchedData = await get$({url: 'api/pointView'});
+    const getOptions = async () => {
+        const fetchedData = await get$({url: 'api/options'});
         if (!fetchedData.isError) {
             const formatted = fetchedData.data.map((data) => {
                 return {
                     id: data.id,
-                    image: data.regions_and_peoples.path_to_image,
+                    image: data.path_to_image,
                     title: data.title,
                     text: data.content,
-                    link: '/point_of_view/'+data.id
+                    link: '/option/'+data.id
                 }
             });
             return formatted;
@@ -20,16 +20,16 @@ export default function useApiPoint() {
         return null;
     };
 
-    const getPointOfViewById = async (id) => {
-        const fetchedData = await get$({url: `api/pointView/${id}`});
+    const getOptionById = async (id) => {
+        const fetchedData = await get$({url: `api/option/${id}`});
         if (!fetchedData.isError) {
             const formatted = fetchedData.data.map((data) => {
                 return {
                     id: data.id,
-                    image: data.regions_and_peoples.path_to_image,
+                    image: data.path_to_image,
                     title: data.title,
                     text: data.content,
-                    link: '/point_of_view/'+data.id
+                    link: '/option/'+data.id
                 }
             });
             return formatted;
@@ -37,16 +37,16 @@ export default function useApiPoint() {
         return null;
     };
 
-    const getPointOfViewTopFour = async () => {
-        const fetchedData = await get$({url: 'api/pointViewsTopFour'});
+    const getOptionTopFour = async () => {
+        const fetchedData = await get$({url: 'api/opinionsTopFour'});
         if (!fetchedData.isError) {
             const formatted = fetchedData.data.map((data) => {
                 return {
                     id: data.id,
-                    image: data.regions_and_peoples.path_to_image,
+                    image: data.path_to_image,
                     title: data.title,
                     text: data.content,
-                    link: '/point_of_view/'+data.id
+                    link: '/option/'+data.id
                 }
             });
             return formatted;
@@ -55,5 +55,5 @@ export default function useApiPoint() {
     };
 
 
-    return {getPointOfViewTopFour, getPointOfView, getPointOfViewById};
+    return {getOptions, getOptionById, getOptionTopFour};
 }

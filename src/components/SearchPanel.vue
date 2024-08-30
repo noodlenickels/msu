@@ -1,6 +1,6 @@
 <script setup>
 import {computed, ref, onMounted} from 'vue';
-import useApiMain from '@/use/api/main';
+import useApiRegion from '@/use/api/region';
 
 // const props = defineProps({
 //   modelValue: {
@@ -11,7 +11,7 @@ import useApiMain from '@/use/api/main';
 // });
 
 const emits = defineEmits(['submitted', 'closeForm', 'update:model-value']);
-const { getRegions } = useApiMain();
+const { getRegions, getRegionById } = useApiRegion();
 
 const form = ref(null);
 
@@ -28,10 +28,6 @@ const regionData = ref([]);
 
 onMounted(async () => {
   regionData.value = await getRegions();
-  // const model = props.modelValue;
-  // fd.value.contract = model.contract;
-  // fd.value.contractor = model.contractor;
-  // fd.value.anticontractor = model.anticontractor;
   dataLoaded.value = true;
 });
 

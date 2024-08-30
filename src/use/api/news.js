@@ -54,25 +54,30 @@ export default function useApiNews() {
                     id: fetchedData.data.opinion.id,
                     image: fetchedData.data.opinion.path_to_image,
                     caption: fetchedData.data.opinion.title,
-                    text: fetchedData.data.opinion.content
+                    text: fetchedData.data.opinion.content,
+                    link: '/opinion/'+fetchedData.data.opinion.id
                 },
                 'people': {
                     id: fetchedData.data.people.id,
                     image: fetchedData.data.people.path_to_image,
                     caption: fetchedData.data.people.fio,
-                    text: fetchedData.data.people.content
+                    text: fetchedData.data.people.content,
+                    link: '/person/'+fetchedData.data.opinion.id
                 },
                 'interview': {
                     id: fetchedData.data.interview.id,
                     image: fetchedData.data.interview.path_to_image,
                     caption: fetchedData.data.interview.title,
-                    text: fetchedData.data.interview.content
+                    text: fetchedData.data.interview.content,
+                    link: '/interview/'+fetchedData.data.opinion.id
                 },
                 'region': {
                     id: fetchedData.data.region.id,
                     image: fetchedData.data.region.path_to_image,
                     caption: fetchedData.data.region.name_region,
-                    text: fetchedData.data.region.content
+                    text: fetchedData.data.region.content,
+                    link: '/region/'+fetchedData.data.opinion.id
+
                 },
             }
             return formatted;

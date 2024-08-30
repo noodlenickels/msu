@@ -3,8 +3,8 @@ import useApi from '@/use/api';
 const {get$} = useApi();
 export default function useApiPeople() {
 
-    const getNews = async () => {
-        const fetchedData = await get$({url: 'api/news'});
+    const getPeopleById = async (id) => {
+        const fetchedData = await get$({url: `api/people/${id}`});
         if (!fetchedData.isError) {
             return fetchedData.data;
         }
@@ -28,22 +28,5 @@ export default function useApiPeople() {
         return null;
     };
 
-    const getPointOfViewTopFour = async () => {
-        const fetchedData = await get$({url: 'api/pointViewsTopFour'});
-        if (!fetchedData.isError) {
-            const formatted = fetchedData.data.map((data) => {
-                return {
-                    id: data.id,
-                    image: data.regions_and_peoples.path_to_image,
-                    title: data.title,
-                    text: data.content
-                }
-            });
-            return formatted;
-        }
-        return null;
-    };
-
-
-    return {getPeople};
+    return {getPeople, getPeopleById};
 }

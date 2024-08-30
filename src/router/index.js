@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import MainPage from '@/views/MainPage.vue';
 import PageWithBio from '@/views/PageWithBio.vue';
+import PageWithoutBio from '@/views/PageWithoutBio.vue';
 import Videos from '@/views/Videos.vue';
 import ListView from '@/views/ListView.vue';
 
@@ -67,6 +68,38 @@ const router = createRouter({
       path: '/point_of_view/:id',
       name: 'pointOfViewId',
       component: PageWithBio,
+      props: {
+        type: 'point_of_view'
+      }
+    },
+    {
+      path: '/video/:id',
+      name: 'videoId',
+      component: PageWithoutBio,
+      props: {
+
+      }
+    },
+    {
+      path: '/interview/:id',
+      name: 'interviewId',
+      component: PageWithoutBio,
+      props: {
+
+      }
+    },
+    {
+      path: '/opinion/:id',
+      name: 'opinionId',
+      component: PageWithBio,
+      props: {
+
+      }
+    },
+    {
+      path: '/person/:id',
+      name: 'personId',
+      component: PageWithoutBio,
       props: {
 
       }

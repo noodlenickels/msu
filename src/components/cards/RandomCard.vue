@@ -21,10 +21,6 @@ const dataLoaded = ref(false);
 const isInvalid = ref(true);
 
 onMounted(() => {
-  // const model = props.modelValue;
-  // fd.value.contract = model.contract;
-  // fd.value.contractor = model.contractor;
-  // fd.value.anticontractor = model.anticontractor;
   dataLoaded.value = true;
 });
 
@@ -34,12 +30,11 @@ const closeForm = () => {
 
 const imgLink = computed(() => {
   return '/images/' + props.data.image;
-  // +props.img
 });
 </script>
 
 <template>
-  <RouterLink to="/point_of_view/1">
+  <RouterLink :to="props.data.link">
 
     <div>
       <div v-if="props.data.caption" class="flex mb-[30px] md:gap-[15px] gap-[7px]">
@@ -55,7 +50,7 @@ const imgLink = computed(() => {
         <div class="md:text-[20px] text-[27px] font-somic text-black font-bold">
           {{ props.data.title }}
         </div>
-        <div class="md:text-[14px] text-[20px] font-somic text-gray-500">
+        <div class="md:text-[14px] text-[20px] font-somic text-gray-500 truncate-card">
           {{ props.data.text }}
         </div>
         <div class="w-[250px] text-[14px] font-somic bg-gray-200 text-black rounded-[10px] px-[10px] inline-block">
@@ -65,4 +60,14 @@ const imgLink = computed(() => {
     </div>
   </RouterLink>
 </template>
+
+<style>
+.truncate-card {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  height: 60px;
+}
+</style>
 
