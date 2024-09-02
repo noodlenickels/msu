@@ -13,15 +13,9 @@ const emits = defineEmits(['submitted', 'closeForm', 'update:model-value']);
 
 const form = ref(null);
 
-const inputLabelWidth = computed(() => 150);
-
-const cardTitle = computed(() => props.mode === 'add' ? 'Добавление заказа' : 'Редактирование заказа');
-
 const fd = ref({});
 
 const dataLoaded = ref(false);
-
-const isInvalid = ref(true);
 
 onMounted(() => {
   // const model = props.modelValue;
@@ -31,16 +25,12 @@ onMounted(() => {
   dataLoaded.value = true;
 });
 
-const closeForm = () => {
-  emits('close');
-};
-
 </script>
 
 <template>
   <div class="w100">
-    <div class="grid grid-cols-12 bg-primary items-start px-[10%] gap-[50px] py-10">
-      <div class="col-span-7 flex flex-col text-white text-somic text-[14px] gap-[10px]">
+    <div class="sm:grid sm:grid-cols-12 bg-primary items-start px-[10%] gap-[50px] py-10">
+      <div class="md:col-span-7 col-span-12 flex flex-col text-white text-somic text-[14px] gap-[10px]">
         <div class="text-[18px] font-semibold">Контактные данные для Роскомнадзора и государственных органов</div>
         <div>Сетевое издание «Информационное агентство "Местное самоуправление».</div>
         <div>Зарегистрировано Федеральной службой по надзору в сфере связи, информационных технологий и массовых коммуникаций (Роскомнадзор).</div>
@@ -49,7 +39,7 @@ const closeForm = () => {
         <div><b>Главный редактор:</b> Мещеряков Игорь Вячеславович</div>
         <div><b>Адрес редакции:</b> 410007, г. Саратов, ул. им. Чехова, 2, +7 (903) 020-73-93</div>
         </div>
-      <div class="col-span-5 flex flex-col space-between text-white text-somic text-[14px] gap-[20px]">
+      <div class="md:col-span-5 col-span-12 flex flex-col space-between text-white text-somic text-[14px] gap-[20px]">
         <a href="mailto:info59@mail.ru">Электронный адрес редакции: info59@mail.ru</a>
         <a href="mailto:info59@mail.ru">Контактные данные для Роскомнадзора и государственных органов: info59@mail.ru</a>
         <div>Публикации с пометкой «На правах рекламы», «Партнёрский проект», «Новости компаний» оплачены рекламодателем. Редакция сайта не несет ответственности за достоверность информации, содержащейся в рекламных материалах.</div>

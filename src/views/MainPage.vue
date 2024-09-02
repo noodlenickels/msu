@@ -18,7 +18,10 @@ const {getGrandNews} = useApiNews();
 
 const carouselList = ref([]);
 const dataLoaded = ref(false);
-
+const topMenu = ref(true);
+const changeTopMenu = (val) => {
+  topMenu.value = val;
+}
 onMounted(async () => {
   carouselList.value = await getGrandNews();
   dataLoaded.value = true;
@@ -27,8 +30,9 @@ onMounted(async () => {
 </script>
 
 <template>
-  <Header/>
-  <TopMenu class="hidden sm:block"/>
+<!--  :class="`${topMenu.value ? '' : 'hidden'} topMenuClass`"-->
+  <Header @active="changeTopMenu"/>
+  <TopMenu  />
   <div v-if="dataLoaded" class="flex flex-col gap-[75px]">
     <NewsBlock :carouselList='carouselList' />
     <Selection />
@@ -65,3 +69,20 @@ onMounted(async () => {
     <Footer/>
   </div>
 </template>
+
+<!--<script>-->
+<!--setTimeout(()=>{-->
+<!--  const menu = document.getElementsByClassName('topMenuClass')[0];-->
+
+<!--  if (window.innerWidth > 640) {-->
+<!--    menu.classList.remove('hidden');-->
+<!--  }-->
+
+<!--  window.onresize = function() {-->
+<!--    if (window.innerWidth > 640) {-->
+<!--      menu.classList.remove('hidden');-->
+<!--    }-->
+<!--  }-->
+<!--}, 1000);-->
+
+<!--</script>-->

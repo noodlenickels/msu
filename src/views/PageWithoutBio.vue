@@ -29,6 +29,10 @@ const { getPhotoUrl } = useApiMain();
 const route = useRoute();
 const dataLoaded = ref(false);
 const photo = ref();
+const topMenu = ref(true);
+const changeTopMenu = (val) => {
+  topMenu.value = val;
+}
 
 const cardData = ref({});
 onMounted(async () => {
@@ -48,12 +52,13 @@ onMounted(async () => {
 </script>
 
 <template>
-  <Header/>
-  <TopMenu/>
-  <div v-if="dataLoaded" class="flex flex-col gap-[125px]">
-    <div class="flex flex-col gap-[125px] px-[10%] gap-[25px]">
+<!--  :class="`${topMenu.value ? '' : 'hidden'} topMenuClass`"-->
+  <Header @active="changeTopMenu"/>
+  <TopMenu />
+  <div v-if="dataLoaded" class="flex flex-col md:gap-[125px] gap-[75px]">
+    <div class="flex flex-col md:gap-[125px] px-[10%] gap-[25px]">
       <div class="grid grid-cols-4 gap-[25px]">
-        <div class="col-span-3 flex flex-col gap-[15px]">
+        <div class="sm:col-span-3 col-span-4 flex flex-col gap-[15px]">
           <div class="flex items-end mb-[15px] gap-[15px] w100">
             <div v-if="props.type ==='region'" class="h-[21px] text-[18px] font-somic text-black font-semibold">Регион</div>
             <div v-if="props.type ==='person'" class="h-[21px] text-[18px] font-somic text-black font-semibold">Персона</div>
@@ -68,7 +73,7 @@ onMounted(async () => {
             {{ cardData.text }}
           </div>
         </div>
-        <AddsBlock class="col-span-1"/>
+        <AddsBlock class="col-span-1 md:flex hidden"/>
       </div>
     </div>
 <!--    <div class="flex flex-col px-[10%] gap-[30px]">-->
@@ -84,7 +89,24 @@ onMounted(async () => {
 <!--        </div>-->
 <!--      </div>-->
 <!--    </div>-->
-    <Selection class="mb-[75px]"/>
+    <Selection class="mb-[55px]"/>
     <Footer/>
   </div>
 </template>
+
+<!--<script>-->
+<!--setTimeout(()=>{-->
+<!--  const menu = document.getElementsByClassName('topMenuClass')[0];-->
+
+<!--  if (window.innerWidth > 640) {-->
+<!--    menu.classList.remove('hidden');-->
+<!--  }-->
+
+<!--  window.onresize = function() {-->
+<!--    if (window.innerWidth > 640) {-->
+<!--      menu.classList.remove('hidden');-->
+<!--    }-->
+<!--  }-->
+<!--}, 1000);-->
+
+<!--</script>-->

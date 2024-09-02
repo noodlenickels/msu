@@ -10,10 +10,20 @@ export default function useApiNews() {
     });
 
     if (!fetchedData.isError) {
-      return {
-        data: fetchedData.data.data,
-        pages: fetchedData.data.last_page
-      };
+      const formatted = {data: []};
+      fetchedData.data.data.map((data) => {
+        formatted.data.push({
+            id: data.id,
+            date: data.publication_date.slice(0, 5),
+            image: data.path_to_image_or_video,
+            title: data.title,
+            text: data.content,
+            link: '/news/'+data.id,
+            region: data.regions_and_peoples.position_or_type_region === 'Республика' || data.regions_and_peoples.position_or_type_region === 'Город федерального значения'? data.regions_and_peoples.position_or_type_region + ' ' + data.regions_and_peoples.fio_or_name_region : data.regions_and_peoples.fio_or_name_region + ' ' + data.regions_and_peoples.position_or_type_region
+        })
+      });
+      formatted.pages = fetchedData.data.last_page;
+      return formatted;
     }
     return null;
   };

@@ -80,16 +80,18 @@ onMounted(() => {
   dataLoaded.value = true;
 });
 
-const closeForm = () => {
-  emits('close');
-};
+const topMenu = ref(true);
+const changeTopMenu = (val) => {
+  topMenu.value = val;
+}
 
 </script>
 
 <template>
-  <Header />
+<!--  :class="`${topMenu.value ? '' : 'hidden'} topMenuClass`"-->
+  <Header @active="changeTopMenu"/>
   <TopMenu />
-  <div class="flex flex-col gap-[125px] px-[10%] gap-[25px] mb-[125px]">
+  <div class="flex flex-col px-[10%] gap-[25px] l:mb-[125px] mb-[75px]">
     <div class="flex gap-[15px]">
       <div class="w-auto text-[18px] font-somic text-black font-semibold">Видео</div>
       <div class="flex-grow border-b-[2px] border-gray"></div>
@@ -104,3 +106,20 @@ const closeForm = () => {
   <Selection class="mb-[200px]"/>
   <Footer />
 </template>
+
+<!--<script>-->
+<!--setTimeout(()=>{-->
+<!--  const menu = document.getElementsByClassName('topMenuClass')[0];-->
+
+<!--  if (window.innerWidth > 640) {-->
+<!--    menu.classList.remove('hidden');-->
+<!--  }-->
+
+<!--  window.onresize = function() {-->
+<!--    if (window.innerWidth > 640) {-->
+<!--      menu.classList.remove('hidden');-->
+<!--    }-->
+<!--  }-->
+<!--}, 1000);-->
+
+<!--</script>-->

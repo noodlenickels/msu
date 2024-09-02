@@ -12,8 +12,9 @@ const photo = getPhotoUrl();
   <RouterView />
 </template>
 
+<style>
+html, body {width:100%; overflow-x:hidden}
+</style>
 <script>
-console.log(localStorage.theme)
-localStorage.theme = 'light'
 </script>
 
