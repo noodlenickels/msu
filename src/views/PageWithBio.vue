@@ -77,9 +77,9 @@ onMounted(async () => {
   <Header @active="changeTopMenu"/>
   <TopMenu  />
   <div v-if="dataLoaded" class="flex flex-col md:gap-[125px] gap-[25px]">
-    <div class="flex flex-col md:gap-[125px] px-[10%] gap-[25px]">
+    <div class="flex flex-col md:gap-[75px] px-[10%] gap-[25px]">
       <div class="grid grid-cols-4 gap-[25px]">
-        <div class="md:col-span-2 sm:col-span-3 col-span-4 flex flex-col gap-[15px]">
+        <div class="md:col-span-2 col-span-4 flex flex-col gap-[15px]">
           <div class="flex items-end mb-[15px] gap-[15px] w100">
             <div v-if="props.type === 'opinion'" class="h-[21px] text-[18px] font-somic text-black font-semibold">
               Мнение
@@ -100,10 +100,10 @@ onMounted(async () => {
             {{ pageData.text }}
           </div>
         </div>
-        <RouterLink class="md:col-span-1 col-span-4" :to="`/person/${personData.id}`">
+        <RouterLink class="md:col-span-1 sm:col-span-2 col-span-4" :to="`/person/${personData.id}`">
           <Card :data="personData"/>
         </RouterLink>
-        <AddsBlock class="col-span-1 hidden md:flex"/>
+        <AddsBlock class="sm:col-span-2 md:col-span-1 hidden sm:flex"/>
       </div>
     </div>
     <div class="flex flex-col px-[10%] gap-[30px]">
@@ -117,7 +117,7 @@ onMounted(async () => {
         <div class="flex-grow border-b-[2px] border-gray"></div>
       </div>
       <div>
-        <div class="grid grid-cols-4 gap-[25px]">
+        <div class="grid grid-cols-4 gap-[55px]">
           <Card class="md:col-span-1 col-span-4" v-for="top in topFour" :key="top.id" :data="top"/>
         </div>
       </div>

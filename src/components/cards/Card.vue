@@ -39,8 +39,8 @@ const closeForm = () => {
         <div class="flex-grow border-b-[2px] border-gray"></div>
       </div>
       <div class="flex flex-col md:gap-[20px] gap-[5px]">
-        <div class="relative">
-          <img :src="photo || '/images/photo.jpg'" class="w-full max-w-[700px] m-auto"/>
+        <div class="relative m-auto">
+          <img :src="photo || '/images/photo.jpg'" class="object-cover h-[250px]"/>
           <div v-if="props.data.role" class="absolute w-auto l:text-[16px] l:h-[26px] md:h-[20px] md:text-[11px] h-[24px] text-[14px] font-somic bg-gray-100 rounded-[10px] text-black z-10	bottom-[7%] right-[5%] px-[7px]">{{ props.data.role }}</div>
         </div>
         <div class="l:text-[17.4px] text-[15px] font-somic text-black">

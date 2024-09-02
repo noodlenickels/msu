@@ -58,7 +58,7 @@ onMounted(async () => {
   <div v-if="dataLoaded" class="flex flex-col md:gap-[125px] gap-[75px]">
     <div class="flex flex-col md:gap-[125px] px-[10%] gap-[25px]">
       <div class="grid grid-cols-4 gap-[25px]">
-        <div class="sm:col-span-3 col-span-4 flex flex-col gap-[15px]">
+        <div class="md:col-span-3 col-span-4 flex flex-col gap-[15px]">
           <div class="flex items-end mb-[15px] gap-[15px] w100">
             <div v-if="props.type ==='region'" class="h-[21px] text-[18px] font-somic text-black font-semibold">Регион</div>
             <div v-if="props.type ==='person'" class="h-[21px] text-[18px] font-somic text-black font-semibold">Персона</div>
