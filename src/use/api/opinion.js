@@ -1,10 +1,10 @@
 import useApi from '@/use/api';
 
 const {get$} = useApi();
-export default function useApiOption() {
+export default function useApiOpinion() {
 
-    const getOptions = async () => {
-        const fetchedData = await get$({url: 'api/options'});
+    const getOpinions = async () => {
+        const fetchedData = await get$({url: 'api/opinions'});
         if (!fetchedData.isError) {
             const formatted = fetchedData.data.map((data) => {
                 return {
@@ -12,7 +12,7 @@ export default function useApiOption() {
                     image: data.path_to_image,
                     title: data.title,
                     text: data.content,
-                    link: '/option/'+data.id
+                    link: '/opinion/'+data.id
                 }
             });
             return formatted;
@@ -20,24 +20,27 @@ export default function useApiOption() {
         return null;
     };
 
-    const getOptionById = async (id) => {
-        const fetchedData = await get$({url: `api/option/${id}`});
+    const getOpinionById = async (id) => {
+        const fetchedData = await get$({url: `api/opinion/${id}`});
+        console.log(fetchedData)
         if (!fetchedData.isError) {
-            const formatted = fetchedData.data.map((data) => {
                 return {
-                    id: data.id,
-                    image: data.path_to_image,
-                    title: data.title,
-                    text: data.content,
-                    link: '/option/'+data.id
+                    id: fetchedData.data.id,
+                    image: fetchedData.data.path_to_image,
+                    title: fetchedData.data.title,
+                    text: fetchedData.data.content,
+                    person: {
+                        id: fetchedData.data.regions_and_peoples.id,
+                        title: fetchedData.data.regions_and_peoples.fio_or_name_region,
+                        text: fetchedData.data.regions_and_peoples.content,
+                        image: fetchedData.data.regions_and_peoples.path_to_image
+                    }
                 }
-            });
-            return formatted;
         }
         return null;
     };
 
-    const getOptionTopFour = async () => {
+    const getOpinionTopFour = async () => {
         const fetchedData = await get$({url: 'api/opinionsTopFour'});
         if (!fetchedData.isError) {
             const formatted = fetchedData.data.map((data) => {
@@ -46,7 +49,7 @@ export default function useApiOption() {
                     image: data.path_to_image,
                     title: data.title,
                     text: data.content,
-                    link: '/option/'+data.id
+                    link: '/opinion/'+data.id
                 }
             });
             return formatted;
@@ -55,5 +58,5 @@ export default function useApiOption() {
     };
 
 
-    return {getOptions, getOptionById, getOptionTopFour};
+    return {getOpinions, getOpinionById, getOpinionTopFour};
 }

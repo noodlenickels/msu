@@ -5,6 +5,7 @@ import useApiNews from '@/use/api/news';
 import NewsCard from '@/components/cards/NewsCard.vue';
 import SearchPanel from '@/components/SearchPanel.vue';
 import Pagination from '@/components/Pagination.vue';
+import Loader from '@/views/Loader.vue';
 
 // const props = defineProps({
 //   modelValue: {
@@ -16,112 +17,42 @@ import Pagination from '@/components/Pagination.vue';
 
 const emits = defineEmits(['submitted', 'closeForm', 'update:model-value']);
 
-const form = ref(null);
+const dataLoaded = ref(false);
 
-const { getNews, getPagination } = useApiNews();
-
-const regionsNewsList = [
-  {
-    date: '25.08',
-    title: 'Южно-Сахалинск',
-    text: 'В городе применяют новые технологии при текущем ремонте дорог',
-    img: 'regions/region1.png'
-  },
-  {
-    date: '25.08',
-    title: 'Курган',
-    text: 'Город развивается',
-    img: 'regions/region2.png'
-  },
-  {
-    date: '25.08',
-    title: 'Артем',
-    text: 'В городе еще больше молодных семей сможет приобрести долгожданное жилье',
-    img: 'regions/region3.png'
-  },
-  {
-    date: '25.08',
-    title: 'Хабаровск',
-    text: 'Реализация программы по капитальному ремонту общего имущества многоквартирных домов продолжается в городе в 2016 году',
-    img: 'regions/region4.png'
-  },
-  {
-    date: '25.08',
-    title: 'Ханты-Мансийск',
-    text: 'Хантымансийцы поставили муниципальным чиновникам «четыре с плюсом»',
-    img: 'regions/region5.png'
-  },
-  {
-    date: '25.08',
-    title: 'Братск',
-    text: 'Вопросы обеспечения безопасности города обсудила сегодня городская антитеррористическая комиссия',
-    img: 'regions/region6.png'
-  },
-  {
-    date: '25.08',
-    title: 'Томск',
-    text: 'В городе продолжается работа консультативно-мотивационного кабинета',
-    img: 'regions/region7.png'
-  },
-  {
-    date: '25.08',
-    title: 'Ханты-Мансийск',
-    text: 'Незаконной наружной рекламы на улицах города стало в 10 раз меньше, чем в предыдущие годы',
-    img: 'regions/region8.png'
-  },
-  {
-    date: '25.08',
-    title: 'Красноярск',
-    text: 'Глава города Эдхам Акбулатов: “Развитие высокотехнологичных производств - важное условие экономической стабильности города”',
-    img: 'regions/region9.png'
-  }
-];
+const { getNews } = useApiNews();
 
 const newsData = ref([]);
-const perPage = ref(0);
+const perPage = ref(10);
 const totalPages = ref(0);
 const currentPage = ref(1);
+const search = ref('');
+const regions = ref([]);
 
 onMounted(async () => {
   // if ( formMode.value === 'edit' ) {
-  newsData.value = await getNews(currentPage.value);
-  const pages = await getPagination();
+  const data = await getNews(currentPage.value);
+  newsData.value = data.data;
+  totalPages.value = data.pages;
 
-  perPage.value = pages.per_page;
-  totalPages.value = pages.total_news;
-
-  newsData.value[0].image = 'regions/region1.png';
-  newsData.value[1].image = 'regions/region2.png';
-  newsData.value[2].image = 'regions/region3.png';
-  newsData.value[3].image = 'regions/region4.png';
-  newsData.value[4].image = 'regions/region5.png';
-  newsData.value[5].image = 'regions/region6.png';
-  newsData.value[6].image = 'regions/region7.png';
-  newsData.value[7].image = 'regions/region8.png';
-  newsData.value[8].image = 'regions/region9.png';
-  newsData.value[9].image = 'regions/region1.png';
+  dataLoaded.value = true;
 });
-
+const updateRegion = async (regions) => {
+  regions.value = regions;
+  await updateNews(search.value, regions.value);
+}
+const updateSearch = async (search) => {
+  search.value = search;
+  await updateNews(search.value, regions.value);
+}
+const updateNews = async (search, regions) => {
+  const data = await getNews('', regions, search);
+  newsData.value = data.data;
+  totalPages.value = data.pages;
+}
 const changePage = async (i) => {
   currentPage.value = i;
-  newsData.value = await getNews(currentPage.value);
-  if (newsData.value[5]) {
-    newsData.value[0].image = 'regions/region1.png';
-    newsData.value[1].image = 'regions/region2.png';
-    newsData.value[2].image = 'regions/region3.png';
-    newsData.value[3].image = 'regions/region4.png';
-    newsData.value[4].image = 'regions/region5.png';
-    newsData.value[5].image = 'regions/region6.png';
-    newsData.value[6].image = 'regions/region7.png';
-    newsData.value[7].image = 'regions/region8.png';
-    newsData.value[8].image = 'regions/region9.png';
-    newsData.value[9].image = 'regions/region1.png';
-  }
-  else{
-    newsData.value[0].image = 'regions/region1.png';
-    newsData.value[1].image = 'regions/region2.png';
-    newsData.value[2].image = 'regions/region3.png';
-  }
+  const data = await getNews(currentPage.value);
+  newsData.value = data.data;
 }
 </script>
 
@@ -133,12 +64,13 @@ const changePage = async (i) => {
     </div>
     <div class="grid grid-cols-3 gap-[25px]">
       <div class="md:col-span-2 col-span-3">
-        <div class="flex flex-col gap-[20px] mb-[25px]">
+        <div v-if="dataLoaded" class="flex flex-col gap-[20px] mb-[25px]">
           <NewsCard v-for="news in newsData" :data="news" class="col-span-2" />
         </div>
+        <Loader v-else/>
         <Pagination @paged="changePage" :perPage="perPage" :totalPages="totalPages" :currentPage="currentPage" />
       </div>
-      <SearchPanel class="hidden md:flex"/>
+      <SearchPanel @regions="updateRegion" @search="updateSearch" class="hidden md:flex"/>
     </div>
   </div>
 </template>

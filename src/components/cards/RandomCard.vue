@@ -10,39 +10,24 @@ const props = defineProps({
 
 const emits = defineEmits(['submitted', 'closeForm', 'update:model-value']);
 
-const form = ref(null);
-
-const inputLabelWidth = computed(() => 150);
-
-const fd = ref({});
-
 const dataLoaded = ref(false);
-
-const isInvalid = ref(true);
 
 onMounted(() => {
   dataLoaded.value = true;
-});
-
-const closeForm = () => {
-  emits('close');
-};
-
-const imgLink = computed(() => {
-  return '/images/' + props.data.image;
 });
 </script>
 
 <template>
   <RouterLink :to="props.data.link">
-
     <div>
       <div v-if="props.data.caption" class="flex mb-[30px] md:gap-[15px] gap-[7px]">
         <div class="w-auto flex items-end md:text-[18px] text-[26px] font-somic text-black font-semibold h-[60px]">{{ props.data.caption }}</div>
 <!--        <div class="flex-grow border-b-[2px] border-gray"></div>-->
       </div>
       <div class="flex flex-col gap-[10px]">
-        <img :src="imgLink" class=""/>
+        <div class="flex items-center">
+          <img :src="props.data.photo || '/images/photo.jpg'" class="object-cover h-[250px]"/>
+        </div>
         <div class="md:text-[17.4px] font-somic text-black">
           {{ props.data.name }}
         </div>

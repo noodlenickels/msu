@@ -5,10 +5,12 @@ import PageWithoutBio from '@/views/PageWithoutBio.vue';
 import Videos from '@/views/Videos.vue';
 import ListView from '@/views/ListView.vue';
 
-import useApiMain from '@/use/api/main';
+import useApiOpinion from '@/use/api/opinion';
 import useApiPeople from '@/use/api/person';
+import useApiInterview from '@/use/api/interview';
 
-const { getInterviews, getOpinions } = useApiMain();
+const { getOpinions } = useApiOpinion();
+const { getInterviews } = useApiInterview();
 const { getPeople } = useApiPeople();
 
 
@@ -73,19 +75,27 @@ const router = createRouter({
       }
     },
     {
+      path: '/news/:id',
+      name: 'newsId',
+      component: PageWithoutBio,
+      props: {
+        type: 'news'
+      }
+    },
+    {
       path: '/video/:id',
       name: 'videoId',
       component: PageWithoutBio,
       props: {
-
+        type: 'video'
       }
     },
     {
       path: '/interview/:id',
       name: 'interviewId',
-      component: PageWithoutBio,
+      component: PageWithBio,
       props: {
-
+        type: 'interview'
       }
     },
     {
@@ -93,7 +103,7 @@ const router = createRouter({
       name: 'opinionId',
       component: PageWithBio,
       props: {
-
+        type: 'opinion'
       }
     },
     {
@@ -101,7 +111,15 @@ const router = createRouter({
       name: 'personId',
       component: PageWithoutBio,
       props: {
-
+        type: 'person'
+      }
+    },
+    {
+      path: '/region/:id',
+      name: 'regionId',
+      component: PageWithoutBio,
+      props: {
+        type: 'region'
       }
     }
   ]

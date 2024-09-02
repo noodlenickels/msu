@@ -1,5 +1,6 @@
 <script setup>
 import {computed, ref, onMounted} from 'vue';
+import useApiMain from '@/use/api/main';
 
 const props = defineProps({
   image: {
@@ -14,24 +15,12 @@ const props = defineProps({
 
 const emits = defineEmits(['submitted', 'closeForm', 'update:model-value']);
 
-const form = ref(null);
-
-const inputLabelWidth = computed(() => 150);
-
-const cardTitle = computed(() => props.mode === 'add' ? 'Добавление заказа' : 'Редактирование заказа');
-
-const fd = ref({});
-
+const { getPhotoUrl } = useApiMain();
+const photo = ref();
 const dataLoaded = ref(false);
 
-const imgLink = computed(() => {
-  return '/images/'+props.data.image;
-});
-onMounted(() => {
-  // const model = props.modelValue;
-  // fd.value.contract = model.contract;
-  // fd.value.contractor = model.contractor;
-  // fd.value.anticontractor = model.anticontractor;
+onMounted(async () => {
+  photo.value = await getPhotoUrl(props.data.path_to_image_or_video);
   dataLoaded.value = true;
 });
 
@@ -47,7 +36,7 @@ const closeForm = () => {
         <div class="col-span-1 text-[14px] text-gray-400 font-somic">
           {{ data.publication_date.slice(0, 5) }}
         </div>
-        <img class="col-span-2 rounded-[10px]" :src="imgLink" />
+        <img class="col-span-2 rounded-[10px]" :src="photo || '/images/photo.jpg'" />
         <div class="md:col-span-9 col-span-3 flex flex-col gap-[5px]">
             <div class="text-[14px] mr-auto bg-gray-200 rounded-[10px] px-[10px] py-[3px] font-somic">
               {{ data.regions_and_peoples.fio_or_name_region }}

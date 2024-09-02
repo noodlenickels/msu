@@ -2,6 +2,8 @@
 import {computed, ref, onMounted} from 'vue';
 import RandomCard from "@/components/cards/RandomCard.vue";
 import useApiNews from '@/use/api/news';
+import useApiMain from '@/use/api/main';
+
 
 // const props = defineProps({
 //   modelValue: {
@@ -14,25 +16,20 @@ import useApiNews from '@/use/api/news';
 const emits = defineEmits(['submitted', 'closeForm', 'update:model-value']);
 
 const {getRandomSection} = useApiNews();
+const { getPhotoUrl } = useApiMain();
 
 const randomData = ref({});
+const dataLoaded = ref(false);
 
 onMounted(async () => {
   randomData.value = await getRandomSection();
-  randomData.value.interview.image = 'man1.png';
-  randomData.value.opinion.image = 'pic.png';
-  randomData.value.people.image = 'woman1.png';
-  randomData.value.region.image = 'region.png';
+  randomData.value.interview.photo = await getPhotoUrl(randomData.value.interview.image);
+  randomData.value.opinion.photo = await getPhotoUrl(randomData.value.opinion.image);
+  randomData.value.people.photo = await getPhotoUrl(randomData.value.people.image);
+  randomData.value.region.photo = await getPhotoUrl(randomData.value.region.image);
 
-  // const model = props.modelValue;
-  // fd.value.contract = model.contract;
-  // fd.value.contractor = model.contractor;
-  // fd.value.anticontractor = model.anticontractor;
+  dataLoaded.value = true;
 });
-
-const closeForm = () => {
-  emits('close');
-};
 
 </script>
 

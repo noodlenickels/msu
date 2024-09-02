@@ -1,8 +1,9 @@
 import axios from 'axios';
 
-export default function useApi() {
+export default function useApi(type) {
+  const baseUrl = type === 'photo' ? 'https://cloud-api.yandex.net/v1/disk/' : 'https://app.msu-russia.ru/';
   const axiosConfig = {
-    baseURL: 'https://app.msu-russia.ru/',
+    baseURL: baseUrl,
     timeout: 1000,
     responseType: 'json',
     responseEncoding: 'utf8',
@@ -32,7 +33,7 @@ export default function useApi() {
       },
       ...config,
     };
-    if ( token ) axiosCfg.headers.Authorization = 'Bearer ' + token;
+    if ( token ) axiosCfg.headers.Authorization = 'OAuth ' + token;
 
     try {
       return await axios.request(axiosCfg);

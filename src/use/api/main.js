@@ -1,56 +1,33 @@
+import axios from 'axios';
 import useApi from '@/use/api';
 
-const {get$} = useApi();
+const {get$} = useApi('photo');
 export default function useApiMain() {
 
-    const getInterviews = async () => {
-        const fetchedData = await get$({url: 'api/interviews'});
+    const getPhotoUrl = async (link) => {
+        const fetchedData = await get$({url: 'resources', token: 'y0_AgAAAAB4PRfUAAxZXgAAAAEPY4JYAAAg089K8jZK0bN8Uu2xUYfC_w1MdA', params: {path: `/root_Files/${link}`}});
         if (!fetchedData.isError) {
-            const formatted = fetchedData.data.map((data) => {
-                return {
-                    id: data.id,
-                    image: data.path_to_image,
-                    title: data.title,
-                    text: data.content
-                }
-            });
-            return formatted;
+            return fetchedData.data.file;
         }
         return null;
     };
 
+    const getPhoto = async (url) => {
+        axios.get(url)
+          .then(function (response) {
+              // handle success
+              console.log(response.data)
+              return response.data;
+          })
+          .catch(function (error) {
+              // handle error
+              console.log(error);
+          })
+          .finally(function () {
+              // always executed
+          });
 
-    const getOpinions = async () => {
-        const fetchedData = await get$({url: 'api/opinions'});
-        if (!fetchedData.isError) {
-            const formatted = fetchedData.data.map((data) => {
-                return {
-                    id: data.id,
-                    image: data.path_to_image,
-                    title: data.title,
-                    text: data.content
-                }
-            });
-            return formatted;
-        }
-        return null;
     };
 
-    const getRegions = async () => {
-        const fetchedData = await get$({url: 'api/regionsBySearch'});
-        if (!fetchedData.isError) {
-            const formatted = fetchedData.data.regions.map((data) => {
-                return {
-                    id: data.id,
-                    image: data.path_to_image,
-                    name: data.name_region
-                }
-            });
-            return formatted;
-        }
-        return null;
-    };
-
-
-    return {getRegions, getInterviews, getOpinions};
+    return {getPhoto, getPhotoUrl};
 }

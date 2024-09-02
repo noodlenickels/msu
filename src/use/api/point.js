@@ -29,7 +29,12 @@ export default function useApiPoint() {
                     image: data.regions_and_peoples.path_to_image,
                     title: data.title,
                     text: data.content,
-                    link: '/point_of_view/'+data.id
+                    person: {
+                        id: data.regions_and_peoples.id,
+                        title: data.regions_and_peoples.fio_or_name_region,
+                        text: data.regions_and_peoples.content,
+                        image: data.regions_and_peoples.path_to_image
+                    }
                 }
             });
             return formatted;

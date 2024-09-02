@@ -1,37 +1,37 @@
 <script setup>
 import {computed, ref, onMounted} from 'vue';
+import useApiMain from '@/use/api/main';
+import {RouterLink} from "vue-router";
 
 const props = defineProps({
   data: {
     type: Object,
     required: true
+  },
+  type: {
+    type: String,
+    required: true
   }
 });
-
+const { getPhotoUrl } = useApiMain();
+const photo = ref();
 const emits = defineEmits(['submitted', 'closeForm', 'update:model-value']);
+const dataLoaded = ref(false);
 
-onMounted(() => {
-  // const model = props.modelValue;
-  // fd.value.contract = model.contract;
-  // fd.value.contractor = model.contractor;
-  // fd.value.anticontractor = model.anticontractor;
+onMounted(async () => {
+  photo.value = await getPhotoUrl(props.data.image);
+  dataLoaded.value = true;
+  compare();
 });
-
-const imgLink = computed(() => {
-  return '/images/'+props.data.image;
-});
-
-const closeForm = () => {
-  emits('close');
-};
 
 </script>
 
 <template>
+  <RouterLink :to="`${props.data.link}`">
   <div>
     <div class="grid grid-cols-12 flex gap-[25px] w-full">
       <div class="relative col-span-4 floated">
-        <img :src="imgLink" class="w-full viewCard"/>
+        <img :src="photo || '/images/photo.jpg'" class="w-full viewCard"/>
         <div v-if="props.data.role" class="absolute w-auto l:text-[14px] l:h-[24px] md:h-[20px] md:text-[11px] h-[24px] text-[14px] font-somic bg-gray-100 rounded-[10px] text-black z-10	bottom-[7%] right-[5%] px-[7px]">{{ props.data.role }}</div>
       </div>
       <div class="nofloat col-span-8 flex flex-col gap-[10px]">
@@ -44,6 +44,7 @@ const closeForm = () => {
       </div>
     </div>
   </div>
+  </RouterLink>
 </template>
 
 <style>
@@ -65,9 +66,6 @@ const closeForm = () => {
 </style>
 
 <script>
-
-setTimeout(()=>compare(), 500);
-
 function compare(){
   const cards = document.getElementsByClassName('viewCard');
   for (let i=0; i<cards.length; i++){

@@ -1,12 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 
 export default {
+  darkMode: 'class',
   content: [],
   theme: {
-    backgroundColor: theme => ({
-      ...theme('colors'),
-      'primary': '#334374',
-    }),
     screens: {
       'sm': '640px',
       'md': '768px',
@@ -19,6 +16,9 @@ export default {
       fontFamily: {
         somic: ['"NT-Somic"', "somic"],
       },
+      colors: {
+        'primary': '#334374'
+      }
     }
   },
   purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],

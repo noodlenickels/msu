@@ -4,52 +4,33 @@ import Header from '@/components/Header.vue';
 import TopMenu from '@/components/TopMenu.vue';
 import NewsBlock from "@/components/NewsBlock.vue";
 import NewsWithLinks from "@/components/NewsWithLinks.vue";
-import RandomCard from "@/components/cards/RandomCard.vue";
 import RegionNews from "@/components/RegionNews.vue";
 import PointOfView from "@/components/PointOfView.vue";
 import OfficialSites from "@/components/OfficialSites.vue";
 import Footer from "@/components/Footer.vue";
 import Selection from "@/components/Selection.vue";
 
-// const props = defineProps({
-//   modelValue: {
-//     type: Object,
-//     required: false,
-//   },
-//   ...modeProps,
-// });
+import useApiNews from '@/use/api/news';
+import useApiMain from '@/use/api/main';
 
-const emits = defineEmits(['submitted', 'closeForm', 'update:model-value']);
+const {getPhotoUrl} = useApiMain();
+const {getGrandNews} = useApiNews();
 
-const form = ref(null);
-
-const inputLabelWidth = computed(() => 150);
-
-const fd = ref({});
-
+const carouselList = ref([]);
 const dataLoaded = ref(false);
 
-const isInvalid = ref(true);
-
-onMounted(() => {
-  // const model = props.modelValue;
-  // fd.value.contract = model.contract;
-  // fd.value.contractor = model.contractor;
-  // fd.value.anticontractor = model.anticontractor;
+onMounted(async () => {
+  carouselList.value = await getGrandNews();
   dataLoaded.value = true;
 });
-
-const closeForm = () => {
-  emits('close');
-};
 
 </script>
 
 <template>
   <Header/>
   <TopMenu class="hidden sm:block"/>
-  <div class="flex flex-col gap-[75px]">
-    <NewsBlock/>
+  <div v-if="dataLoaded" class="flex flex-col gap-[75px]">
+    <NewsBlock :carouselList='carouselList' />
     <Selection />
     <RegionNews/>
     <PointOfView/>

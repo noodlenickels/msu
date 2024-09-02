@@ -6,8 +6,13 @@ export default function useApiPeople() {
     const getPeopleById = async (id) => {
         const fetchedData = await get$({url: `api/people/${id}`});
         if (!fetchedData.isError) {
-            return fetchedData.data;
-        }
+            return {
+                id: fetchedData.data.id,
+                image: fetchedData.data.path_to_image,
+                title: fetchedData.data.fio,
+                text: fetchedData.data.content,
+                role: fetchedData.data.position
+            }        }
         return null;
     };
 
@@ -20,7 +25,8 @@ export default function useApiPeople() {
                     image: data.path_to_image,
                     title: data.fio,
                     text: data.content,
-                    role: data.position
+                    role: data.position,
+                    link: '/person/'+data.id
                 }
             });
             return formatted;
