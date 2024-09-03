@@ -1,9 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import MainPage from '@/views/MainPage.vue';
-import PageWithBio from '@/views/PageWithBio.vue';
-import PageWithoutBio from '@/views/PageWithoutBio.vue';
-import Videos from '@/views/Videos.vue';
-import ListView from '@/views/ListView.vue';
+import MainPage from '@/views/msu-russia/MainPage.vue';
+import AdminPanel from '@/views/admin-panel/MainPage.vue';
+import PageWithBio from '@/views/msu-russia/PageWithBio.vue';
+import PageWithoutBio from '@/views/msu-russia/PageWithoutBio.vue';
+import Videos from '@/views/msu-russia/Videos.vue';
+import ListView from '@/views/msu-russia/ListView.vue';
 
 import useApiOpinion from '@/use/api/opinion';
 import useApiPeople from '@/use/api/person';
@@ -28,6 +29,11 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: MainPage
+    },
+    {
+      path: '/admin_panel',
+      name: 'admin',
+      component: AdminPanel
     },
     {
       path: '/video',

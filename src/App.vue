@@ -12,6 +12,7 @@ const photo = getPhotoUrl();
   <RouterView />
 </template>
 
+<!--<style src="./assets/design/_compilation.css"></style>-->
 <style>
 html, body {width:100%; overflow-x:hidden}
 </style>
