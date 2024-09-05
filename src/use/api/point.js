@@ -12,6 +12,7 @@ export default function useApiPoint() {
                     image: data.regions_and_peoples.path_to_image,
                     title: data.title,
                     text: data.content,
+                    source: data.source,
                     link: '/point_of_view/'+data.id,
                     subject: data.regions_and_peoples.fio_or_name_region,
                     created: data.status.created_at,

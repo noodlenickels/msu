@@ -23,6 +23,10 @@ const props = defineProps({
   data: {
     type: Object,
     required: false,
+  },
+  type: {
+    type: String,
+    required: false,
   }
 });
 
@@ -30,11 +34,12 @@ const {getPhotoUrl} = useApiMain();
 
 const carouselList = ref([]);
 const dataLoaded = ref(false);
-const topMenu = ref('news');
+const topMenu = ref(null);
 const changeTopMenu = (val) => {
   topMenu.value = val;
 }
 onMounted(async () => {
+  topMenu.value = props.type;
   dataLoaded.value = true;
 });
 
@@ -42,7 +47,7 @@ onMounted(async () => {
 
 <template>
   <Header />
-  <TopMenu @change="changeTopMenu"class="mt-[30px]"/>
+  <TopMenu @change="changeTopMenu" class="mt-[30px]"/>
   <ActionPanel :type="topMenu" class="mb-[20px]"/>
   <List :data="props.data" class="mb-[40px]">
     <Checkboxes class="mb-[20px]"/>

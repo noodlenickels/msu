@@ -1,8 +1,9 @@
 <script setup>
 import useApiNews from '@/use/api/news';
 import {onMounted, ref} from "vue";
+import {useRoute, RouterLink, RouterView} from 'vue-router';
 
-
+const route = useRoute()
 const newsData = ref([]);
 const dataLoaded = ref(false);
 const props = defineProps({
@@ -39,11 +40,11 @@ const formatDate = (d) => {
           <td class="">
             <div class="  strCLSitem p-5">Регион или персона</div>
           </td>
-          <td class="">
+          <td v-if="props.data[0].source">
             <div class="  strCLSitem p-5">Источник</div>
           </td>
           <td class="">
-            <div class="  strCLSitem p-5">Дата обновления</div>
+            <div class="strCLSitem p-5">Дата обновления</div>
           </td>
           <td class="">
             <div class="  strCLSitem p-5">Комментарий</div>
@@ -52,26 +53,38 @@ const formatDate = (d) => {
         </thead>
 
         <tbody class="tbody hovering striped">
-        <tr v-for="el in props.data" class="PLT border-2 border-gray-300">
-          <td>
-            <div class="  strCLSitem p-5">{{formatDate(new Date(el.created))}}</div>
-          </td>
-          <td>
-            <div class="  strCLSitem p-5">{{el.title}}</div>
-          </td>
-          <td>
-            <div class="  strCLSitem p-5">{{el.subject}}</div>
-          </td>
-          <td>
-            <div class="  strCLSitem p-5">Источник</div>
-          </td>
-          <td>
-            <div class="  strCLSitem p-5">{{ formatDate(new Date(el.updated)) }}</div>
-          </td>
-          <td>
-            <div class="  strCLSitem p-5">Комментарий</div>
-          </td>
-        </tr>
+          <tr v-for="el in props.data" class="PLT border-2 border-gray-300">
+            <td>
+              <RouterLink :to="`/admin_panel/${route.name}/${el.id}`">
+              <div class="  strCLSitem p-5">{{formatDate(new Date(el.created))}}</div>
+              </RouterLink>
+            </td>
+            <td>
+              <RouterLink :to="`/admin_panel/${route.name}/${el.id}`">
+              <div class="  strCLSitem p-5">{{el.title}}</div>
+              </RouterLink>
+            </td>
+            <td>
+              <RouterLink :to="`/admin_panel/${route.name}/${el.id}`">
+              <div class="  strCLSitem p-5">{{el.subject}}</div>
+              </RouterLink>
+            </td>
+            <td v-if="el.source">
+              <RouterLink :to="`/admin_panel/${route.name}/${el.id}`">
+              <div class="  strCLSitem p-5">{{ el.source }}</div>
+              </RouterLink>
+            </td>
+            <td>
+              <RouterLink :to="`/admin_panel/${route.name}/${el.id}`">
+              <div class="  strCLSitem p-5">{{ formatDate(new Date(el.updated)) }}</div>
+              </RouterLink>
+            </td>
+            <td>
+              <RouterLink :to="`/admin_panel/${route.name}/${el.id}`">
+              <div class="  strCLSitem p-5">Комментарий</div>
+              </RouterLink>
+            </td>
+          </tr>
         </tbody>
 
       </table>

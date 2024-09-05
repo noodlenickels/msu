@@ -43,7 +43,8 @@ const router = createRouter({
       component: AdminPanel,
       props: {
         data: newsData.data,
-        caption: 'Новости'
+        caption: 'Новости',
+        type: 'news'
       }
     },
     {
@@ -52,7 +53,8 @@ const router = createRouter({
       component: AdminPanel,
       props: {
         data: opinionData,
-        caption: 'Мнения'
+        caption: 'Мнения',
+        type: 'opinion'
       }
     },
     {
@@ -61,7 +63,8 @@ const router = createRouter({
       component: AdminPanel,
       props: {
         data: interviewsData,
-        caption: 'Интервью'
+        caption: 'Интервью',
+        type: 'interview'
       }
     },
     {
@@ -70,7 +73,8 @@ const router = createRouter({
       component: AdminPanel,
       props: {
         data: pointData,
-        caption: 'Точки зрения'
+        caption: 'Точки зрения',
+        type: 'point'
       }
     },
     {

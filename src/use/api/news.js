@@ -18,6 +18,7 @@ export default function useApiNews() {
             image: data.path_to_image_or_video,
             title: data.title,
             text: data.content,
+            source: data.source,
             link: '/news/'+data.id,
             subject: data.regions_and_peoples.fio_or_name_region,
             created: data.status.created_at,

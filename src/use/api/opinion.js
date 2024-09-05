@@ -15,6 +15,7 @@ export default function useApiOpinion() {
                     title: data.title,
                     text: data.content,
                     link: '/opinion/'+data.id,
+                    source: data.source,
                     subject: data.regions_and_peoples.fio_or_name_region,
                     created: data.status.created_at,
                     updated: data.status.updated_at,

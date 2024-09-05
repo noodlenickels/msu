@@ -23,12 +23,12 @@ const props = defineProps({
 <!--        <RouterLink class="col-span-2" to="/video">-->
 <!--          <div class="hover:text-blue-950 font-bold">Пометить на удаление</div>-->
 <!--        </RouterLink>-->
-        <RouterLink class="col-span-2" to="/video">
+        <div class="col-span-2">
           <div class="hover:text-blue-950 font-bold">Отображать статусы</div>
-        </RouterLink>
-        <RouterLink to="/video">
+        </div>
+        <div>
           <div class="hover:text-blue-950 font-bold">Экспорт</div>
-        </RouterLink>
+        </div>
       </div>
       <div class="col-span-1"></div>
       <input class="col-span-3 border-2 border-amber-500 rounded-[15px] px-[20px] py-[5px]" type="text" name="search"
