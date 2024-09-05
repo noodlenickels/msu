@@ -55,32 +55,32 @@ const formatDate = (d) => {
         <tbody class="tbody hovering striped">
           <tr v-for="el in props.data" class="PLT border-2 border-gray-300">
             <td>
-              <RouterLink :to="`/admin_panel/${route.name}/${el.id}`">
+              <RouterLink :to="`/admin_panel/${route.name.split('_')[1]}/edit/${el.id}`">
               <div class="  strCLSitem p-5">{{formatDate(new Date(el.created))}}</div>
               </RouterLink>
             </td>
             <td>
-              <RouterLink :to="`/admin_panel/${route.name}/${el.id}`">
+              <RouterLink :to="`/admin_panel/${route.name.split('_')[1]}/edit/${el.id}`">
               <div class="  strCLSitem p-5">{{el.title}}</div>
               </RouterLink>
             </td>
             <td>
-              <RouterLink :to="`/admin_panel/${route.name}/${el.id}`">
+              <RouterLink :to="`/admin_panel/${route.name.split('_')[1]}/edit/${el.id}`">
               <div class="  strCLSitem p-5">{{el.subject}}</div>
               </RouterLink>
             </td>
             <td v-if="el.source">
-              <RouterLink :to="`/admin_panel/${route.name}/${el.id}`">
+              <RouterLink :to="`/admin_panel/${route.name.split('_')[1]}/edit/${el.id}`">
               <div class="  strCLSitem p-5">{{ el.source }}</div>
               </RouterLink>
             </td>
             <td>
-              <RouterLink :to="`/admin_panel/${route.name}/${el.id}`">
+              <RouterLink :to="`/admin_panel/${route.name.split('_')[1]}/edit/${el.id}`">
               <div class="  strCLSitem p-5">{{ formatDate(new Date(el.updated)) }}</div>
               </RouterLink>
             </td>
             <td>
-              <RouterLink :to="`/admin_panel/${route.name}/${el.id}`">
+              <RouterLink :to="`/admin_panel/${route.name.split('_')[1]}/edit/${el.id}`">
               <div class="  strCLSitem p-5">Комментарий</div>
               </RouterLink>
             </td>

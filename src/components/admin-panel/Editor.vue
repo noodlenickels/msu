@@ -50,22 +50,22 @@ onMounted(async () => {
   <div v-if="dataLoaded" class="px-[10%] mb-[40px]">
     <div class="py-[20px] px-[40px] border-[3px] flex flex-col gap-[25px]">
       <div class="topPart">
-        <div class="flex justify-between items-center mb-[15px]">
+        <div class="flex justify-between items-center mb-[15px] gap-[30px]">
           <div class="font-somic font-bold text-[25px]">{{ createTitle }}</div>
           <div class="flex gap-[20px]">
             <div class="flex flex-col gap-[10px] mb-[20px] w-[300px]">
               <div class="font-somic font-bold text-[17px]">Заголовок статьи</div>
               <input class="border-2 rounded-[15px] px-[20px] py-[5px] text-[15px]" type="text"
                      name="search"
-                     id="title" placeholder="Укажите заголовок статьи..." value="">
+                     id="title" placeholder="Укажите заголовок статьи..." :value="props.data.title">
             </div>
             <div class="flex flex-col gap-[10px] mb-[20px]">
               <div class="font-somic font-bold text-[17px]">Дата публикации</div>
               <input class="border-2 rounded-[15px] px-[20px] py-[5px] text-[15px]" type="date"
                      name="search"
-                     id="title" :value="new Date()">
+                     id="title" :value="new Date(props.data.created)">
             </div>
-            <div class="flex flex-col gap-[10px] mb-[20px]">
+            <div class="flex flex-col gap-[10px] mb-[20px] w-[200px]">
               <div class="font-somic font-bold text-[17px]">Изображение</div>
               <input class="border-2 rounded-[15px] px-[10px] py-[5px] text-[15px]" type="file"
                      name="search"
@@ -75,7 +75,7 @@ onMounted(async () => {
         </div>
         <div class="flex flex-col gap-[20px] mb-[15px]">
           <div class="font-somic font-bold text-[19px]">Текст статьи</div>
-          <textarea class="h-[150px] border-2 rounded-[15px] text-[15px] px-[20px] py-[5px]" placeholder="Укажите текст статьи..."></textarea>
+          <textarea :value="props.data.text" class="h-[150px] border-2 rounded-[15px] text-[15px] px-[20px] py-[5px]" placeholder="Укажите текст статьи..."></textarea>
         </div>
 
         <div class="grid grid-cols-5 gap-[50px]">

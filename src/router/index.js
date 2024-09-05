@@ -13,11 +13,11 @@ import useApiInterview from '@/use/api/interview';
 import useApiNews from '@/use/api/news';
 import useApiPoint from '@/use/api/point';
 
-const { getOpinions } = useApiOpinion();
-const { getInterviews } = useApiInterview();
-const { getPeople } = useApiPeople();
-const { getNews } = useApiNews();
-const { getPointOfView } = useApiPoint();
+const { getOpinions, getOpinionById } = useApiOpinion();
+const { getInterviews, getInterviewById } = useApiInterview();
+const { getPeople, getPeopleById } = useApiPeople();
+const { getNews, getNewsById } = useApiNews();
+const { getPointOfView, getPointOfViewById } = useApiPoint();
 
 
 const interviewsData = await getInterviews();
@@ -74,7 +74,7 @@ const router = createRouter({
       props: {
         data: pointData,
         caption: 'Точки зрения',
-        type: 'point'
+        type: 'point_of_view'
       }
     },
     {
@@ -118,6 +118,7 @@ const router = createRouter({
       name: 'admin_point_of_view_edit',
       component: CreateOrEdit,
       props: {
+        type: 'point_of_view',
         data: null,
         mode: 'edit'
       }
@@ -127,6 +128,7 @@ const router = createRouter({
       name: 'admin_interview_edit',
       component: CreateOrEdit,
       props: {
+        type: 'interview',
         data: null,
         mode: 'edit'
       }
@@ -136,6 +138,7 @@ const router = createRouter({
       name: 'admin_opinion_edit',
       component: CreateOrEdit,
       props: {
+        type: 'opinion',
         data: null,
         mode: 'edit'
       }
@@ -145,6 +148,7 @@ const router = createRouter({
       name: 'admin_news_edit',
       component: CreateOrEdit,
       props: {
+        type: 'news',
         data: null,
         mode: 'edit'
       }

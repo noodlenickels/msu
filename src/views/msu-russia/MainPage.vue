@@ -26,6 +26,9 @@ const changeTopMenu = (val) => {
 onMounted(async () => {
   carouselList.value = await getGrandNews();
 
+  if (document.documentElement.clientWidth > 640) bigScreen.value = true;
+  else bigScreen.value = false;
+
   window.addEventListener('resize', function(){
     if (document.documentElement.clientWidth > 640) bigScreen.value = true;
     else bigScreen.value = false;

@@ -72,10 +72,10 @@ export default function useApiNews() {
     const fetchedData = await get$({url: `api/newsOne/${id}`});
     if (!fetchedData.isError) {
       return {
-        id: data.id,
-        image: data.path_to_image_or_video,
-        title: data.title,
-        text: data.content
+        id: fetchedData.data.id,
+        image: fetchedData.data.path_to_image_or_video,
+        title: fetchedData.data.title,
+        text: fetchedData.data.content
       };
     }
     return null;
