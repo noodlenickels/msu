@@ -4,7 +4,7 @@ const {get$} = useApi();
 export default function useApiPoint() {
 
     const getPointOfView = async () => {
-        const fetchedData = await get$({url: 'api/pointView'});
+        const fetchedData = await get$({url: 'api/pointViews'});
         if (!fetchedData.isError) {
             const formatted = fetchedData.data.map((data) => {
                 return {
@@ -12,7 +12,10 @@ export default function useApiPoint() {
                     image: data.regions_and_peoples.path_to_image,
                     title: data.title,
                     text: data.content,
-                    link: '/point_of_view/'+data.id
+                    link: '/point_of_view/'+data.id,
+                    subject: data.regions_and_peoples.fio_or_name_region,
+                    created: data.status.created_at,
+                    updated: data.status.updated_at,
                 }
             });
             return formatted;

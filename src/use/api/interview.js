@@ -12,7 +12,10 @@ export default function useApiInterview() {
           image: data.path_to_image,
           title: data.title,
           text: data.content,
-          link: '/interview/'+data.id
+          link: '/interview/'+data.id,
+          subject: data.regions_and_peoples.fio_or_name_region,
+          created: data.status.created_at,
+          updated: data.status.updated_at,
         }
       });
       return formatted;

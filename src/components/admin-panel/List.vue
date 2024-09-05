@@ -2,18 +2,24 @@
 import useApiNews from '@/use/api/news';
 import {onMounted, ref} from "vue";
 
-const {getNews} = useApiNews();
 
 const newsData = ref([]);
 const dataLoaded = ref(false);
-
+const props = defineProps({
+  data: {
+    type: Object,
+    required: false,
+  }
+});
 onMounted(async () => {
   // if ( formMode.value === 'edit' ) {
-  const data = await getNews();
-  newsData.value = data.data;
 
   dataLoaded.value = true;
 });
+
+const formatDate = (d) => {
+  return `${d.getDay().toString().padStart(2, '0')}.${(d.getMonth()+1).toString().padStart(2, '0')}.${d.getFullYear()}`;
+}
 </script>
 
 <template>
@@ -24,49 +30,43 @@ onMounted(async () => {
 
         <thead class="thead font-somic font-bold bg-gray-700 text-white">
         <tr class="whitespace-nowrap">
-          <td class="w1">
-            <div class="  strCLSitem p-5">№</div>
-          </td>
-          <td class="wmn200">
+          <td class="">
             <div class="  strCLSitem p-5">Дата публикации</div>
           </td>
           <td>
             <div class="  strCLSitem p-5">Загловок</div>
           </td>
-          <td class="wmn200">
-            <div class="  strCLSitem p-5">Регион</div>
+          <td class="">
+            <div class="  strCLSitem p-5">Регион или персона</div>
           </td>
-          <td class="wmn200">
+          <td class="">
             <div class="  strCLSitem p-5">Источник</div>
           </td>
-          <td class="wmn200">
+          <td class="">
             <div class="  strCLSitem p-5">Дата обновления</div>
           </td>
-          <td class="wmn200">
+          <td class="">
             <div class="  strCLSitem p-5">Комментарий</div>
           </td>
         </tr>
         </thead>
 
         <tbody class="tbody hovering striped">
-        <tr v-for="(news, i) in newsData" class="PLT" data-bg="green 100">
+        <tr v-for="el in props.data" class="PLT border-2 border-gray-300">
           <td>
-            <div class="  strCLSitem p-5"><b>{{i+1}}</b></div>
+            <div class="  strCLSitem p-5">{{formatDate(new Date(el.created))}}</div>
           </td>
           <td>
-            <div class="  strCLSitem p-5">{{news.date}}</div>
+            <div class="  strCLSitem p-5">{{el.title}}</div>
           </td>
           <td>
-            <div class="  strCLSitem p-5">{{news.title}}</div>
-          </td>
-          <td>
-            <div class="  strCLSitem p-5">{{news.region}}</div>
+            <div class="  strCLSitem p-5">{{el.subject}}</div>
           </td>
           <td>
             <div class="  strCLSitem p-5">Источник</div>
           </td>
           <td>
-            <div class="  strCLSitem p-5">Дата обновления</div>
+            <div class="  strCLSitem p-5">{{ formatDate(new Date(el.updated)) }}</div>
           </td>
           <td>
             <div class="  strCLSitem p-5">Комментарий</div>

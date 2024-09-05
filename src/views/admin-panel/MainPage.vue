@@ -13,31 +13,38 @@ import OfficialSites from "@/components/msu-russia/OfficialSites.vue";
 import Footer from "@/components/admin-panel/Footer.vue";
 import Selection from "@/components/msu-russia/Selection.vue";
 
-import useApiNews from '@/use/api/news';
 import useApiMain from '@/use/api/main';
 
+const props = defineProps({
+  caption: {
+    type: String,
+    required: false,
+  },
+  data: {
+    type: Object,
+    required: false,
+  }
+});
+
 const {getPhotoUrl} = useApiMain();
-const {getGrandNews} = useApiNews();
 
 const carouselList = ref([]);
 const dataLoaded = ref(false);
-const topMenu = ref(true);
+const topMenu = ref('news');
 const changeTopMenu = (val) => {
   topMenu.value = val;
 }
 onMounted(async () => {
-  carouselList.value = await getGrandNews();
   dataLoaded.value = true;
 });
 
 </script>
 
 <template>
-  <!--  :class="`${topMenu.value ? '' : 'hidden'} topMenuClass`"-->
-  <Header @active="changeTopMenu"/>
-  <TopMenu class="mt-[30px]"/>
-  <ActionPanel class="mb-[20px]"/>
-  <List class="mb-[40px]">
+  <Header />
+  <TopMenu @change="changeTopMenu"class="mt-[30px]"/>
+  <ActionPanel :type="topMenu" class="mb-[20px]"/>
+  <List :data="props.data" class="mb-[40px]">
     <Checkboxes class="mb-[20px]"/>
   </List>
   <Footer/>

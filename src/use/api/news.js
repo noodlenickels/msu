@@ -19,6 +19,9 @@ export default function useApiNews() {
             title: data.title,
             text: data.content,
             link: '/news/'+data.id,
+            subject: data.regions_and_peoples.fio_or_name_region,
+            created: data.status.created_at,
+            updated: data.status.updated_at,
             region: data.regions_and_peoples.position_or_type_region === 'Республика' || data.regions_and_peoples.position_or_type_region === 'Город федерального значения'? data.regions_and_peoples.position_or_type_region + ' ' + data.regions_and_peoples.fio_or_name_region : data.regions_and_peoples.fio_or_name_region + ' ' + data.regions_and_peoples.position_or_type_region
         })
       });

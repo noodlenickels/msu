@@ -6,13 +6,18 @@ export default function useApiOpinion() {
     const getOpinions = async () => {
         const fetchedData = await get$({url: 'api/opinions'});
         if (!fetchedData.isError) {
+            console.log(fetchedData)
+
             const formatted = fetchedData.data.map((data) => {
                 return {
                     id: data.id,
                     image: data.path_to_image,
                     title: data.title,
                     text: data.content,
-                    link: '/opinion/'+data.id
+                    link: '/opinion/'+data.id,
+                    subject: data.regions_and_peoples.fio_or_name_region,
+                    created: data.status.created_at,
+                    updated: data.status.updated_at,
                 }
             });
             return formatted;
