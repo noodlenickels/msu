@@ -18,19 +18,30 @@ const props = defineProps({
   }
 });
 
-const topMenu = ref(true);
-const changeTopMenu = (val) => {
-  topMenu.value = val;
-}
+const topMenu = ref(false);
+const bigScreen = ref(true);
 
 const emits = defineEmits(['submitted', 'closeForm', 'update:model-value']);
 
+const toggleMenu = () => {
+  topMenu.value = !topMenu.value;
+}
+
+onMounted(()=>{
+  if (document.documentElement.clientWidth > 640) bigScreen.value = true;
+  else bigScreen.value = false;
+
+  window.addEventListener('resize', function(){
+    if (document.documentElement.clientWidth > 640) bigScreen.value = true;
+    else bigScreen.value = false;
+  })
+});
 </script>
 
 <template>
 <!--  :class="`${topMenu.value ? '' : 'hidden'} topMenuClass`"-->
-  <Header @active="changeTopMenu"/>
-  <TopMenu  />
+  <Header @active="toggleMenu"/>
+  <TopMenu @toggle="toggleMenu" v-if="topMenu || bigScreen" />
   <div class="flex flex-col gap-[125px] px-[10%] gap-[25px] l:mb-[125px] mb-[55px]">
     <div class="grid grid-cols-4 gap-[25px]">
       <div class="md:col-span-3 col-span-4 flex flex-col gap-[30px] md:mb-0 mb-[20px]">

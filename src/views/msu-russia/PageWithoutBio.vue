@@ -29,9 +29,11 @@ const { getPhotoUrl } = useApiMain();
 const route = useRoute();
 const dataLoaded = ref(false);
 const photo = ref();
-const topMenu = ref(true);
-const changeTopMenu = (val) => {
-  topMenu.value = val;
+const topMenu = ref(false);
+const bigScreen = ref(false);
+
+const toggleMenu = () => {
+  topMenu.value = !topMenu.value;
 }
 
 const cardData = ref({});
@@ -46,6 +48,15 @@ onMounted(async () => {
     cardData.value = await getNewsById(route.params.id);
   }
   photo.value = await getPhotoUrl(cardData.value.image);
+
+  if (document.documentElement.clientWidth > 640) bigScreen.value = true;
+  else bigScreen.value = false;
+
+  window.addEventListener('resize', function(){
+    if (document.documentElement.clientWidth > 640) bigScreen.value = true;
+    else bigScreen.value = false;
+  })
+
   dataLoaded.value = true;
 });
 
@@ -53,8 +64,8 @@ onMounted(async () => {
 
 <template>
 <!--  :class="`${topMenu.value ? '' : 'hidden'} topMenuClass`"-->
-  <Header @active="changeTopMenu"/>
-  <TopMenu />
+  <Header @active="toggleMenu"/>
+  <TopMenu @toggle="toggleMenu" v-if="topMenu || bigScreen" />
   <div v-if="dataLoaded" class="flex flex-col md:gap-[125px] gap-[75px]">
     <div class="flex flex-col md:gap-[125px] px-[10%] gap-[25px]">
       <div class="grid grid-cols-4 gap-[25px]">

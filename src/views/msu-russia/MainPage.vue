@@ -20,9 +20,11 @@ const carouselList = ref([]);
 const dataLoaded = ref(false);
 const topMenu = ref(false);
 const bigScreen = ref(false);
-const changeTopMenu = (val) => {
-  topMenu.value = val;
+
+const toggleMenu = () => {
+  topMenu.value = !topMenu.value;
 }
+
 onMounted(async () => {
   carouselList.value = await getGrandNews();
 
@@ -40,8 +42,8 @@ onMounted(async () => {
 
 <template>
 <!--  :class="`${topMenu.value ? '' : 'hidden'} topMenuClass`"-->
-  <Header @active="changeTopMenu"/>
-  <TopMenu v-if="topMenu || bigScreen" />
+  <Header @active="toggleMenu"/>
+  <TopMenu @toggle="toggleMenu" v-if="topMenu || bigScreen" />
   <div v-if="dataLoaded" class="flex flex-col gap-[75px]">
     <NewsBlock :carouselList='carouselList' />
     <Selection />

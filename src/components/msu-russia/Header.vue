@@ -1,5 +1,6 @@
 <script setup>
 import {computed, ref, onMounted} from 'vue';
+import {RouterLink} from "vue-router";
 
 // const props = defineProps({
 //   modelValue: {
@@ -26,15 +27,10 @@ const isInvalid = ref(true);
 const menuActive = ref(false);
 
 const changeActivity = () => {
-  menuActive.value = !menuActive.value;
-  emits('active', menuActive.value);
+  emits('active');
 
 }
 onMounted(() => {
-  // const model = props.modelValue;
-  // fd.value.contract = model.contract;
-  // fd.value.contractor = model.contractor;
-  // fd.value.anticontractor = model.anticontractor;
   dataLoaded.value = true;
 });
 
@@ -44,11 +40,15 @@ onMounted(() => {
   <div class="w100 sm:mb-0 mb-[20px]">
     <div class="grid md:grid-cols-12 grid-cols-8 bg-primary h-[130px] md:gap-[5px] gap-[10px] items-center justify-between px-[10%]">
       <div class="l:col-span-1 md:col-span-2 col-span-1">
+        <RouterLink to="/">
         <img src="../../assets/icons/logo.png" alt="Логотип" class="l:h-[85px] md:h-[70px] h-[40px]"/>
+        </RouterLink>
       </div>
       <div class="flex flex-col text-white font-somic md:col-span-7 sm:col-span-5 col-span-6">
+        <RouterLink to="/">
         <div class="md:text-[16px] l:text-[24px] text-[13px]">всероссийское информационное агенство</div>
         <div class="md:text-[22px] l:text-[33.2px] text-[18px] font-bold">МЕСТНОЕ САМОУПРАВЛЕНИЕ</div>
+        </RouterLink>
       </div>
       <div class="justify-end l:flex l:col-span-2 md:col-span-3 hidden">
 <!--        <input class="flex-grow max-w-[450px] min-w-[200px] rounded-[15px] px-[20px] py-[5px]" type="text" name="search" id="search" placeholder="Найти на сайте" value="">-->

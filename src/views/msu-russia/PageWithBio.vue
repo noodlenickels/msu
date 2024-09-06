@@ -37,16 +37,17 @@ const photo = ref();
 const dataLoaded = ref(false);
 
 const id = route.params.id;
-const topMenu = ref(true);
-const changeTopMenu = (val) => {
-  topMenu.value = val;
+const topMenu = ref(false);
+const bigScreen = ref(false);
+
+const toggleMenu = () => {
+  topMenu.value = !topMenu.value;
 }
 
 onMounted(async () => {
   switch (props.type) {
     case 'interview': {
       pageData.value = await getInterviewById(id);
-      console.log(pageData.value)
       personData.value = pageData.value?.person;
       photo.value = await getPhotoUrl(pageData.value?.image);
       topFour.value = await getInterviewTopFour();
@@ -67,6 +68,15 @@ onMounted(async () => {
       break;
     }
   }
+
+  if (document.documentElement.clientWidth > 640) bigScreen.value = true;
+  else bigScreen.value = false;
+
+  window.addEventListener('resize', function(){
+    if (document.documentElement.clientWidth > 640) bigScreen.value = true;
+    else bigScreen.value = false;
+  })
+
   dataLoaded.value = true;
 });
 
@@ -74,8 +84,8 @@ onMounted(async () => {
 
 <template>
 <!--  :class="`${topMenu.value ? '' : 'hidden'} topMenuClass`"-->
-  <Header @active="changeTopMenu"/>
-  <TopMenu  />
+  <Header @active="toggleMenu"/>
+  <TopMenu @toggle="toggleMenu" v-if="topMenu || bigScreen" />
   <div v-if="dataLoaded" class="flex flex-col md:gap-[125px] gap-[25px]">
     <div class="flex flex-col md:gap-[75px] px-[10%] gap-[25px]">
       <div class="grid grid-cols-4 gap-[25px]">
