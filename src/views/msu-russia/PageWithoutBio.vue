@@ -76,7 +76,7 @@ onMounted(async () => {
             <div v-if="props.type ==='news'" class="h-[21px] text-[18px] font-somic text-black font-semibold">Новость</div>
             <div class="flex-grow border-b-[2px] border-gray"></div>
           </div>
-          <img :src="photo" class=""/>
+          <img :src="cardData.image" class=""/>
           <div class="text-[30px] font-somic text-black font-bold">
             {{ cardData.title }}
           </div>

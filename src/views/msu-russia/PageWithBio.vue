@@ -102,7 +102,7 @@ onMounted(async () => {
             </div>
             <div class="flex-grow border-b-[2px] border-gray"></div>
           </div>
-          <img :src="photo" class=""/>
+          <img :src="pageData.image" class=""/>
           <div class="text-[30px] font-somic text-black font-bold">
             {{ pageData.title }}
           </div>
