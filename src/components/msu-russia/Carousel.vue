@@ -19,12 +19,12 @@ const dataLoaded = ref(false);
 
 onMounted(async ()=>{
   carousel.value = carouselList.value[0];
-  carousel.value.photo = await getPhotoUrl(carousel.value.image);
+  // carousel.value.photo = await getPhotoUrl(carousel.value.image);
   dataLoaded.value = true;
 })
 const changeCarousel = async (i) => {
   carousel.value = carouselList.value.find(card => card.id === i);
-  carousel.value.photo = await getPhotoUrl(carousel.value.image);
+  // carousel.value.photo = await getPhotoUrl(carousel.value.image);
 };
 
 </script>
@@ -37,7 +37,7 @@ const changeCarousel = async (i) => {
     </div>
     <div class="grid grid-cols-4 gap-[25px]">
       <div class="md:col-span-3 col-span-4 flex flex-col gap-[15px]">
-        <img :src="carousel.photo || '/images/photo.jpg'" class="carouselImg"/>
+        <img :src="carousel.image || '/images/photo.jpg'" class="carouselImg"/>
         <div class="md:text-[30px] text-[26px] font-somic text-black font-bold carouselTitle">
           {{ carousel.title }}
         </div>

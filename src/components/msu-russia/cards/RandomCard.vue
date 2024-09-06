@@ -26,7 +26,7 @@ onMounted(() => {
       </div>
       <div class="flex flex-col gap-[10px]">
         <div class="m-auto">
-          <img :src="props.data.photo || '/images/photo.jpg'" class="object-cover h-[250px]"/>
+          <img :src="props.data.image || '/images/photo.jpg'" class="object-cover h-[250px]"/>
         </div>
         <div class="md:text-[17.4px] text-[15px] font-somic text-black">
           {{ props.data.name }}

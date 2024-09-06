@@ -23,10 +23,10 @@ const dataLoaded = ref(false);
 
 onMounted(async () => {
   randomData.value = await getRandomSection();
-  randomData.value.interview.photo = await getPhotoUrl(randomData.value.interview.image);
-  randomData.value.opinion.photo = await getPhotoUrl(randomData.value.opinion.image);
-  randomData.value.people.photo = await getPhotoUrl(randomData.value.people.image);
-  randomData.value.region.photo = await getPhotoUrl(randomData.value.region.image);
+  // randomData.value.interview.photo = await getPhotoUrl(randomData.value.interview.image);
+  // randomData.value.opinion.photo = await getPhotoUrl(randomData.value.opinion.image);
+  // randomData.value.people.photo = await getPhotoUrl(randomData.value.people.image);
+  // randomData.value.region.photo = await getPhotoUrl(randomData.value.region.image);
 
   dataLoaded.value = true;
 });

@@ -17,6 +17,7 @@ import AddsBlock from "@/components/msu-russia/AddsBlock.vue";
 
 const emits = defineEmits(['submitted', 'closeForm', 'update:model-value']);
 
+const topMenu = ref(false);
 const bigScreen = ref(false);
 
 const toggleMenu = () => {
@@ -70,15 +71,17 @@ const videoList = [
 ];
 
 onMounted(() => {
-  const bigScreen = ref(false);
 
-  const toggleMenu = () => {
-    topMenu.value = !topMenu.value;
-  }
+  if (document.documentElement.clientWidth > 640) bigScreen.value = true;
+  else bigScreen.value = false;
+
+  window.addEventListener('resize', function(){
+    if (document.documentElement.clientWidth > 640) bigScreen.value = true;
+    else bigScreen.value = false;
+  })
+
   dataLoaded.value = true;
 });
-
-const topMenu = ref(false);
 
 </script>
 

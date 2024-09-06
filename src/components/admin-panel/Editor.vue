@@ -85,7 +85,7 @@ onMounted(async () => {
           </div>
           <div class="col-span-3 flex flex-col gap-[20px] items-end">
             <div class="flex gap-[10px]">
-              <div class="font-somic text-[18px]">Ответственный</div>
+              <div class="font-somic text-[18px]">Ответственный:</div>
               <select class="w-[350px] font-somic text-[18px] border-1 border-gray-300">
                 <option class="font-somic text-[18px]" value="0">Человек 1</option>
                 <option class="font-somic text-[18px]" value="1">Человек 2</option>

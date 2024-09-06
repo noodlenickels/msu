@@ -20,7 +20,7 @@ const dataLoaded = ref(false);
 const pointTopFour = ref([]);
 
 onMounted(async () => {
-  pointTopFour.value = await getPointOfViewTopFour();
+  pointTopFour.valuex = await getPointOfViewTopFour();
   dataLoaded.value = true;
 });
 
@@ -28,7 +28,7 @@ onMounted(async () => {
 
 <template>
   <div class="w100 px-[10%]">
-    <div class="flex items-end mb-[30px] gap-[15px] w100">
+    <div clxass="flex items-end mb-[30px] gap-[15px] w100">
       <div class="w-auto text-[18px] font-somic text-black font-semibold">Точка зрения</div>
       <div class="flex-grow border-b-[2px] border-gray"></div>
     </div>

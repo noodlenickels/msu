@@ -19,7 +19,7 @@ const emits = defineEmits(['submitted', 'closeForm', 'update:model-value']);
 const dataLoaded = ref(false);
 
 onMounted(async () => {
-  photo.value = await getPhotoUrl(props.data.image);
+  // photo.value = await getPhotoUrl(props.data.image);
   dataLoaded.value = true;
   compare();
 });
@@ -31,7 +31,7 @@ onMounted(async () => {
   <div>
     <div class="grid grid-cols-12 flex gap-[25px] w-full">
       <div class="relative l:col-span-4 col-span-6 floated">
-        <img :src="photo || '/images/photo.jpg'" class="w-full viewCard"/>
+        <img :src="props.data.image || '/images/photo.jpg'" class="w-full viewCard"/>
         <div v-if="props.data.role" class="absolute w-auto l:text-[14px] l:h-[24px] md:h-[20px] md:text-[11px] h-[24px] text-[14px] font-somic bg-gray-100 rounded-[10px] text-black z-10	bottom-[7%] right-[5%] px-[7px]">{{ props.data.role }}</div>
       </div>
       <div class="nofloat l:col-span-8 col-span-6 flex flex-col gap-[10px]">
