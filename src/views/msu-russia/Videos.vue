@@ -31,42 +31,42 @@ const videoList = [
   {
     title: 'Рейд по неблагополучным семьям представителей администрации города Саратова',
     source: 'Пресс-агенство "Информцентр"',
-    image: 'videos/video1.png'
+    image: '/images/photo.jpg'
   },
   {
     title: 'Саратов: готовность городских спортсооружений к работе в зимний период',
     source: 'Пресс-агенство "Информцентр"',
-    image: 'videos/video2.png'
+    image: '/images/photo.jpg'
   },
   {
     title: 'Открытый городской турнир по кикбоксингу "Спорт - против наркотиков и детской проституции"',
     source: 'Пресс-агенство "Информцентр"',
-    image: 'videos/video3.png'
+    image: '/images/photo.jpg'
   },
   {
     title: 'Публичные слушания по бюджету Саратова на 2009г',
     source: 'Пресс-агенство "Информцентр"',
-    image: 'videos/video4.png'
+    image: '/images/photo.jpg'
   },
   {
     title: 'Принятие городской Думой новой системы оплаты труда работников бюджетных учреждений',
     source: 'Пресс-агенство "Информцентр"',
-    image: 'videos/video5.png'
+    image: '/images/photo.jpg'
   },
   {
     title: 'Начало отопительного сезона в Саратове',
     source: 'Пресс-агенство "Информцентр"',
-    image: 'videos/video6.png'
+    image: '/images/photo.jpg'
   },
   {
     title: 'Установка проборов учёта в Саратове',
     source: 'Пресс-агенство "Информцентр"',
-    image: 'videos/video7.png'
+    image: '/images/photo.jpg'
   },
   {
     title: 'Встреча Губернатора Челябинской области Петра Сумина с главой Озерского городского округа Сергеем Чернышевым',
     source: 'Пресс-агенство "Информцентр"',
-    image: 'videos/video8.png'
+    image: '/images/photo.jpg'
   }
 ];
 
