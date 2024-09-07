@@ -3,6 +3,8 @@ import {computed, ref, onMounted} from 'vue';
 import SideCarouselNewsBlock from '@/components/msu-russia/SideCarouselNewsBlock.vue';
 import Loader from '@/views/msu-russia/Loader.vue';
 import useApiMain from '@/use/api/main';
+import { storage } from '@/firebase';
+import { ref as storageRef, getDownloadURL } from 'firebase/storage';
 
 const props = defineProps({
   carouselData: {
@@ -11,20 +13,34 @@ const props = defineProps({
   }
 });
 
-const { getPhotoUrl } = useApiMain();
+async function getPhotoUrl(imagePath) {
+  try {
+    const imageRef = storageRef(storage, 'root_files' + imagePath);  // Создаем ссылку на файл в Firebase Storage
+    const url = await getDownloadURL(imageRef);  // Получаем URL для изображения
+    console.log(url)
+    return url;
+  } catch (error) {
+    console.error("Ошибка при получении URL изображения:", error);
+    return '/images/photo.jpg';  // Возвращаем дефолтное изображение в случае ошибки
+  }
+}
 
 const carouselList = ref(props.carouselData);
 const carousel = ref({});
 const dataLoaded = ref(false);
 
-onMounted(async ()=>{
-  carousel.value = carouselList.value[0];
-  // carousel.value.photo = await getPhotoUrl(carousel.value.image);
-  dataLoaded.value = true;
-})
+
+
+onMounted(async () => {
+  if (carouselList.value && carouselList.value.length > 0) {
+    carousel.value = carouselList.value[0];
+    carousel.value.photo = await getPhotoUrl(carousel.value.image);  // Получаем URL изображения при загрузке
+    dataLoaded.value = true;
+  }
+});
 const changeCarousel = async (i) => {
   carousel.value = carouselList.value.find(card => card.id === i);
-  // carousel.value.photo = await getPhotoUrl(carousel.value.image);
+  carousel.value.photo = await getPhotoUrl(carousel.value.image);  // Получаем URL изображения из Firebase Storage
 };
 
 </script>
@@ -37,7 +53,7 @@ const changeCarousel = async (i) => {
     </div>
     <div class="grid grid-cols-4 gap-[25px]">
       <div class="md:col-span-3 col-span-4 flex flex-col gap-[15px]">
-        <img :src="carousel.image || '/images/photo.jpg'" class="carouselImg"/>
+        <img :src="carousel.photo || '/images/photo.jpg'" class="carouselImg"/>
         <div class="md:text-[30px] text-[26px] font-somic text-black font-bold carouselTitle">
           {{ carousel.title }}
         </div>
