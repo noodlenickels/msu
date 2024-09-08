@@ -11,13 +11,13 @@ const props = defineProps({
   }
 });
 
-const { getPhotoUrl } = useApiMain();
+const {getPhotoUrl} = useApiMain();
 
 const carouselList = ref(props.carouselData);
 const carousel = ref({});
 const dataLoaded = ref(false);
 
-onMounted(async ()=>{
+onMounted(async () => {
   carousel.value = carouselList.value[0];
   // carousel.value.photo = await getPhotoUrl(carousel.value.image);
   dataLoaded.value = true;
@@ -38,18 +38,20 @@ const changeCarousel = async (i) => {
     <div class="grid grid-cols-4 gap-[25px]">
       <div class="md:col-span-3 col-span-4 flex flex-col gap-[15px]">
         <img :src="carousel.image || '/images/photo.jpg'" class="carouselImg"/>
-        <div class="md:text-[30px] text-[26px] font-somic text-black font-bold carouselTitle">
-          {{ carousel.title }}
-        </div>
-        <div id="carouselText"
-             class="text-[16px] leading-[25px] font-somic text-gray-500 truncate-carousel">
-          {{ carousel.text }}
-        </div>
       </div>
       <SideCarouselNewsBlock :data="carouselList" class="md:flex hidden" @chosen="changeCarousel"/>
     </div>
+    <div class="col-span-3">
+      <div class="md:text-[30px] text-[26px] font-somic text-black font-bold carouselTitle">
+        {{ carousel.title }}
+      </div>
+      <div id="carouselText"
+           class="text-[16px] leading-[25px] font-somic text-gray-500 truncate-carousel">
+        {{ carousel.text }}
+      </div>
+    </div>
   </div>
-  <Loader v-else />
+  <Loader v-else/>
 </template>
 
 <style>

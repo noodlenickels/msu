@@ -13,11 +13,11 @@ import useApiInterview from '@/use/api/interview';
 import useApiNews from '@/use/api/news';
 import useApiPoint from '@/use/api/point';
 
-const { getOpinions, getOpinionById } = useApiOpinion();
-const { getInterviews, getInterviewById } = useApiInterview();
-const { getPeople, getPeopleById } = useApiPeople();
-const { getNews, getNewsById } = useApiNews();
-const { getPointOfView, getPointOfViewById } = useApiPoint();
+const { getOpinions } = useApiOpinion();
+const { getInterviews } = useApiInterview();
+const { getPeople } = useApiPeople();
+const { getNews } = useApiNews();
+const { getPointOfView } = useApiPoint();
 
 
 const interviewsData = await getInterviews();
@@ -42,7 +42,7 @@ const router = createRouter({
       name: 'admin_news',
       component: AdminPanel,
       props: {
-        data: newsData.data,
+        data: newsData?.data,
         caption: 'Новости',
         type: 'news'
       }

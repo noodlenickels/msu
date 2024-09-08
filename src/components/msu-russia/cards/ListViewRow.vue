@@ -28,14 +28,14 @@ onMounted(async () => {
 
 <template>
   <RouterLink :to="`${props.data.link}`">
-  <div>
-    <div class="grid grid-cols-12 flex gap-[25px] w-full">
-      <div class="relative l:col-span-4 col-span-6 floated">
-        <img :src="props.data.image || '/images/photo.jpg'" class="w-full viewCard"/>
+  <div class="">
+    <div class="flex gap-[25px] grid grid-cols-4">
+      <div class="relative floated">
+        <img :src="props.data.image || '/images/photo.jpg'" class="object-cover max-h-full viewCard"/>
         <div v-if="props.data.role" class="absolute w-auto l:text-[14px] l:h-[24px] md:h-[20px] md:text-[11px] h-[24px] text-[14px] font-somic bg-gray-100 rounded-[10px] text-black z-10	bottom-[7%] right-[5%] px-[7px]">{{ props.data.role }}</div>
       </div>
-      <div class="nofloat l:col-span-8 col-span-6 flex flex-col gap-[10px]">
-        <div class="l:text-[20px] md: text-[15px] font-somic text-black font-bold titleClass">
+      <div class="nofloat flex flex-col gap-[10px] col-span-3">
+        <div class="l:text-[20px] md: text-[15px] font-somic text-black font-bold titleClass border-b-[2px] border-gray">
           {{ props.data.title }}
         </div>
         <div class="text-[14px] font-somic text-gray-400 leading-[20px] truncate-text">
