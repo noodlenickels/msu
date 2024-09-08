@@ -11,17 +11,31 @@ const props = defineProps({
   }
 });
 
-const {getPhotoUrl} = useApiMain();
+async function getPhotoUrl(imagePath) {
+  try {
+    const imageRef = storageRef(storage, 'root_files' + imagePath);  // Создаем ссылку на файл в Firebase Storage
+    const url = await getDownloadURL(imageRef);  // Получаем URL для изображения
+    console.log(url)
+    return url;
+  } catch (error) {
+    console.error("Ошибка при получении URL изображения:", error);
+    return '/images/photo.jpg';  // Возвращаем дефолтное изображение в случае ошибки
+  }
+}
 
 const carouselList = ref(props.carouselData);
 const carousel = ref({});
 const dataLoaded = ref(false);
 
+
+
 onMounted(async () => {
-  carousel.value = carouselList.value[0];
-  // carousel.value.photo = await getPhotoUrl(carousel.value.image);
-  dataLoaded.value = true;
-})
+  if (carouselList.value && carouselList.value.length > 0) {
+    carousel.value = carouselList.value[0];
+    carousel.value.photo = await getPhotoUrl(carousel.value.image);  // Получаем URL изображения при загрузке
+    dataLoaded.value = true;
+  }
+});
 const changeCarousel = async (i) => {
   carousel.value = carouselList.value.find(card => card.id === i);
   // carousel.value.photo = await getPhotoUrl(carousel.value.image);
@@ -37,7 +51,7 @@ const changeCarousel = async (i) => {
     </div>
     <div class="grid grid-cols-4 gap-[25px]">
       <div class="md:col-span-3 col-span-4 flex flex-col gap-[15px]">
-        <img :src="carousel.image || '/images/photo.jpg'" class="carouselImg"/>
+        <img :src="carousel.photo || '/images/photo.jpg'" class="carouselImg"/>
       </div>
       <SideCarouselNewsBlock :data="carouselList" class="md:flex hidden" @chosen="changeCarousel"/>
     </div>
@@ -49,9 +63,10 @@ const changeCarousel = async (i) => {
            class="text-[16px] leading-[25px] font-somic text-gray-500 truncate-carousel">
         {{ carousel.text }}
       </div>
+      <SideCarouselNewsBlock :data="carouselList" class="md:flex hidden" @chosen="changeCarousel"/>
     </div>
   </div>
-  <Loader v-else/>
+  <Loader v-else />
 </template>
 
 <style>
