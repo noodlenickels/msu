@@ -30,7 +30,7 @@ onMounted(async () => {
   <RouterLink :to="`${props.data.link}`">
   <div class="">
     <div class="flex gap-[25px] grid grid-cols-4">
-      <div class="relative floated">
+      <div class="relative floated py-1">
         <img :src="props.data.image || '/images/photo.jpg'" class="object-cover max-h-full viewCard"/>
         <div v-if="props.data.role" class="absolute w-auto l:text-[14px] l:h-[24px] md:h-[20px] md:text-[11px] h-[24px] text-[14px] font-somic bg-gray-100 rounded-[10px] text-black z-10	bottom-[7%] right-[5%] px-[7px]">{{ props.data.role }}</div>
       </div>
