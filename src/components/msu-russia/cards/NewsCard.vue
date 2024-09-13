@@ -25,6 +25,7 @@ onMounted(async () => {
 </script>
 
 <template>
+  <RouterLink :to="'/news/' + data.id">
   <div>
       <div class="grid md:grid-cols-12 grid-cols-6 flex gap-[15px]">
         <img class="col-span-2 rounded-[10px]" :src="data.image || '/images/photo.jpg'" />
@@ -38,8 +39,9 @@ onMounted(async () => {
           </div>
         </div>
         <div class="col-span-1 text-[14px] text-gray-400 font-somic">
-          {{ data.date.slice(0, 5) }}
+          {{ data.date }}
         </div>
       </div>
     </div>
+  </RouterLink>
 </template>

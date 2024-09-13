@@ -178,7 +178,7 @@ const router = createRouter({
       component: ListView,
       props: {
         data: opinionData,
-        caption: 'Мнения'
+        caption: 'Мнения',
       }
     },
     {
@@ -187,7 +187,7 @@ const router = createRouter({
       component: ListView,
       props: {
         data: peopleData,
-        caption: 'Персона'
+        caption: 'Персона',
       }
     },
     {
@@ -195,7 +195,9 @@ const router = createRouter({
       name: 'pointOfViewId',
       component: PageWithBio,
       props: {
-        type: 'point_of_view'
+        type: 'point_of_view',
+        caption: 'Точка зрения',
+        key: 3
       }
     },
     {
@@ -203,7 +205,9 @@ const router = createRouter({
       name: 'newsId',
       component: PageWithoutBio,
       props: {
-        type: 'news'
+        type: 'news',
+        caption: 'Новость',
+        key: 3
       }
     },
     {
@@ -211,7 +215,8 @@ const router = createRouter({
       name: 'videoId',
       component: PageWithoutBio,
       props: {
-        type: 'video'
+        type: 'video',
+        key: 4
       }
     },
     {
@@ -219,7 +224,9 @@ const router = createRouter({
       name: 'interviewId',
       component: PageWithBio,
       props: {
-        type: 'interview'
+        type: 'interview',
+        caption: 'Интервью',
+        key: 2
       }
     },
     {
@@ -227,7 +234,9 @@ const router = createRouter({
       name: 'opinionId',
       component: PageWithBio,
       props: {
-        type: 'opinion'
+        type: 'opinion',
+        caption: 'Мнение',
+        key: 1
       }
     },
     {
@@ -235,7 +244,9 @@ const router = createRouter({
       name: 'personId',
       component: PageWithoutBio,
       props: {
-        type: 'person'
+        type: 'person',
+        caption: 'Персона',
+        key: 1
       }
     },
     {
@@ -243,7 +254,9 @@ const router = createRouter({
       name: 'regionId',
       component: PageWithoutBio,
       props: {
-        type: 'region'
+        type: 'region',
+        caption: 'Регион',
+        key: 2
       }
     }
   ]

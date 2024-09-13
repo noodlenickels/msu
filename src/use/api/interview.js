@@ -36,7 +36,8 @@ export default function useApiInterview() {
             id: fetchedData.data.regions_and_peoples.id,
             title: fetchedData.data.regions_and_peoples.fio_or_name_region,
             text: fetchedData.data.regions_and_peoples.content,
-            image: fetchedData.data.regions_and_peoples.path_to_image
+            image: fetchedData.data.regions_and_peoples.path_to_image,
+            type: fetchedData.data.regions_and_peoples.type
           }
         }
     }

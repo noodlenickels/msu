@@ -16,7 +16,9 @@ const {getPhotoUrl} = useApiMain();
 const carouselList = ref(props.carouselData);
 const carousel = ref({});
 const dataLoaded = ref(false);
-
+const link = computed(() => {
+  return '/news/' + carousel.value.id;
+});
 onMounted(async () => {
   carousel.value = carouselList.value[0];
   // carousel.value.photo = await getPhotoUrl(carousel.value.image);
@@ -41,8 +43,9 @@ const changeCarousel = async (i) => {
       </div>
       <SideCarouselNewsBlock :data="carouselList" class="md:flex mb-10 w-[100%]  h-[125%]  hidden" @chosen="changeCarousel"/>
     </div>
+    <RouterLink :to="link">
     <div class="col-span-3">
-      <div class="md:text-[22px] pt-12 w-[80%] text-[20px]  py-4 font-somic mt-[-75px] text-black font-bold carouselTitle">
+      <div class="md:text-[22px] pt-12 w-[75%] text-[20px]  py-4 font-somic mt-[-75px] text-black font-bold carouselTitle">
         {{ carousel.title }}
       </div>
       <div id="carouselText"
@@ -50,6 +53,7 @@ const changeCarousel = async (i) => {
         {{ carousel.text }}
       </div>
     </div>
+    </RouterLink>
   </div>
   <Loader v-else/>
 </template>

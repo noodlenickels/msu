@@ -35,7 +35,8 @@ onMounted(async () => {
         <div v-if="props.data.role" class="absolute w-auto l:text-[14px] l:h-[24px] md:h-[20px] md:text-[11px] h-[24px] text-[14px] font-somic bg-gray-100 rounded-[10px] text-black z-10	bottom-[7%] right-[5%] px-[7px]">{{ props.data.role }}</div>
       </div>
       <div class="nofloat flex flex-col gap-[10px] col-span-3">
-        <div class="l:text-[20px] md: text-[15px] font-somic text-black font-bold titleClass border-b-[2px] border-gray">
+<!--        border-b-[2px] border-gray-->
+        <div class="l:text-[20px] md: text-[15px] font-somic text-black font-bold titleClass">
           {{ props.data.title }}
         </div>
         <div class="text-[14px] font-somic text-gray-400 leading-[20px] truncate-text">

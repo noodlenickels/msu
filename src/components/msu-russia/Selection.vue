@@ -20,6 +20,12 @@ const { getPhotoUrl } = useApiMain();
 
 const randomData = ref({});
 const dataLoaded = ref(false);
+const captions = {
+  'opinion': 'Мнение',
+  'people': 'Персона',
+  'interview': 'Интервью',
+  'region': 'Регион'
+}
 
 onMounted(async () => {
   randomData.value = await getRandomSection();
@@ -34,7 +40,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="grid grid-cols-4 px-[10%] gap-[2px]">
-    <RandomCard v-for="row in randomData" class="l:col-span-1 col-span-4" :data="row"/>
+  <div class="grid grid-cols-4 px-[10%] gap-[25px]">
+    <RandomCard v-for="(row, idx) in randomData" class="md:col-span-1 col-span-4" :data="row" :title-caption="captions[idx]"/>
   </div>
 </template>

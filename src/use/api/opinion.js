@@ -6,7 +6,6 @@ export default function useApiOpinion() {
     const getOpinions = async () => {
         const fetchedData = await get$({url: 'api/opinions'});
         if (!fetchedData.isError) {
-            console.log(fetchedData)
 
             const formatted = fetchedData.data.map((data) => {
                 return {
@@ -28,7 +27,6 @@ export default function useApiOpinion() {
 
     const getOpinionById = async (id) => {
         const fetchedData = await get$({url: `api/opinion/${id}`});
-        console.log(fetchedData)
         if (!fetchedData.isError) {
                 return {
                     id: fetchedData.data.id,
@@ -39,7 +37,8 @@ export default function useApiOpinion() {
                         id: fetchedData.data.regions_and_peoples.id,
                         title: fetchedData.data.regions_and_peoples.fio_or_name_region,
                         text: fetchedData.data.regions_and_peoples.content,
-                        image: fetchedData.data.regions_and_peoples.path_to_image
+                        image: fetchedData.data.regions_and_peoples.path_to_image,
+                        type: fetchedData.data.regions_and_peoples.type
                     }
                 }
         }

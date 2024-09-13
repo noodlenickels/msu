@@ -29,7 +29,7 @@ onMounted(() => {
 
 <template>
   <div class="w100">
-    <div class="sm:grid sm:grid-cols-12 bg-primary items-start pt-[15px] pb-[15px] px-8 gap-[50px]">
+    <div class="sm:grid sm:grid-cols-12 bg-primary items-start pt-[15px] pb-[15px] px-[10%] gap-[50px]">
       <div class="md:col-span-7 col-span-12 flex flex-col text-white text-somic text-[10px] gap-[1px] py-[10px]">
         <div class="text-[12px] font-semibold">Контактные данные для Роскомнадзора и государственных органов</div>
         <div>Сетевое издание «Информационное агентство "Местное самоуправление».</div>

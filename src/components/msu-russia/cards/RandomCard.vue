@@ -5,7 +5,11 @@ const props = defineProps({
   data: {
     type: Object,
     required: true
-  }
+  },
+  titleCaption: {
+    type: String,
+    required: false
+  },
 });
 
 const emits = defineEmits(['submitted', 'closeForm', 'update:model-value']);
@@ -20,13 +24,12 @@ onMounted(() => {
 <template>
   <RouterLink :to="props.data.link">
     <div class="l:border-0 border-t-2 border-gray-200 l:mt-0 pt-5 mb:pt-1 mb-3">
-      <div class="">
-        <div class="text-[18px] font-somic text-black font-semibold">Мнение интервью</div>
-        <div class="flex-grow border-b-[2px] border-gray"></div>
+      <div class="flex items-end mb-[5%] gap-[15px]">
+        <div class="w-auto md:text-[18px] m-auto mt-2 text-[18px]  font-somic bg-primary px-[15px] py-[10px] text-white rounded-xl font-semibold">{{ titleCaption }}</div>
+        <div class="md:flex-grow border-b-[2px] border-primary"></div>
       </div>
       <div v-if="props.data.caption" class="flex mb-[30px] md:gap-[15px] gap-[7px]">
-        <div class="w-[170%] h-[90%] pb-[5px] pt-[30px] flex items-center text-[18px] font-somic text-black font-semibold md:h-[110px]">{{ props.data.caption }}</div>
-<!--        <div class="flex-grow border-b-[2px] border-gray"></div>-->
+        <div class="w-[170%] h-[90%] pb-[5px] pt-[30px] flex items-center l:text-[18px] text-[15px] font-somic text-black font-semibold md:h-[110px]">{{ props.data.caption }}</div>
       </div>
       <div class="flex flex-col gap-[10px]">
         <div class="m-auto">
@@ -35,7 +38,6 @@ onMounted(() => {
         <div class="md:text-[17.4px] text-[15px] font-somic text-black">
           {{ props.data.name }}
         </div>
-        <!--        :class="props.mode === 'news' ? 'font-bold' : ''"-->
         <div class="md:text-[20px] text-[17px] font-somic text-black font-bold">
           {{ props.data.title }}
         </div>

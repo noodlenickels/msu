@@ -34,13 +34,13 @@ const closeForm = () => {
 
 <template>
     <div>
-      <div v-if="props.data.caption" class="flex items-end mb-[30px] gap-[15px]">
-        <div class="w-auto text-[18px] font-somic text-black font-semibold">{{ props.data.caption }}</div>
-        <div class="flex-grow border-b-[2px] border-gray"></div>
+      <div v-if="props.data.caption" class="flex items-end mb-[5%] gap-[15px]">
+        <div class="w-auto md:text-[18px] m-auto mt-2 text-[18px]  font-somic bg-primary px-[15px] py-[10px] text-white rounded-xl font-semibold">{{ props.caption }}</div>
+        <div class="md:flex-grow border-b-[2px] border-primary"></div>
       </div>
-      <div class="flex flex-col md:gap-[20px] gap-[5px]">
+      <div class="flex flex-col md:gap-[10px] gap-[5px]">
         <div class="relative m-auto ">
-          <img :src="props.data.image || '/images/photo.jpg'" class="object-cover h-[250px]"/>
+          <img :src="props.data.image || '/images/photo.jpg'" class="aspect-square"/>
           <div v-if="props.data.role" class="absolute w-auto l:text-[16px] l:h-[26px] md:h-[20px] md:text-[11px] h-[24px] text-[14px] font-somic bg-gray-100 rounded-[10px] text-black z-10	bottom-[7%] right-[5%] px-[7px]">{{ props.data.role }}</div>
         </div>
         <div class="l:text-[17.4px] text-[15px] font-somic text-black">

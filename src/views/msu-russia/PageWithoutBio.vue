@@ -16,6 +16,10 @@ const props = defineProps({
   type: {
     type: String,
     required: true
+  },
+  caption: {
+    type: String,
+    required: true
   }
 });
 
@@ -66,21 +70,21 @@ onMounted(async () => {
 <!--  :class="`${topMenu.value ? '' : 'hidden'} topMenuClass`"-->
   <Header @active="toggleMenu"/>
   <TopMenu @toggle="toggleMenu" v-if="topMenu || bigScreen" />
-  <div v-if="dataLoaded" class="flex flex-col md:gap-[125px] gap-[75px]">
+  <div v-if="dataLoaded" class="flex flex-col gap-[75px]">
     <div class="flex flex-col md:gap-[125px] px-[10%] gap-[25px]">
       <div class="grid grid-cols-4 gap-[25px]">
-        <div class="md:col-span-3 col-span-4 flex flex-col gap-[15px]">
-          <div class="flex items-end mb-[15px] gap-[15px] w100">
-            <div v-if="props.type ==='region'" class="h-[21px] text-[18px] font-somic text-black font-semibold">Регион</div>
-            <div v-if="props.type ==='person'" class="h-[21px] text-[18px] font-somic text-black font-semibold">Персона</div>
-            <div v-if="props.type ==='news'" class="h-[21px] text-[18px] font-somic text-black font-semibold">Новость</div>
-            <div class="flex-grow border-b-[2px] border-gray"></div>
+        <div class="md:col-span-3 col-span-4 flex flex-col gap-[25px]">
+          <div class="flex items-end mb-[5%] gap-[15px]">
+            <div class="w-auto md:text-[18px] m-auto mt-2 text-[18px]  font-somic bg-primary px-[15px] py-[10px] text-white rounded-xl font-semibold">{{ props.caption }}</div>
+            <div class="md:flex-grow border-b-[2px] border-primary"></div>
           </div>
-          <img :src="cardData.image" class=""/>
+          <div class="flex flex-col items-center">
+            <img :src="cardData.image" class="aspect-square max-w-[400px]"/>
+          </div>
           <div class="text-[30px] font-somic text-black font-bold">
             {{ cardData.title }}
           </div>
-          <div class="text-[14px] font-somic text-gray-500">
+          <div class="text-[14px] font-somic text-gray-500 leading-7">
             {{ cardData.text }}
           </div>
         </div>
@@ -100,7 +104,7 @@ onMounted(async () => {
 <!--        </div>-->
 <!--      </div>-->
 <!--    </div>-->
-    <Selection class="mb-[55px]"/>
+    <Selection class="mb-[25px]"/>
     <Footer/>
   </div>
 </template>

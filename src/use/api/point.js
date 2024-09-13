@@ -37,7 +37,9 @@ export default function useApiPoint() {
                         id: data.regions_and_peoples.id,
                         title: data.regions_and_peoples.fio_or_name_region,
                         text: data.regions_and_peoples.content,
-                        image: data.regions_and_peoples.path_to_image
+                        image: data.regions_and_peoples.path_to_image,
+                        type: data.regions_and_peoples.type
+
                     }
                 }
             });

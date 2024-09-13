@@ -42,14 +42,14 @@ onMounted(()=>{
 <!--  :class="`${topMenu.value ? '' : 'hidden'} topMenuClass`"-->
   <Header @active="toggleMenu"/>
   <TopMenu @toggle="toggleMenu" v-if="topMenu || bigScreen" />
-  <div class="flex flex-col gap-[125px] px-[10%] gap-[25px] l:mb-[125px] mb-[55px]">
+  <div class="flex flex-col px-[10%] gap-[25px] mb-[55px]">
     <div class="grid grid-cols-4 gap-[25px]">
-      <div class="md:col-span-3 col-span-4 flex flex-col gap-[30px] md:mb-0 mb-[20px]">
-        <div class="flex gap-x-[20px] gap-y-[20px]">
-          <div class="w-auto text-[20px] bg-primary px-[10px] py-[7px] text-white font-somic text-black font-semibold">{{ props.caption }}</div>
-          <div class="flex-grow border-b-[3px] border-gray"></div>
+      <div class="md:col-span-3 col-span-4 flex flex-col gap-[15px] md:mb-0 mb-[20px]">
+        <div class="flex items-end mb-[5%] gap-[15px]">
+          <div class="w-auto md:text-[18px] m-auto mt-2 text-[18px]  font-somic bg-primary px-[15px] py-[10px] text-white rounded-xl font-semibold">{{ props.caption }}</div>
+          <div class="md:flex-grow border-b-[2px] border-primary"></div>
         </div>
-        <div class="flex flex-col md:gap-[70px] gap-[50px]">
+        <div class="flex flex-col md:gap-[40px] gap-[50px]">
           <ListViewRow v-for="row in props.data" :type="props.caption" :key="row.id" class="md:col-span-6 col-span-12" :data="row"/>
         </div>
       </div>

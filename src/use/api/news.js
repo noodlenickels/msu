@@ -14,7 +14,7 @@ export default function useApiNews() {
       fetchedData.data.data.map((data) => {
         formatted.data.push({
             id: data.id,
-            date: data.publication_date.slice(0, 10),
+            date: data.publication_date,
             image: data.path_to_image_or_video,
             title: data.title,
             text: data.content,
