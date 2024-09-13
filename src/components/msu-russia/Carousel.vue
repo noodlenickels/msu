@@ -32,8 +32,8 @@ const changeCarousel = async (i) => {
 <template>
   <div v-if="dataLoaded" class="w100">
     <div class="flex items-end mb-[5%] gap-[15px]">
-      <div class="w-auto md:text-[18px] text-[26px] font-somic bg-primary px-[15px] py-[10px] text-white rounded-xl font-semibold">Главные новости</div>
-      <div class="flex-grow border-b-[2px] border-primary"></div>
+      <div class="w-auto md:text-[18px] m-auto mt-2 text-[18px]  font-somic bg-primary px-[15px] py-[10px] text-white rounded-xl font-semibold">Главные новости</div>
+      <div class="md:flex-grow border-b-[2px] border-primary"></div>
     </div>
     <div class="grid grid-cols-4 gap-[50px]">
       <div class="md:col-span-3 col-span-4 flex flex-col gap-[15px]">
