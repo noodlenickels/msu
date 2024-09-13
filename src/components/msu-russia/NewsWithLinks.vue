@@ -65,13 +65,13 @@ const closeForm = () => {
 </script>
 
 <template>
-  <div>
+  <div class = " h-[1%] mt-[-100px] w-[100%] md: py-[15%]">
     <div class="flex flex-col md:gap-[20px] gap-[10px]">
-      <div class="text-[16.5px] md:text-[14px] l:text-[16.5px] font-bold text-black font-somic md:h-[90px] h-[70px]">
+      <div class="text-[16.5px] md:text-[14px] l:text-[16.5px] font-bold text-black font-somic md: aspect-square  h-[70px]">
         {{ props.title }}
       </div>
-      <div class="flex flex-col gap-[10px]">
-        <img :src="props.img" alt="photo"/>
+      <div class="flex flex-col md: gap-[10px]">
+        <img :src="props.img" alt="photo" class = "h-[60%] "/>
         <div class="text-[17.35px] text-gray-500 font-somic">
           {{ props.name }}
         </div>

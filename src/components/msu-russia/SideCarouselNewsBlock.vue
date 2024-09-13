@@ -37,7 +37,7 @@ const changeCarousel = (i) => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-[20px] justify-between">
+  <div class="flex flex-col  justify-between">
     <SideCarouselNews v-for="element in props.data" class="classNews" @chosen="changeCarousel" :id="element.id" :text="element.title"/>
   </div>
 </template>
