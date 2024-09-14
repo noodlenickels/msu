@@ -12,6 +12,7 @@ import useApiPeople from '@/use/api/person';
 import useApiInterview from '@/use/api/interview';
 import useApiNews from '@/use/api/news';
 import useApiPoint from '@/use/api/point';
+import EnterEditor from '@/views/admin-panel/EnterEditor.vue';
 
 const { getOpinions } = useApiOpinion();
 const { getInterviews } = useApiInterview();
@@ -245,6 +246,11 @@ const router = createRouter({
       props: {
         type: 'region'
       }
+    },
+    {
+      path: '/admin_panel/editor',
+      name: 'Editor',
+      component: EnterEditor
     }
   ]
 })

@@ -11,7 +11,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="body grid gap-[15px] px-[10%]">
+  <!----><div class="body grid gap-[15px] px-[10%]">
     <div class="grid grid-cols-12 px-[5%] py-[15px] border-[3px] font-somic text-gray-500 text-[17px]">
       <div class="col-span-8 grid grid-cols-7 items-center">
         <RouterLink  :to="`/admin_panel/${props.type}/create`">

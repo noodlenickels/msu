@@ -14,6 +14,10 @@ import Footer from "@/components/admin-panel/Footer.vue";
 import Selection from "@/components/msu-russia/Selection.vue";
 
 import useApiMain from '@/use/api/main';
+import MainBlock from './MainBlock.vue';
+import ListOfActions from './ListOfActions.vue';
+import Login from './Login.vue'
+import EnterEditor from './EnterEditor.vue';
 
 const props = defineProps({
   caption: {
@@ -46,11 +50,9 @@ onMounted(async () => {
 </script>
 
 <template>
-  <Header />
-  <TopMenu @change="changeTopMenu" class="mt-[30px]"/>
-  <ActionPanel :type="topMenu" class="mb-[20px]"/>
-  <List :data="props.data" class="mb-[40px]">
-    <Checkboxes class="mb-[20px]"/>
-  </List>
-  <Footer/>
+<MainBlock class = "">
+  <Login></Login>
+  <ListOfActions>
+  </ListOfActions>
+</MainBlock>
 </template>
