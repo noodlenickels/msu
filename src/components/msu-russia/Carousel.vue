@@ -2,7 +2,8 @@
 import {computed, ref, onMounted} from 'vue';
 import SideCarouselNewsBlock from '@/components/msu-russia/SideCarouselNewsBlock.vue';
 import Loader from '@/views/msu-russia/Loader.vue';
-import useApiMain from '@/use/api/main';
+import usePhoto from '@/use/images';
+import useApiRegion from "@/use/api/region";
 
 const props = defineProps({
   carouselData: {
@@ -11,22 +12,24 @@ const props = defineProps({
   }
 });
 
-const {getPhotoUrl} = useApiMain();
-
 const carouselList = ref(props.carouselData);
 const carousel = ref({});
 const dataLoaded = ref(false);
+const { getPhotoUrl } = usePhoto();
+
 const link = computed(() => {
   return '/news/' + carousel.value.id;
 });
+
 onMounted(async () => {
-  carousel.value = carouselList.value[0];
-  // carousel.value.photo = await getPhotoUrl(carousel.value.image);
-  dataLoaded.value = true;
-})
+  if (carouselList.value && carouselList.value.length > 0) {
+    carousel.value = carouselList.value[0];
+    carousel.value.photo = await getPhotoUrl(carousel.value.image);  // Получаем URL изображения при загрузке
+    dataLoaded.value = true;
+  }
+});
 const changeCarousel = async (i) => {
   carousel.value = carouselList.value.find(card => card.id === i);
-  // carousel.value.photo = await getPhotoUrl(carousel.value.image);
 };
 
 </script>

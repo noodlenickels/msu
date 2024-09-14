@@ -11,12 +11,13 @@ import useApiOpinion from '@/use/api/opinion';
 import useApiPoint from '@/use/api/point';
 import useApiInterview from '@/use/api/interview';
 import {useRoute} from 'vue-router';
+import usePhoto from "@/use/images";
 
 
 const {getOpinionById, getOpinionTopFour } = useApiOpinion();
 const {getInterviewById, getInterviewTopFour} = useApiInterview();
 const {getPointOfViewById, getPointOfViewTopFour} = useApiPoint();
-const {getPhotoUrl} = useApiMain();
+const { getPhotoUrl } = usePhoto();
 
 const route = useRoute();
 

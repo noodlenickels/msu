@@ -3,6 +3,7 @@ import {computed, ref, onMounted} from 'vue';
 import RandomCard from "@/components/msu-russia/cards/RandomCard.vue";
 import useApiNews from '@/use/api/news';
 import useApiMain from '@/use/api/main';
+import usePhoto from "@/use/images";
 
 
 // const props = defineProps({
@@ -16,7 +17,7 @@ import useApiMain from '@/use/api/main';
 const emits = defineEmits(['submitted', 'closeForm', 'update:model-value']);
 
 const {getRandomSection} = useApiNews();
-const { getPhotoUrl } = useApiMain();
+const { getPhotoUrl } = usePhoto();
 
 const randomData = ref({});
 const dataLoaded = ref(false);
@@ -29,10 +30,10 @@ const captions = {
 
 onMounted(async () => {
   randomData.value = await getRandomSection();
-  // randomData.value.interview.photo = await getPhotoUrl(randomData.value.interview.image);
-  // randomData.value.opinion.photo = await getPhotoUrl(randomData.value.opinion.image);
-  // randomData.value.people.photo = await getPhotoUrl(randomData.value.people.image);
-  // randomData.value.region.photo = await getPhotoUrl(randomData.value.region.image);
+  randomData.value.interview.photo = await getPhotoUrl(randomData.value.interview.image);
+  randomData.value.opinion.photo = await getPhotoUrl(randomData.value.opinion.image);
+  randomData.value.people.photo = await getPhotoUrl(randomData.value.people.image);
+  randomData.value.region.photo = await getPhotoUrl(randomData.value.region.image);
 
   dataLoaded.value = true;
 });

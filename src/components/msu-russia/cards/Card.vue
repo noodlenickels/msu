@@ -1,6 +1,7 @@
 <script setup>
 import {computed, ref, onMounted} from 'vue';
 import useApiMain from '@/use/api/main';
+import usePhoto from "@/use/images";
 
 const props = defineProps({
   caption: {
@@ -17,12 +18,12 @@ const props = defineProps({
 const emits = defineEmits(['submitted', 'closeForm', 'update:model-value']);
 
 const dataLoaded = ref(false);
+const photo = ref('');
 
-const {getPhotoUrl} = useApiMain();
-const photo = ref();
+const { getPhotoUrl } = usePhoto();
 
 onMounted(async () => {
-  // photo.value = await getPhotoUrl(props.data.image);
+  photo.value = await getPhotoUrl(props.data.image);
   dataLoaded.value = true;
 });
 
@@ -44,7 +45,7 @@ const closeForm = () => {
     <div class="flex flex-col md:gap-[10px] gap-[5px]">
       <div class="relative m-auto ">
         <div class="m-auto max-w-[200px]">
-          <img :src="props.data.image || '/images/photo.jpg'" class="aspect-square"/>
+          <img :src="photo || '/images/photo.jpg'" class="aspect-square"/>
         </div>
         <div v-if="props.data.role"
              class="absolute w-auto l:text-[16px] l:h-[26px] md:h-[20px] md:text-[11px] h-[24px] text-[14px] font-somic bg-gray-100 rounded-[10px] text-black z-10	bottom-[7%] right-[5%] px-[7px]">

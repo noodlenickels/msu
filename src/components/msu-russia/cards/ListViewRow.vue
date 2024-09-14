@@ -2,6 +2,7 @@
 import {computed, ref, onMounted} from 'vue';
 import useApiMain from '@/use/api/main';
 import {RouterLink} from "vue-router";
+import usePhoto from "@/use/images";
 
 const props = defineProps({
   data: {
@@ -13,13 +14,13 @@ const props = defineProps({
     required: true
   }
 });
-const { getPhotoUrl } = useApiMain();
+const { getPhotoUrl } = usePhoto();
 const photo = ref();
 const emits = defineEmits(['submitted', 'closeForm', 'update:model-value']);
 const dataLoaded = ref(false);
 
-onMounted(() => {
-  // photo.value = await getPhotoUrl(props.data.image);
+onMounted(async () => {
+  photo.value = await getPhotoUrl(props.data.image);
   dataLoaded.value = true;
   compare();
 });

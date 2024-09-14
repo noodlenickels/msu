@@ -11,6 +11,7 @@ import useApiNews from '@/use/api/news';
 import useApiPeople from '@/use/api/person';
 import useApiRegion from '@/use/api/region';
 import { useRoute } from 'vue-router';
+import usePhoto from "@/use/images";
 
 const props = defineProps({
   type: {
@@ -28,13 +29,14 @@ const emits = defineEmits(['submitted', 'closeForm', 'update:model-value']);
 const { getRegionById } = useApiRegion();
 const { getPeopleById } = useApiPeople();
 const { getNewsById } = useApiNews();
-const { getPhotoUrl } = useApiMain();
 
 const route = useRoute();
 const dataLoaded = ref(false);
 const photo = ref();
 const topMenu = ref(false);
 const bigScreen = ref(false);
+
+const { getPhotoUrl } = usePhoto();
 
 const toggleMenu = () => {
   topMenu.value = !topMenu.value;
@@ -79,7 +81,7 @@ onMounted(async () => {
             <div class="md:flex-grow border-b-[2px] border-primary"></div>
           </div>
           <div class="flex flex-col items-center">
-            <img :src="cardData.image" class="aspect-square max-w-[300px]"/>
+            <img :src="photo" class="aspect-square max-w-[300px]"/>
           </div>
           <div class="text-[30px] font-somic text-black font-bold">
             {{ cardData.title }}
