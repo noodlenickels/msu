@@ -11,9 +11,13 @@ import RegionNews from "@/components/msu-russia/RegionNews.vue";
 import PointOfView from "@/components/msu-russia/PointOfView.vue";
 import OfficialSites from "@/components/msu-russia/OfficialSites.vue";
 import Footer from "@/components/admin-panel/Footer.vue";
-import Login from "@/components/admin-panel/Login.vue";
+import Selection from "@/components/msu-russia/Selection.vue";
 
 import useApiMain from '@/use/api/main';
+import MainBlock from './MainBlock.vue';
+import ListOfActions from './ListOfActions.vue';
+import Login from './Login.vue'
+import EnterEditor from './EnterEditor.vue';
 
 const props = defineProps({
   caption: {
@@ -46,5 +50,9 @@ onMounted(async () => {
 </script>
 
 <template>
+<MainBlock class = "">
   <Login></Login>
+  <ListOfActions>
+  </ListOfActions>
+</MainBlock>
 </template>
