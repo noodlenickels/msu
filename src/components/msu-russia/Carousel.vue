@@ -41,9 +41,9 @@ const changeCarousel = async (i) => {
       <div class="md:flex-grow border-b-[2px] border-primary"></div>
     </div>
     <div class="grid grid-cols-4 gap-[50px]">
-      <div class="col-span-3 flex flex-col gap-[15px]">
+      <div class="md:col-span-3 col-span-4 flex flex-col gap-[15px]">
         <img :src="carousel.image || '/images/photo.jpg'" class="carouselImg h-[80%] w-[100%]"/>
-        <RouterLink :to="link" class="md:col-span-3 col-span-4">
+        <RouterLink :to="link">
             <div class="md:text-[22px] text-[20px] font-somic text-black font-bold carouselTitle">
               {{ carousel.title }}
             </div>
