@@ -40,7 +40,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="grid grid-cols-4 px-[10%] gap-[25px]">
+  <div class="grid grid-cols-4 px-[10%] md:gap-[25px] gap-[10px]">
     <RandomCard v-for="(row, idx) in randomData" class="md:col-span-1 col-span-4" :data="row" :title-caption="captions[idx]"/>
   </div>
 </template>

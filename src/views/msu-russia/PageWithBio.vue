@@ -96,9 +96,9 @@ onMounted(async () => {
   <div v-if="dataLoaded" class="flex flex-col md:gap-[45px] gap-[25px]">
     <div class="flex flex-col md:gap-[75px] px-[10%] gap-[25px]">
       <div class="grid grid-cols-4 gap-[25px]">
-        <div class="md:col-span-2 col-span-4 flex flex-col gap-[15px]">
-          <div class="flex items-end mb-[5%] gap-[15px]">
-            <div class="w-auto md:text-[18px] m-auto mt-2 text-[18px]  font-somic bg-primary px-[15px] py-[10px] text-white rounded-xl font-semibold">{{ props.caption }}</div>
+        <div class="md:col-span-2 col-span-4 flex flex-col gap-[15px] md:items-start items-center">
+          <div class="flex items-end w-full mb-[5%] gap-[15px]">
+            <div class="md:w-auto w-full text-center md:text-[18px] m-auto mt-2 text-[18px] font-somic bg-primary px-[15px] py-[10px] text-white rounded-xl font-semibold">{{ props.caption }}</div>
             <div class="md:flex-grow border-b-[2px] border-primary"></div>
           </div>
           <img :src="pageData.image" class="aspect-square"/>
@@ -109,18 +109,20 @@ onMounted(async () => {
             {{ pageData.text }}
           </div>
         </div>
-        <RouterLink class="md:col-span-1 sm:col-span-2 col-span-4" :to="link">
+        <div class="md:hidden"></div>
+        <RouterLink class="md:col-span-1 col-span-2" :to="link">
           <Card :data="personData"/>
         </RouterLink>
+        <div class="md:hidden"></div>
         <AddsBlock class="sm:col-span-2 md:col-span-1 hidden sm:flex"/>
       </div>
     </div>
     <div class="flex flex-col px-[10%] gap-[5px]">
       <div class="flex items-end mb-[5%] gap-[15px]">
-        <div v-if="props.type === 'opinion'" class="w-auto md:text-[18px] m-auto mt-2 text-[18px]  font-somic bg-primary px-[15px] py-[10px] text-white rounded-xl font-semibold">Еще мнения</div>
-        <div v-if="props.type === 'interview'" class="w-auto md:text-[18px] m-auto mt-2 text-[18px]  font-somic bg-primary px-[15px] py-[10px] text-white rounded-xl font-semibold">Еще интервью
+        <div v-if="props.type === 'opinion'" class="md:w-auto w-full text-center md:text-[18px] m-auto mt-2 text-[18px]  font-somic bg-primary px-[15px] py-[10px] text-white rounded-xl font-semibold">Еще мнения</div>
+        <div v-if="props.type === 'interview'" class="md:w-auto w-full text-center md:text-[18px] m-auto mt-2 text-[18px]  font-somic bg-primary px-[15px] py-[10px] text-white rounded-xl font-semibold">Еще интервью
         </div>
-        <div v-if="props.type === 'point_of_view'" class="w-auto md:text-[18px] m-auto mt-2 text-[18px]  font-somic bg-primary px-[15px] py-[10px] text-white rounded-xl font-semibold">Еще точки
+        <div v-if="props.type === 'point_of_view'" class="md:w-auto w-full text-center md:text-[18px] m-auto mt-2 text-[18px]  font-somic bg-primary px-[15px] py-[10px] text-white rounded-xl font-semibold">Еще точки
           зрения
         </div>
         <div class="md:flex-grow border-b-[2px] border-primary"></div>

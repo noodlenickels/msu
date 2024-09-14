@@ -44,12 +44,12 @@ onMounted(async () => {
 <!--  :class="`${topMenu.value ? '' : 'hidden'} topMenuClass`"-->
   <Header @active="toggleMenu"/>
   <TopMenu @toggle="toggleMenu" v-if="topMenu || bigScreen" />
-  <div v-if="dataLoaded" class="flex flex-col gap-[75px]">
+  <div v-if="dataLoaded" class="flex flex-col md:gap-[75px] gap-[45px]">
     <NewsBlock :carouselList='carouselList' />
     <Selection />
     <RegionNews/>
     <PointOfView/>
-    <div class="grid grid-cols-3 px-[10%] md:gap-[20px] gap-[50px]">
+    <div class="grid grid-cols-3 px-[10%] gap-[20px]">
       <NewsWithLinks
           class="md:col-span-1 col-span-3"
           :title="'Комитет Совета Федерации по федеративному устройству,  региональной политике, местному самоуправлению и делам Севера'"

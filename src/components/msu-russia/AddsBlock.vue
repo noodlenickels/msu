@@ -38,7 +38,7 @@ const closeForm = () => {
 </script>
 
 <template>
-  <div class="w-full bg-gray-200 text-gray-800 flex justify-center items-center ml-16 ">
+  <div class="w-full bg-gray-200 text-gray-800 flex justify-center items-center ">
     Место для рекламы
   </div>
 </template>

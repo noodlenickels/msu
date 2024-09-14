@@ -41,7 +41,7 @@ const closeForm = () => {
 <template>
   <div class="px-[10%]">
     <div class="flex items-end mb-[45px] gap-[15px] w100">
-      <div class="md:text-[18px] m-auto text-[18px] font-somic bg-primary px-[15px] py-[10px] text-white rounded-xl font-semibold">Официальные сайты</div>
+      <div class="md:text-[18px] md:m-auto w-full text-[18px] text-center font-somic bg-primary px-[15px] py-[10px] text-white rounded-xl font-semibold">Официальные сайты</div>
       <div class=" md:flex-grow border-b-[2px] border-primary"></div>
     </div>
     <div class="grid grid-cols-3 gap-[25px]">

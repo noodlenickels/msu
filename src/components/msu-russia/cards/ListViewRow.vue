@@ -18,7 +18,7 @@ const photo = ref();
 const emits = defineEmits(['submitted', 'closeForm', 'update:model-value']);
 const dataLoaded = ref(false);
 
-onMounted(async () => {
+onMounted(() => {
   // photo.value = await getPhotoUrl(props.data.image);
   dataLoaded.value = true;
   compare();
@@ -29,12 +29,12 @@ onMounted(async () => {
 <template>
   <RouterLink :to="`${props.data.link}`">
   <div class="">
-    <div class="flex gap-[25px] grid grid-cols-4">
+    <div class="flex md:gap-[25px] gap-[10px] md:grid md:grid-cols-4 flex-col">
       <div class="relative floated py-1">
-        <img :src="props.data.image || '/images/photo.jpg'" class="object-cover max-h-full viewCard"/>
+        <img :src="props.data.image || '/images/photo.jpg'" class="object-cover viewCard max-h-[200px]"/>
         <div v-if="props.data.role" class="absolute w-auto l:text-[14px] l:h-[24px] md:h-[20px] md:text-[11px] h-[24px] text-[14px] font-somic bg-gray-100 rounded-[10px] text-black z-10	bottom-[7%] right-[5%] px-[7px]">{{ props.data.role }}</div>
       </div>
-      <div class="nofloat flex flex-col gap-[10px] col-span-3">
+      <div class="flex flex-col gap-[10px] col-span-3">
 <!--        border-b-[2px] border-gray-->
         <div class="l:text-[20px] md: text-[15px] font-somic text-black font-bold titleClass">
           {{ props.data.title }}
@@ -55,18 +55,12 @@ onMounted(async () => {
   -webkit-box-orient: vertical;
 }
 
-.floated{
-  float: left;
-}
-
-.nofloat{
-  float:none
-}
-
-
 </style>
 
 <script>
+setTimeout(()=>{
+  if (document.documentElement.clientWidth > 640) compare();
+}, 1000);
 function compare(){
   const cards = document.getElementsByClassName('viewCard');
   for (let i=0; i<cards.length; i++){

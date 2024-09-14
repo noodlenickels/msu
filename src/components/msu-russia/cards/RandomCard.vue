@@ -23,16 +23,16 @@ onMounted(() => {
 
 <template>
   <RouterLink :to="props.data.link">
-    <div class="l:border-0 border-t-2 border-gray-200 l:mt-0 pt-5 mb:pt-1 mb-3">
-      <div class="flex items-end mb-[5%] gap-[15px]">
-        <div class="w-auto md:text-[18px] m-auto mt-2 text-[18px]  font-somic bg-primary px-[15px] py-[10px] text-white rounded-xl font-semibold">{{ titleCaption }}</div>
+    <div class="l:mt-0 pt-5 mb:pt-1 mb-3">
+      <div class="flex items-end gap-[15px]">
+        <div class="md:w-auto w-full m-auto text-center mt-2 l:text-[18px] text-[15px] font-somic bg-primary px-[12px] py-[8px] text-white rounded-xl font-semibold">{{ titleCaption }}</div>
         <div class="md:flex-grow border-b-[2px] border-primary"></div>
       </div>
       <div v-if="props.data.caption" class="flex mb-[30px] md:gap-[15px] gap-[7px]">
         <div class="w-[170%] h-[90%] pb-[5px] pt-[30px] flex items-center l:text-[18px] text-[15px] font-somic text-black font-semibold md:h-[110px]">{{ props.data.caption }}</div>
       </div>
       <div class="flex flex-col gap-[10px]">
-        <div class="m-auto">
+        <div class="m-auto max-w-[200px]">
           <img :src="props.data.image || '/images/photo.jpg'" class="aspect-square"/>
         </div>
         <div class="md:text-[17.4px] text-[15px] font-somic text-black">

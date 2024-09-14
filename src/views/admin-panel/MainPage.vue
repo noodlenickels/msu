@@ -11,7 +11,7 @@ import RegionNews from "@/components/msu-russia/RegionNews.vue";
 import PointOfView from "@/components/msu-russia/PointOfView.vue";
 import OfficialSites from "@/components/msu-russia/OfficialSites.vue";
 import Footer from "@/components/admin-panel/Footer.vue";
-import Selection from "@/components/msu-russia/Selection.vue";
+import Login from "@/components/admin-panel/Login.vue";
 
 import useApiMain from '@/use/api/main';
 
@@ -46,11 +46,5 @@ onMounted(async () => {
 </script>
 
 <template>
-  <Header />
-  <TopMenu @change="changeTopMenu" class="mt-[30px]"/>
-  <ActionPanel :type="topMenu" class="mb-[20px]"/>
-  <List :data="props.data" class="mb-[40px]">
-    <Checkboxes class="mb-[20px]"/>
-  </List>
-  <Footer/>
+  <Login></Login>
 </template>

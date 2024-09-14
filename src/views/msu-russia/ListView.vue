@@ -46,7 +46,7 @@ onMounted(()=>{
     <div class="grid grid-cols-4 gap-[25px]">
       <div class="md:col-span-3 col-span-4 flex flex-col gap-[15px] md:mb-0 mb-[20px]">
         <div class="flex items-end mb-[5%] gap-[15px]">
-          <div class="w-auto md:text-[18px] m-auto mt-2 text-[18px]  font-somic bg-primary px-[15px] py-[10px] text-white rounded-xl font-semibold">{{ props.caption }}</div>
+          <div class="md:w-auto w-full text-center md:text-[18px] m-auto mt-2 text-[18px]  font-somic bg-primary px-[15px] py-[10px] text-white rounded-xl font-semibold">{{ props.caption }}</div>
           <div class="md:flex-grow border-b-[2px] border-primary"></div>
         </div>
         <div class="flex flex-col md:gap-[40px] gap-[50px]">
