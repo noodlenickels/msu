@@ -1,8 +1,6 @@
 <script setup>
 import MainBlock from './MainBlock.vue'
 import ListOfActions from './ListOfActions.vue'
-import Navigation from './Navigation.vue'
-import Checkboxes from './Checkboxes.vue'
 </script>
 <template>
     <MainBlock class = "flex h-lvh">
@@ -10,7 +8,7 @@ import Checkboxes from './Checkboxes.vue'
         <div class = " h-[100%] w-[100%]">
             <div class ="flex flex-row mt-[5px] ml-[5px]">
                 <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center bg-slate-300 rounded-sm border-2 ml-[3px] mr-[3px] border-neutral-600"><span>Новости</span></a>
-                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center bg-slate-200 rounded-sm border-2 ml-[3px] mr-[3px] border-neutral-600"><span>Мнения</span></a>
+                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center bg-slate-300 rounded-sm border-2 ml-[3px] mr-[3px] border-neutral-600 "><span>Мнения</span></a>
                 <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center bg-blue-300 rounded-sm border-2 ml-[3px] mr-[3px]  border-blue-500"><span>Интервью</span></a>
             </div>
             <div class = "flex flex-row ml-[5px] mt-[5px]">
@@ -50,7 +48,7 @@ import Checkboxes from './Checkboxes.vue'
                     </ul>
                 </div>
                 <div class = "flex">
-                    <button class = 'text-[16px]  w-[180px] rounded-md ml-[10px] h-[48px] bg-primary text-white'>Отображать статтусы</button>
+                    <button class = 'text-[16px]  w-[180px] rounded-md ml-[10px] h-[48px] bg-primary text-white'>Отображать статусы</button>
                 </div>
                 <div class = "flex ml-[250px] mt-[10px]">
                     <label for="" class = "text-[16px]"> Поиск
@@ -59,7 +57,7 @@ import Checkboxes from './Checkboxes.vue'
                 </div>
             </div> 
             <div class = "flex flex-row mt-[10px]">
-                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center border-r-2 border-gray-400"><span>Создать</span></a>
+                <a href="" class = "text-[16px]  w-[180px] rounded-md ml-[10px] h-[48px] bg-primary text-white"><span>Создать</span></a>
                 <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center border-r-2 border-gray-400"><span>Изменить</span></a>
                 <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center border-r-2 border-gray-400"><span>Пометка на удаление</span></a>
                 <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center border-r-2  border-gray-400"><span>Выставить в первую полосу</span></a>
@@ -67,7 +65,7 @@ import Checkboxes from './Checkboxes.vue'
             
             </div>
             <div class = 'flex'>
-                <table class =  "border-2 border-collapse  bg-black-border w-[100%] table-auto">
+                <table class =  "border border-collapse border-black w-[100%]">
                     <thead>
                         <tr class = " even:bg-white">
                             <td class = "">№ п/п</td>
@@ -78,47 +76,97 @@ import Checkboxes from './Checkboxes.vue'
                             <th class = "border-collapse border-1 border-gray-500">Дата обновления</th>
                             <th class = "border-collapse border-1 border-gray-500">Комментарий</th>
                         </tr>
+                     </thead>
+                     <tbody>
                     <tr class = " even:bg-white odd:bg-blue-200" >
                         <td>1</td>
-                        <td>12.09.2023</td>
-                        <td>Иванов Иван Иванович</td>
                         <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
-
+                        <td></td>
+                        <td></td>   
                     </tr>
                     <tr class = " even:bg-white odd:bg-blue-200">
-                        <form class="tr" method="post" action="">
-                            <span class="td"><input type="text"/></span>
-                            <span class="td"><input type="text"/></span>
-                            <span class="td"><input type="text"/></span>
-                            <span class="td"><input type="text"/></span>
-                        </form>
+                        <td>2</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr class = " even:bg-white odd:bg-blue-200">
-                        
+                        <td>3</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                 
                     </tr>
                     <tr class = " even:bg-white odd:bg-blue-200">
+                        <td>4</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                        
                     </tr>
                     <tr class = " even:bg-white odd:bg-blue-200">
+                        <td>5</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                      
                     </tr>
                     <tr class = " even:bg-white odd:bg-blue-200">
+                        <td>6</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                         
                     </tr>
                     <tr class = " even:bg-white odd:bg-blue-200">
+                        <td>7</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                        
                     </tr>
                     <tr class = " even:bg-white odd:bg-blue-200">
+                        <td>8</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                        
                     </tr>
                     <tr class = " even:bg-white odd:bg-blue-200">
+                        <td>9</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                        
                     </tr>
-                                </thead>
+                                </tbody>
                             </table>
                         </div>
         </div>

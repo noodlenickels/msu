@@ -7,9 +7,9 @@ import ListOfActions from './ListOfActions.vue'
         <ListOfActions></ListOfActions>
         <div class = " h-[100%] w-[100%]">
             <div class ="flex flex-row mt-[5px] ml-[5px]">
-                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center bg-blue-300 rounded-sm border-2 ml-[3px] mr-[3px] border-neutral-600"><span>Новости</span></a>
-                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center bg-slate-200 rounded-sm border-2 ml-[3px] mr-[3px] border-blue-500"><span>Мнения</span></a>
-                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center bg-blue-300 s rounded-sm border-2 ml-[3px] mr-[3px] border-neutral-600"><span>Интервью</span></a>
+                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center bg-slate-300 rounded-sm border-2 ml-[3px] mr-[3px] border-neutral-600"><span>Новости</span></a>
+                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center bg-blue-300 rounded-sm border-2 ml-[3px] mr-[3px] border-blue-500"><span>Мнения</span></a>
+                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center bg-slate-300 s rounded-sm border-2 ml-[3px] mr-[3px] border-neutral-600"><span>Интервью</span></a>
             </div>
             <div class = "flex flex-row ml-[5px] mt-[5px]">
                 <div>
@@ -48,7 +48,7 @@ import ListOfActions from './ListOfActions.vue'
                     </ul>
                 </div>
                 <div class = "flex">
-                    <button class = 'text-[16px]  w-[180px] rounded-md ml-[10px] h-[48px] bg-primary text-white'>Отображать статтусы</button>
+                    <button class = 'text-[16px]  w-[180px] rounded-md ml-[10px] h-[48px] bg-primary text-white'>Отображать статусы</button>
                 </div>
                 <div class = "flex ml-[250px] mt-[10px]">
                     <label for="" class = "text-[16px]"> Поиск
@@ -56,16 +56,15 @@ import ListOfActions from './ListOfActions.vue'
                     </label>
                 </div>
             </div> 
-            <div class = "flex flex-row mt-[10px]">
-                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center border-r-2 border-gray-400"><span>Создать</span></a>
-                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center border-r-2 border-gray-400"><span>Изменить</span></a>
-                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center border-r-2 border-gray-400"><span>Пометка на удаление</span></a>
-                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center border-r-2  border-gray-400"><span>Выставить в первую полосу</span></a>
-                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center border-r-2 border-gray-400"><span>Экспорт</span></a>
-            
-            </div>
+            <div class = "flex flex-row mt-[10px] mb-[3px]">
+                <a href="" class = " flex text-[16px] w-[120px] rounded-md ml-[10px] items-center justify-center  h-[48px] bg-primary text-white"><span>Создать</span></a>
+                <a href="" class = " flex text-[16px] w-[120px] rounded-md ml-[5px] items-center justify-center  h-[48px] bg-primary text-white"><span>Изменить</span></a>
+                <a href="" class = " flex text-[16px] w-[150px] rounded-md ml-[5px] items-center justify-center px-2 py-2 text-center h-[48px] bg-primary text-white"><span>Пометка на удаление</span></a>
+                <a href="" class = " flex text-[16px] w-[150px] rounded-md ml-[5px] items-center px-2 py-2 text-center justify-center  h-[48px] bg-primary text-white"><span>Выставить в первую полосу</span></a>
+                <a href="" class = " flex text-[16px] w-[120px] rounded-md ml-[5px] items-center justify-center  h-[48px] bg-primary text-white"><span>Экспорт</span></a>
+            </div> 
             <div class = 'flex'>
-                <table class =  "border-2 border-collapse  bg-black-border w-[100%] table-auto">
+                <table class =  "border border-collapse border-black w-[100%]">
                     <thead>
                         <tr class = " even:bg-white">
                             <td class = "">№ п/п</td>
@@ -75,44 +74,97 @@ import ListOfActions from './ListOfActions.vue'
                             <th class = "border-collapse border-1 border-gray-500">Дата обновления</th>
                             <th class = "border-collapse border-1 border-gray-500">Комментарий</th>
                         </tr>
+                     </thead>
+                     <tbody>
                     <tr class = " even:bg-white odd:bg-blue-200" >
-                        <form class="tr" method="post" action="">
-                            <span class="td"><input type="text"/></span>
-                            <span class="td"><input type="text"/></span>
-                            <span class="td"><input type="text"/></span>
-                            <span class="td"><input type="text"/></span>
-                        </form>       
+                        <td>1</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>   
                     </tr>
                     <tr class = " even:bg-white odd:bg-blue-200">
-                        <form class="tr" method="post" action="">
-                            <span class="td"><input type="text"/></span>
-                            <span class="td"><input type="text"/></span>
-                            <span class="td"><input type="text"/></span>
-                            <span class="td"><input type="text"/></span>
-                        </form>
+                        <td>2</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr class = " even:bg-white odd:bg-blue-200">
+                        <td>3</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                 
                     </tr>
                     <tr class = " even:bg-white odd:bg-blue-200">
+                        <td>4</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                        
                     </tr>
                     <tr class = " even:bg-white odd:bg-blue-200">
+                        <td>5</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                      
                     </tr>
                     <tr class = " even:bg-white odd:bg-blue-200">
+                        <td>6</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                         
                     </tr>
                     <tr class = " even:bg-white odd:bg-blue-200">
+                        <td>7</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                        
                     </tr>
                     <tr class = " even:bg-white odd:bg-blue-200">
+                        <td>8</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                        
                     </tr>
                     <tr class = " even:bg-white odd:bg-blue-200">
+                        <td>9</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                        
                     </tr>
-                                </thead>
+                                </tbody>
                             </table>
                         </div>
         </div>

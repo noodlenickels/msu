@@ -15,6 +15,8 @@ import useApiPoint from '@/use/api/point';
 import EnterEditor from '@/views/admin-panel/EnterEditor.vue';
 import EditNews from '@/views/admin-panel/EditNews';
 import Interview from '@/views/admin-panel/Opinion.vue';
+import Opinion from '@/views/admin-panel/Opinion.vue';
+import NewsChange from '@/views/admin-panel/NewsChange.vue';
 
 const { getOpinions } = useApiOpinion();
 const { getInterviews } = useApiInterview();
@@ -269,7 +271,19 @@ const router = createRouter({
       path: '/admin_panel/editor/interview',
       name: 'Interview',
       component: Interview
+    },
+    {
+      path: '/admin_panel/editor/opinion',
+      name: 'Opinion',
+      component: Opinion
+    },
+    {
+      path: '/admin_panel/editor/news/edit',
+      name: 'Newschange',
+      component: NewsChange
     }
+
+
 
   ]
 })
