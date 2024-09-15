@@ -60,7 +60,6 @@ import ListOfActions from './ListOfActions.vue'
                 <a href="" class = "text-[16px]  w-[180px] rounded-md ml-[10px] h-[48px] bg-primary text-white"><span>Создать</span></a>
                 <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center border-r-2 border-gray-400"><span>Изменить</span></a>
                 <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center border-r-2 border-gray-400"><span>Пометка на удаление</span></a>
-                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center border-r-2  border-gray-400"><span>Выставить в первую полосу</span></a>
                 <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center border-r-2 border-gray-400"><span>Экспорт</span></a>
             
             </div>
