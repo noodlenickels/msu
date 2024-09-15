@@ -6,13 +6,14 @@ import PageWithoutBio from '@/views/msu-russia/PageWithoutBio.vue';
 import Videos from '@/views/msu-russia/Videos.vue';
 import ListView from '@/views/msu-russia/ListView.vue';
 import CreateOrEdit from '@/views/admin-panel/CreateOrEdit.vue';
-import EnterEditor from '@/views/admin-panel/EnterEditor.vue';
 
 import useApiOpinion from '@/use/api/opinion';
 import useApiPeople from '@/use/api/person';
 import useApiInterview from '@/use/api/interview';
 import useApiNews from '@/use/api/news';
 import useApiPoint from '@/use/api/point';
+import EnterEditor from '@/views/admin-panel/EnterEditor.vue';
+import EditNews from '@/views/admin-panel/EditNews';
 import useApiRegion from "@/use/api/region";
 
 const { getOpinions } = useApiOpinion();
@@ -277,7 +278,14 @@ const router = createRouter({
       path: '/admin_panel/editor',
       name: 'Editor',
       component: EnterEditor
-    }
+    },
+    {
+      path: '/admin_panel/editor/news',
+      name: 'EditorNews',
+      component: EditNews
+    },
+
+
   ]
 })
 
