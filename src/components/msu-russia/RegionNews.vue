@@ -57,18 +57,35 @@ const changePage = async (i) => {
 </script>
 
 <template>
-  <div class="w100 px-[10%]">
-    <div class="flex items-end mb-[30px] gap-[15px] w100">
-      <div class="md:w-auto w-full text-center md:text-[18px] m-auto text-[15px] font-somic bg-primary px-[15px] py-[10px]  text-white rounded-xl font-semibold">Новости регионов</div>
-      <div class="md:flex-grow col-span-6 border-b-[2px] border-primary"></div>
-    </div>
-    <div class="grid grid-cols-3 gap-[25px] py-6">
-      <div class="md:col-span-2 col-span-3">
-        <div v-if="dataLoaded" class="flex flex-col gap-[20px] mb-[25px]">
-          <NewsCard v-for="news in newsData" :data="news" />
+  <div class="grid grid-cols-2 px-[10%] gap-[35px]">
+    <div class="">
+      <div class="flex items-end mb-[30px] gap-[15px] w100">
+        <div class="md:w-auto w-full text-center md:text-[18px] m-auto text-[15px] font-somic bg-primary px-[15px] py-[10px]  text-white rounded-xl font-semibold">Новости регионов</div>
+        <div class="md:flex-grow col-span-6 border-b-[2px] border-primary"></div>
+      </div>
+      <div class="grid grid-cols-3 gap-[25px] py-6">
+        <div class="col-span-3">
+          <div v-if="dataLoaded" class="flex flex-col gap-[20px] mb-[25px]">
+            <NewsCard v-for="news in newsData" :data="news" />
+          </div>
+          <Loader v-else/>
+          <Pagination @paged="changePage" :perPage="perPage" :totalPages="totalPages" :currentPage="currentPage" />
         </div>
-        <Loader v-else/>
-        <Pagination @paged="changePage" :perPage="perPage" :totalPages="totalPages" :currentPage="currentPage" />
+      </div>
+    </div>
+    <div class="">
+      <div class="flex items-end mb-[30px] gap-[15px] w100">
+        <div class="md:w-auto w-full text-center md:text-[18px] m-auto text-[15px] font-somic bg-primary px-[15px] py-[10px]  text-white rounded-xl font-semibold">Федеральные новости</div>
+        <div class="md:flex-grow col-span-6 border-b-[2px] border-primary"></div>
+      </div>
+      <div class="grid grid-cols-3 gap-[25px] py-6">
+        <div class="col-span-3">
+          <div v-if="dataLoaded" class="flex flex-col gap-[20px] mb-[25px]">
+            <NewsCard v-for="news in newsData" :data="news" />
+          </div>
+          <Loader v-else/>
+          <Pagination @paged="changePage" :perPage="perPage" :totalPages="totalPages" :currentPage="currentPage" />
+        </div>
       </div>
     </div>
   </div>

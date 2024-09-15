@@ -65,13 +65,16 @@ setTimeout(()=>{
 function compare(){
   const cards = document.getElementsByClassName('viewCard');
   for (let i=0; i<cards.length; i++){
-    const cardHeight = document.getElementsByClassName('viewCard')[i].height;
-    const titleHeight = document.getElementsByClassName('titleClass')[i].offsetHeight;
-    const textHeight = (cardHeight-titleHeight) - (cardHeight-titleHeight)%20;
-    const textCount = Math.floor(textHeight/20);
-    document.getElementsByClassName('truncate-text')[i].style.setProperty('-webkit-line-clamp', textCount);
-    document.getElementsByClassName('truncate-text')[i].style.setProperty('height', `${textHeight}px`);
-    document.getElementsByClassName('truncate-text')[i].height = `${textHeight}px`;
+    if (document.getElementsByClassName('titleClass')[i].offsetHeight) {
+      const cardHeight = document.getElementsByClassName('viewCard')[i].height;
+      const titleHeight = document.getElementsByClassName('titleClass')[i].offsetHeight;
+      const textHeight = (cardHeight-titleHeight) - (cardHeight-titleHeight)%20;
+      const textCount = Math.floor(textHeight/20);
+      document.getElementsByClassName('truncate-text')[i].style.setProperty('-webkit-line-clamp', textCount);
+      document.getElementsByClassName('truncate-text')[i].style.setProperty('height', `${textHeight}px`);
+    }
+
+    // document.getElementsByClassName('truncate-text')[i].height = `${textHeight}px`;
   }
 }
 window.onresize = function(){

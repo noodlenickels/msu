@@ -81,7 +81,7 @@ onMounted(async () => {
             <div class="md:flex-grow border-b-[2px] border-primary"></div>
           </div>
           <div class="flex flex-col items-center">
-            <img :src="photo" class="aspect-square max-w-[300px]"/>
+            <img :src="photo" class="max-w-[400px]"/>
           </div>
           <div class="text-[30px] font-somic text-black font-bold">
             {{ cardData.title }}

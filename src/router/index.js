@@ -6,19 +6,21 @@ import PageWithoutBio from '@/views/msu-russia/PageWithoutBio.vue';
 import Videos from '@/views/msu-russia/Videos.vue';
 import ListView from '@/views/msu-russia/ListView.vue';
 import CreateOrEdit from '@/views/admin-panel/CreateOrEdit.vue';
+import EnterEditor from '@/views/admin-panel/EnterEditor.vue';
 
 import useApiOpinion from '@/use/api/opinion';
 import useApiPeople from '@/use/api/person';
 import useApiInterview from '@/use/api/interview';
 import useApiNews from '@/use/api/news';
 import useApiPoint from '@/use/api/point';
-import EnterEditor from '@/views/admin-panel/EnterEditor.vue';
+import useApiRegion from "@/use/api/region";
 
 const { getOpinions } = useApiOpinion();
 const { getInterviews } = useApiInterview();
 const { getPeople } = useApiPeople();
 const { getNews } = useApiNews();
 const { getPointOfView } = useApiPoint();
+const { getRegions } = useApiRegion();
 
 
 const interviewsData = await getInterviews();
@@ -26,6 +28,7 @@ const opinionData = await getOpinions();
 const peopleData = await getPeople();
 const newsData = await getNews();
 const pointData = await getPointOfView();
+const regionData = await getRegions();
 
 const router = createRouter({
   scrollBehavior(to, from, savedPosition) {
@@ -36,7 +39,8 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: MainPage
+      component: MainPage,
+      key: 5
     },
     {
       path: '/admin_panel/news',
@@ -192,6 +196,15 @@ const router = createRouter({
       }
     },
     {
+      path: '/region',
+      name: 'region',
+      component: ListView,
+      props: {
+        data: regionData,
+        caption: 'Регион',
+      }
+    },
+    {
       path: '/point_of_view/:id',
       name: 'pointOfViewId',
       component: PageWithBio,
@@ -204,7 +217,7 @@ const router = createRouter({
     {
       path: '/news/:id',
       name: 'newsId',
-      component: PageWithoutBio,
+      component: PageWithBio,
       props: {
         type: 'news',
         caption: 'Новость',

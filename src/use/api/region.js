@@ -19,11 +19,15 @@ export default function useApiRegion() {
     const getRegions = async (search) => {
         const fetchedData = await get$({url: `api/regionsBySearch`, params: {search: search}});
         if (!fetchedData.isError) {
+            console.log(fetchedData)
             const formatted = fetchedData.data.regions.map((data) => {
                 return {
                     id: data.id,
                     name: data.type_region === 'Республика' || data.type_region === 'Город федерального значения'? data.type_region + ' ' + data.name_region : data.name_region + ' ' + data.type_region,
-                    link: '/region/'+data.id
+                    title: data.type_region === 'Республика' || data.type_region === 'Город федерального значения'? data.type_region + ' ' + data.name_region : data.name_region + ' ' + data.type_region,
+                    link: '/region/'+data.id,
+                    text: data.content,
+                    image: data.path_to_image
                 }
             });
             return formatted;

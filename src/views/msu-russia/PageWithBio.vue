@@ -10,6 +10,7 @@ import useApiMain from '@/use/api/main';
 import useApiOpinion from '@/use/api/opinion';
 import useApiPoint from '@/use/api/point';
 import useApiInterview from '@/use/api/interview';
+import useApiNews from '@/use/api/news';
 import {useRoute} from 'vue-router';
 import usePhoto from "@/use/images";
 
@@ -17,6 +18,7 @@ import usePhoto from "@/use/images";
 const {getOpinionById, getOpinionTopFour } = useApiOpinion();
 const {getInterviewById, getInterviewTopFour} = useApiInterview();
 const {getPointOfViewById, getPointOfViewTopFour} = useApiPoint();
+const {getNewsById} = useApiNews();
 const { getPhotoUrl } = usePhoto();
 
 const route = useRoute();
@@ -36,7 +38,7 @@ const emits = defineEmits(['submitted', 'closeForm', 'update:model-value']);
 
 const pageData = ref({});
 const personData = ref({});
-const topFour = ref([]);
+const topFour = ref(null);
 const photo = ref();
 
 const dataLoaded = ref(false);
@@ -75,6 +77,13 @@ onMounted(async () => {
       topFour.value = await getOpinionTopFour();
       break;
     }
+    case 'news': {
+      pageData.value = await getNewsById(id);
+      personData.value = pageData.value?.person;
+      link.value = personData.value.type === 'Region' ? '/region/' + personData.value.id : '/person/' + personData.value.id;
+      photo.value = await getPhotoUrl(pageData.value?.image);
+      break;
+    }
   }
 
   if (document.documentElement.clientWidth > 640) bigScreen.value = true;
@@ -97,12 +106,12 @@ onMounted(async () => {
   <div v-if="dataLoaded" class="flex flex-col md:gap-[45px] gap-[25px]">
     <div class="flex flex-col md:gap-[75px] px-[10%] gap-[25px]">
       <div class="grid grid-cols-4 gap-[25px]">
-        <div class="md:col-span-2 col-span-4 flex flex-col gap-[15px] md:items-start items-center">
+        <div class="md:col-span-2 col-span-4 flex flex-col gap-[15px]">
           <div class="flex items-end w-full mb-[5%] gap-[15px]">
             <div class="md:w-auto w-full text-center md:text-[18px] m-auto mt-2 text-[18px] font-somic bg-primary px-[15px] py-[10px] text-white rounded-xl font-semibold">{{ props.caption }}</div>
             <div class="md:flex-grow border-b-[2px] border-primary"></div>
           </div>
-          <img :src="pageData.image" class="aspect-square"/>
+          <img :src="pageData.image" class="max-w-[300px] self-center"/>
           <div class="text-[30px] font-somic text-black font-bold">
             {{ pageData.title }}
           </div>
@@ -118,7 +127,7 @@ onMounted(async () => {
         <AddsBlock class="sm:col-span-2 md:col-span-1 hidden sm:flex"/>
       </div>
     </div>
-    <div class="flex flex-col px-[10%] gap-[5px]">
+    <div v-if="topFour" class="flex flex-col px-[10%] gap-[5px]">
       <div class="flex items-end mb-[5%] gap-[15px]">
         <div v-if="props.type === 'opinion'" class="md:w-auto w-full text-center md:text-[18px] m-auto mt-2 text-[18px]  font-somic bg-primary px-[15px] py-[10px] text-white rounded-xl font-semibold">Еще мнения</div>
         <div v-if="props.type === 'interview'" class="md:w-auto w-full text-center md:text-[18px] m-auto mt-2 text-[18px]  font-somic bg-primary px-[15px] py-[10px] text-white rounded-xl font-semibold">Еще интервью

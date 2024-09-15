@@ -34,17 +34,7 @@ const props = defineProps({
 
 const emits = defineEmits(['submitted', 'closeForm', 'update:model-value']);
 
-const form = ref(null);
-
-const inputLabelWidth = computed(() => 150);
-
-const cardTitle = computed(() => props.mode === 'add' ? 'Добавление заказа' : 'Редактирование заказа');
-
-const fd = ref({});
-
 const dataLoaded = ref(false);
-
-const isInvalid = ref(true);
 
 onMounted(() => {
   // const model = props.modelValue;
@@ -67,7 +57,7 @@ const closeForm = () => {
 <template>
   <div class = " h-[1%] mt-[-100px] w-[100%] md: py-[15%]">
     <div class="flex flex-col md:gap-[20px] gap-[10px]">
-      <div class="text-[16.5px] md:text-[14px] l:text-[16.5px] font-bold text-black font-somic md: aspect-square  h-[70px]">
+      <div class="flex items-center titleFix text-[16.5px] md:text-[14px] l:text-[16.5px] font-bold text-center h-auto font-somic bg-primary px-[15px] py-[10px]  text-white rounded-xl">
         {{ props.title }}
       </div>
       <div class="flex flex-col md: gap-[10px]">
@@ -90,3 +80,19 @@ const closeForm = () => {
     </div>
   </div>
 </template>
+
+<script>
+setTimeout(()=>{
+  fix();
+}, 1000)
+function fix() {
+  const maxTitle = document.getElementsByClassName('titleFix')[0]?.offsetHeight;
+  console.log(maxTitle)
+  document.getElementsByClassName('titleFix')[1]?.style.setProperty('height', `${maxTitle}px`)
+  document.getElementsByClassName('titleFix')[2]?.style.setProperty('height', `${maxTitle}px`)
+}
+
+window.onresize = function(){
+  fix();
+};
+</script>

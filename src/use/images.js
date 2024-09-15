@@ -8,7 +8,6 @@ export default function usePhoto() {
     try {
       const imageRef = storageRef(storage, 'root_files' + imagePath);  // Создаем ссылку на файл в Firebase Storage
       const url = await getDownloadURL(imageRef);  // Получаем URL для изображения
-      console.log(url)
       return url;
     } catch (error) {
       console.error("Ошибка при получении URL изображения:", error);

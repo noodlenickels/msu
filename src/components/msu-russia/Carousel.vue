@@ -1,5 +1,5 @@
 <script setup>
-import {computed, ref, onMounted} from 'vue';
+import {computed, ref, onMounted, onUpdated} from 'vue';
 import SideCarouselNewsBlock from '@/components/msu-russia/SideCarouselNewsBlock.vue';
 import Loader from '@/views/msu-russia/Loader.vue';
 import usePhoto from '@/use/images';
@@ -27,6 +27,10 @@ onMounted(async () => {
     carousel.value.photo = await getPhotoUrl(carousel.value.image);  // Получаем URL изображения при загрузке
     dataLoaded.value = true;
   }
+});
+
+onUpdated(()=>{
+  compare();
 });
 const changeCarousel = async (i) => {
   carousel.value = carouselList.value.find(card => card.id === i);
@@ -64,38 +68,42 @@ const changeCarousel = async (i) => {
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
-  height: 100px;
+  -webkit-line-clamp: 6;
+  height: auto;
 }
 
 </style>
 
 <script>
-// setTimeout(() => compare(), 500);
-//
-// function compare() {
-//   const panels = document.getElementsByClassName('classNews');
-//   let panelHeight = -20;
-//   for (let i = 0; i<panels.length; i++){
-//     panelHeight += panels[i].offsetHeight + 20;
-//   }
-//   let textHeight, textCount;
-//   const carouselHeight = document.getElementsByClassName('carouselImg')[0]?.height;
-//   const titleHeight = document.getElementsByClassName('carouselTitle')[0]?.offsetHeight;
-//   if (panelHeight - carouselHeight - titleHeight >= 0) {
-//     textHeight = (panelHeight - carouselHeight - titleHeight) - ((panelHeight - carouselHeight - titleHeight)%25);
-//     textCount = Math.floor(textHeight / 25);
-//   }
-//   else {
-//     textHeight = 100;
-//     textCount = 4;
-//   }
-//   document.getElementsByClassName('truncate-carousel')[0]?.style.setProperty('-webkit-line-clamp', textCount);
-//   document.getElementsByClassName('truncate-carousel')[0]?.style.setProperty('height', `${textHeight}px`);
-//   // document.getElementsByClassName('truncate-carousel')[0].height = `${textHeight}px`;
-// }
-//
-// window.onresize = function () {
-//   compare();
-// };
+// setTimeout(() => compare(), 1000);
+
+function compare() {
+  const panels = document.getElementsByClassName('sidePanel')[0].offsetHeight;
+  let panelHeight = panels;
+  // for (let i = 0; i<panels.length; i++){
+  //   panelHeight += panels[i].offsetHeight;
+  // }
+  let textHeight, textCount;
+  const carouselHeight = document.getElementsByClassName('carouselImg')[0]?.height;
+  const titleHeight = document.getElementsByClassName('carouselTitle')[0]?.offsetHeight;
+  console.log(panelHeight - carouselHeight - titleHeight)
+
+  if (panelHeight - carouselHeight - titleHeight >= 0) {
+    textHeight = (panelHeight - carouselHeight - titleHeight) - ((panelHeight - carouselHeight - titleHeight)%25);
+    textCount = Math.floor(textHeight / 25);
+  }
+  else {
+    console.log('tut')
+    textHeight = 110;
+    textCount = 5;
+  }
+  document.getElementsByClassName('truncate-carousel')[0]?.style.setProperty('-webkit-line-clamp', textCount);
+  document.getElementsByClassName('truncate-carousel')[0]?.style.setProperty('height', `${textHeight}px`);
+  document.getElementsByClassName('sidePanel')[0]?.style.setProperty('height', `${textHeight+titleHeight+carouselHeight}px`);
+  // document.getElementsByClassName('truncate-carousel')[0].height = `${textHeight}px`;
+}
+
+window.onresize = function() {
+  compare();
+};
 </script>
