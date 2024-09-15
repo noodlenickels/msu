@@ -61,7 +61,7 @@ onMounted(() => {
           </div>
         </div>
       </div>
-      <div class="sm:flex hidden gap-5 ml-auto col-span-2">
+      <div class="sm:flex hidden gap-5 ml-auto md:col-span-2 hidden">
         <img src="../../assets/icons/telegram.svg" alt="Соцсеть" class="white l:h-[35px] md:h-[25px] h-[20px]"/>
         <img src="../../assets/icons/vk.svg" alt="Соцсеть" class="white l:h-[35px] md:h-[25px] h-[20px]"/>
 <!--        <img src="@/assets/icons/youtube.svg" alt="Соцсеть" class="white l:h-[35px] md:h-[25px] h-[20px]"/>-->

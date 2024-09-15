@@ -29,9 +29,9 @@ onMounted(async () => {
   }
 });
 
-onUpdated(()=>{
-  compare();
-});
+// onUpdated(()=>{
+//   compare();
+// });
 const changeCarousel = async (i) => {
   carousel.value = carouselList.value.find(card => card.id === i);
 };
@@ -52,7 +52,7 @@ const changeCarousel = async (i) => {
               {{ carousel.title }}
             </div>
             <div id="carouselText"
-                 class="text-[16px] leading-[25px] font-somic text-gray-500 truncate-carousel">
+                 class="text-[16px] leading-[25px] font-somic text-gray-500 line-clamp-4 3xl:line-clamp-6">
               {{ carousel.text }}
             </div>
         </RouterLink>
@@ -78,28 +78,24 @@ const changeCarousel = async (i) => {
 // setTimeout(() => compare(), 1000);
 
 function compare() {
-  const panels = document.getElementsByClassName('sidePanel')[0].offsetHeight;
-  let panelHeight = panels;
-  // for (let i = 0; i<panels.length; i++){
-  //   panelHeight += panels[i].offsetHeight;
-  // }
+  const panels = document.getElementsByClassName('classNews');
+  let panelHeight = -120;
+  for (let i = 0; i<panels.length; i++){
+    panelHeight += panels[i].offsetHeight + 20;
+  }
   let textHeight, textCount;
   const carouselHeight = document.getElementsByClassName('carouselImg')[0]?.height;
   const titleHeight = document.getElementsByClassName('carouselTitle')[0]?.offsetHeight;
-  console.log(panelHeight - carouselHeight - titleHeight)
-
   if (panelHeight - carouselHeight - titleHeight >= 0) {
     textHeight = (panelHeight - carouselHeight - titleHeight) - ((panelHeight - carouselHeight - titleHeight)%25);
     textCount = Math.floor(textHeight / 25);
   }
   else {
-    console.log('tut')
-    textHeight = 110;
-    textCount = 5;
+    textHeight = 100;
+    textCount = 4;
   }
   document.getElementsByClassName('truncate-carousel')[0]?.style.setProperty('-webkit-line-clamp', textCount);
   document.getElementsByClassName('truncate-carousel')[0]?.style.setProperty('height', `${textHeight}px`);
-  document.getElementsByClassName('sidePanel')[0]?.style.setProperty('height', `${textHeight+titleHeight+carouselHeight}px`);
   // document.getElementsByClassName('truncate-carousel')[0].height = `${textHeight}px`;
 }
 

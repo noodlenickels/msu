@@ -11,6 +11,7 @@ export default {
       'l': '1130px',
       'xl': '1280px',
       '2xl': '1536px',
+      '3xl': '2080px',
     },
     extend: {
       fontFamily: {

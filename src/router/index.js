@@ -175,7 +175,8 @@ const router = createRouter({
       component: ListView,
       props: {
         data: interviewsData,
-        caption: 'Интервью'
+        caption: 'Интервью',
+        key: 1
       }
     },
     {
@@ -185,6 +186,7 @@ const router = createRouter({
       props: {
         data: opinionData,
         caption: 'Мнения',
+        key: 2
       }
     },
     {
@@ -194,6 +196,7 @@ const router = createRouter({
       props: {
         data: peopleData,
         caption: 'Персона',
+        key: 3
       }
     },
     {
@@ -203,6 +206,7 @@ const router = createRouter({
       props: {
         data: regionData,
         caption: 'Регион',
+        key: 4
       }
     },
     {
