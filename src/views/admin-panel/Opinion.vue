@@ -1,17 +1,15 @@
 <script setup>
 import MainBlock from './MainBlock.vue'
 import ListOfActions from './ListOfActions.vue'
-import Navigation from './Navigation.vue'
-import Checkboxes from './Checkboxes.vue'
 </script>
 <template>
     <MainBlock class = "flex h-lvh">
         <ListOfActions></ListOfActions>
         <div class = " h-[100%] w-[100%]">
             <div class ="flex flex-row mt-[5px] ml-[5px]">
-                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center bg-blue-300 rounded-sm border-2 ml-[3px] mr-[3px] border-blue-500"><span>Редактор</span></a>
-                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center bg-slate-200 rounded-sm border-2 ml-[3px] mr-[3px] border-neutral-600"><span>Субъекты<br>и люди</span></a>
-                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center bg-slate-200 rounded-sm border-2 ml-[3px] mr-[3px] border-neutral-600"><span>Видео</span></a>
+                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center bg-blue-300 rounded-sm border-2 ml-[3px] mr-[3px] border-neutral-600"><span>Новости</span></a>
+                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center bg-slate-200 rounded-sm border-2 ml-[3px] mr-[3px] border-blue-500"><span>Мнения</span></a>
+                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center bg-blue-300 s rounded-sm border-2 ml-[3px] mr-[3px] border-neutral-600"><span>Интервью</span></a>
             </div>
             <div class = "flex flex-row ml-[5px] mt-[5px]">
                 <div>
@@ -67,103 +65,51 @@ import Checkboxes from './Checkboxes.vue'
             
             </div>
             <div class = 'flex'>
-                <table class =  "border-2 border-collapse bg-black-border w-[100%]">
+                <table class =  "border-2 border-collapse  bg-black-border w-[100%] table-auto">
                     <thead>
                         <tr class = " even:bg-white">
                             <td class = "">№ п/п</td>
                             <th class = "" >Дата публикации</th>
                             <th class = "border-1 border-gray-500">Заголовок</th>
-                            <th class = "border-collapse border-1 border-gray-500">Регион</th>
-                            <th class = "border-collapse border-1 border-gray-500">Источник</th>
+                            <th class = "border-collapse border-1 border-gray-500">Персона (ФИО)</th>
                             <th class = "border-collapse border-1 border-gray-500">Дата обновления</th>
                             <th class = "border-collapse border-1 border-gray-500">Комментарий</th>
                         </tr>
                     <tr class = " even:bg-white odd:bg-blue-200" >
-                        <td>1</td>
-                        <td>12.09.2023</td>
-                        <td>Иванов Иван Иванович</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>     
+                        <form class="tr" method="post" action="">
+                            <span class="td"><input type="text"/></span>
+                            <span class="td"><input type="text"/></span>
+                            <span class="td"><input type="text"/></span>
+                            <span class="td"><input type="text"/></span>
+                        </form>       
                     </tr>
                     <tr class = " even:bg-white odd:bg-blue-200">
-                        <td>1</td>
-                        <td>12.09.2023</td>
-                        <td>Иванов Иван Иванович</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <form class="tr" method="post" action="">
+                            <span class="td"><input type="text"/></span>
+                            <span class="td"><input type="text"/></span>
+                            <span class="td"><input type="text"/></span>
+                            <span class="td"><input type="text"/></span>
+                        </form>
                     </tr>
                     <tr class = " even:bg-white odd:bg-blue-200">
-                        <td>1</td>
-                        <td>12.09.2023</td>
-                        <td>Иванов Иван Иванович</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
                 
                     </tr>
                     <tr class = " even:bg-white odd:bg-blue-200">
-                        <td>1</td>
-                        <td>12.09.2023</td>
-                        <td>Иванов Иван Иванович</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
                        
                     </tr>
                     <tr class = " even:bg-white odd:bg-blue-200">
-                        <td>1</td>
-                        <td>12.09.2023</td>
-                        <td>Иванов Иван Иванович</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
                      
                     </tr>
                     <tr class = " even:bg-white odd:bg-blue-200">
-                        <td>1</td>
-                        <td>12.09.2023</td>
-                        <td>Иванов Иван Иванович</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
                         
                     </tr>
                     <tr class = " even:bg-white odd:bg-blue-200">
-                        <td>1</td>
-                        <td>12.09.2023</td>
-                        <td>Иванов Иван Иванович</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
                        
                     </tr>
                     <tr class = " even:bg-white odd:bg-blue-200">
-                        <td>1</td>
-                        <td>12.09.2023</td>
-                        <td>Иванов Иван Иванович</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
                        
                     </tr>
                     <tr class = " even:bg-white odd:bg-blue-200">
-                        <td>1</td>
-                        <td>12.09.2023</td>
-                        <td>Иванов Иван Иванович</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
                        
                     </tr>
                                 </thead>
