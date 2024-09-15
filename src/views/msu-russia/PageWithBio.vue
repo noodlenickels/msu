@@ -46,9 +46,12 @@ const dataLoaded = ref(false);
 const id = route.params.id;
 const topMenu = ref(false);
 const bigScreen = ref(false);
+const showBurger = ref(true);
 const link = ref('person');
+
 const toggleMenu = () => {
   topMenu.value = !topMenu.value;
+  showBurger.value = false;
 }
 
 onMounted(async () => {
@@ -101,7 +104,7 @@ onMounted(async () => {
 
 <template>
 <!--  :class="`${topMenu.value ? '' : 'hidden'} topMenuClass`"-->
-  <Header @active="toggleMenu"/>
+  <Header @active="toggleMenu" :show="showBurger"/>
   <TopMenu @toggle="toggleMenu" v-if="topMenu || bigScreen" />
   <div v-if="dataLoaded" class="flex flex-col md:gap-[45px] gap-[25px]">
     <div class="flex flex-col md:gap-[75px] px-[10%] gap-[25px]">

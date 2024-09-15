@@ -35,11 +35,13 @@ const dataLoaded = ref(false);
 const photo = ref();
 const topMenu = ref(false);
 const bigScreen = ref(false);
+const showBurger = ref(true);
 
 const { getPhotoUrl } = usePhoto();
 
 const toggleMenu = () => {
   topMenu.value = !topMenu.value;
+  showBurger.value = false;
 }
 
 const cardData = ref({});
@@ -70,7 +72,7 @@ onMounted(async () => {
 
 <template>
 <!--  :class="`${topMenu.value ? '' : 'hidden'} topMenuClass`"-->
-  <Header @active="toggleMenu"/>
+  <Header @active="toggleMenu" :show="showBurger" />
   <TopMenu @toggle="toggleMenu" v-if="topMenu || bigScreen" />
   <div v-if="dataLoaded" class="flex flex-col gap-[75px]">
     <div class="flex flex-col md:gap-[125px] px-[10%] gap-[25px]">

@@ -2,13 +2,12 @@
 import {computed, ref, onMounted} from 'vue';
 import {RouterLink} from "vue-router";
 
-// const props = defineProps({
-//   modelValue: {
-//     type: Object,
-//     required: false,
-//   },
-//   ...modeProps,
-// });
+const props = defineProps({
+  show: {
+    type: Boolean,
+    required: false,
+  }
+});
 
 const emits = defineEmits(['active']);
 
@@ -56,12 +55,12 @@ onMounted(() => {
       <div class="sm:hidden flex col-span-1">
 <!--        <img src="/images/menu.png" alt="Меню" class="white h-[25px]"/>-->
         <div @click="changeActivity" class="content second">
-          <div class="burger">
+          <div class="burger" :class="props.show ? '' : 'active'">
             <span></span>
           </div>
         </div>
       </div>
-      <div class="sm:flex hidden gap-5 ml-auto md:col-span-2 hidden">
+      <div class="sm:flex hidden gap-5 ml-auto md:col-span-3 l:col-span-2 hidden">
         <img src="../../assets/icons/telegram.svg" alt="Соцсеть" class="white l:h-[35px] md:h-[25px] h-[20px]"/>
         <img src="../../assets/icons/vk.svg" alt="Соцсеть" class="white l:h-[35px] md:h-[25px] h-[20px]"/>
 <!--        <img src="@/assets/icons/youtube.svg" alt="Соцсеть" class="white l:h-[35px] md:h-[25px] h-[20px]"/>-->
