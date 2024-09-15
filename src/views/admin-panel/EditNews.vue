@@ -58,64 +58,62 @@ import Checkboxes from './Checkboxes.vue'
                     </label>
                 </div>
             </div> 
-            <div class = "flex flex-row mt-[5px]">
-                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center bg-blue-300 border-r-2  border-gray-400"><span>Создать</span></a>
-                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center bg-slate-200 border-r-2 border-gray-400"><span>Изменение</span></a>
-                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center bg-slate-200 border-r-2 border-gray-400"><span>Пометка на удаление</span></a>
-                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center bg-blue-300 border-r-2  border-gray-400"><span>Выставить в первую полосу</span></a>
-                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center bg-slate-200 border-r-2 border-gray-400"><span>Эксперты</span></a>
-                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center bg-slate-200 border-r-2 border-gray-400"><span>Видео</span></a>
-                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center bg-blue-300 border-r-2  border-gray-400"><span>Редактор</span></a>
-                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center bg-slate-200 border-r-2 border-gray-400"><span>Субъекты<br>и люди</span></a>
-                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center bg-slate-200 border-r-2 border-gray-400"><span>Видео</span></a>
+            <div class = "flex flex-row mt-[10px]">
+                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center border-r-2 border-gray-400"><span>Создать</span></a>
+                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center border-r-2 border-gray-400"><span>Изменить</span></a>
+                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center border-r-2 border-gray-400"><span>Пометка на удаление</span></a>
+                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center border-r-2  border-gray-400"><span>Выставить в первую полосу</span></a>
+                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center border-r-2 border-gray-400"><span>Экспорт</span></a>
+            
             </div>
             <div class = 'flex'>
-                <table class =  "border-2 bg-black-border w-[100%]">
+                <table class =  "border-2 border-collapse  bg-black-border w-[100%] table-auto">
                     <thead>
-                        <tr>
+                        <tr class = " even:bg-white">
                             <td class = "">№ п/п</td>
                             <th class = "" >Дата публикации</th>
-                            <th class = "border-collapse border-1 border-gray-500">Заголовок</th>
+                            <th class = "border-1 border-gray-500">Заголовок</th>
                             <th class = "border-collapse border-1 border-gray-500">Регион</th>
                             <th class = "border-collapse border-1 border-gray-500">Источник</th>
                             <th class = "border-collapse border-1 border-gray-500">Дата обновления</th>
                             <th class = "border-collapse border-1 border-gray-500">Комментарий</th>
                         </tr>
-                    <tr>
-                        <td>Urus</td>
-                        <td>Lamborghini</td>
-                        <td>2017</td>
-                        <td>Automatic</td>
+                    <tr class = " even:bg-white odd:bg-blue-200" >
+                        <form class="tr" method="post" action="">
+                            <span class="td"><input type="text"/></span>
+                            <span class="td"><input type="text"/></span>
+                            <span class="td"><input type="text"/></span>
+                            <span class="td"><input type="text"/></span>
+                        </form>       
                     </tr>
-                    <tr>
-                        <td>Cayenne Turbo</td>
-                        <td>Porsche</td>
-                        <td>2018</td>
-                        <td>Automatic</td>
+                    <tr class = " even:bg-white odd:bg-blue-200">
+                        <form class="tr" method="post" action="">
+                            <span class="td"><input type="text"/></span>
+                            <span class="td"><input type="text"/></span>
+                            <span class="td"><input type="text"/></span>
+                            <span class="td"><input type="text"/></span>
+                        </form>
                     </tr>
-                    <tr>
-                        <td>Durango SRT</td>
-                        <td>Dodge</td>
-                        <td>2018</td>
-                        <td>Automatic</td>
+                    <tr class = " even:bg-white odd:bg-blue-200">
+                
                     </tr>
-                    <tr>
-                        <td>Juke Nismo RS</td>
-                        <td>Nissan</td>
-                        <td>2014</td>
-                        <td>Manual</td>
+                    <tr class = " even:bg-white odd:bg-blue-200">
+                       
                     </tr>
-                    <tr>
-                        <td>Escalade ESV</td>
-                        <td>Cadillac</td>
-                        <td>2012</td>
-                        <td>Automatic</td>
+                    <tr class = " even:bg-white odd:bg-blue-200">
+                     
                     </tr>
-                    <tr>
-                        <td>Levante S</td>
-                        <td>Maserati</td>
-                        <td>2017</td>
-                        <td>Automatic</td>
+                    <tr class = " even:bg-white odd:bg-blue-200">
+                        
+                    </tr>
+                    <tr class = " even:bg-white odd:bg-blue-200">
+                       
+                    </tr>
+                    <tr class = " even:bg-white odd:bg-blue-200">
+                       
+                    </tr>
+                    <tr class = " even:bg-white odd:bg-blue-200">
+                       
                     </tr>
                                 </thead>
                             </table>
