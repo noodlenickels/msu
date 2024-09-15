@@ -19,9 +19,37 @@ import ListOfActions from './ListOfActions.vue'
                 </div>
     
             
-            <div></div>
-            <div></div>
-            <div></div>
+            <div class = "flex mt-[10px] justify-around">
+                <label for="" class = "ml-[5px]">Заголовок</label>
+                <input type="text"  class = "ml-[1px] w-[70%] h-[60px] border-2 border-primary">
+                <input type="file" name="" id="">
+            </div>
+            <div class = "flex mt-[5px]">
+                <input type="text"  class = "ml-[101px] w-[90%] h-[300px] border-2 border-primary">
+            </div>
+            <div class = "flex mt-[5px] gap-5 ml-[100px]">
+                <input type="datetime-local" class = "border-2 border-primary rounded-md">
+                <label for="" class = "mt-[3px] ml-[1px]">Регион:</label>
+                <select name="" id="" class = "border-2 border-primary rounded-md">
+                    <option value="">Краснодарский край</option>
+                    <option value="">Саратовская область</option>
+                    <option value="">Республика Адыгея</option>
+                </select>
+                <label for="">Источник</label>
+                <input type="text" class = "border-2 border-primary rounded-md">
+            </div>
+            <div class = "flex gap-[10%]">
+                <input type="text" class = "border-2 border-primary ml-[100px] mt-[5px] w-[50%] h-[80px]">
+                <div class = "flex-col">
+                <label for="" class = "ml-[5px]">Ответственный</label>
+                <input type="text" class = "border-2 border-primary rounded-md">
+                <p class = " mt-[10px]">Статус: создается</p>
+                <div class = "flex gap-4 flex-col mt-[10px]">
+                <button class = "rounded-md ml-[10px] h-[40px] bg-primary px-4 text-white">Сохранить</button>
+                <button class = "rounded-md ml-[10px] h-[40px] bg-primary px-4 text-white">Сохранить и отправить на подтверждение</button>
+                </div>
+                </div>
+            </div>
         </div>
     </MainBlock>
     </template>
