@@ -17,6 +17,11 @@ import EditNews from '@/views/admin-panel/EditNews';
 import Interview from '@/views/admin-panel/Opinion.vue';
 import Opinion from '@/views/admin-panel/Opinion.vue';
 import NewsChange from '@/views/admin-panel/NewsChange.vue';
+import NewsCreate from '@/views/admin-panel/NewsCreate.vue';
+import OpinionCreate from '@/views/admin-panel/OpinionCreate.vue';
+import OpinionChange from '@/views/admin-panel/OpinionChange.vue';
+import InterviewCreate from '@/views/admin-panel/InterviewCreate.vue';
+import InterviewChange from '@/views/admin-panel/InterviewChange.vue';
 
 const { getOpinions } = useApiOpinion();
 const { getInterviews } = useApiInterview();
@@ -281,7 +286,36 @@ const router = createRouter({
       path: '/admin_panel/editor/news/edit',
       name: 'Newschange',
       component: NewsChange
+    },
+    {
+      path: '/admin_panel/editor/news/create',
+      name: 'NewsCreate',
+      component: NewsCreate
+    },
+    {
+      path: '/admin_panel/editor/opinion/edit',
+      name: 'OpinionChange',
+      component: OpinionChange
+    },
+    {
+      path: '/admin_panel/editor/opinion/create',
+      name: 'OpinionCreate',
+      component: OpinionCreate
+    },
+    {
+      path: '/admin_panel/editor/interview/create',
+      name: 'InterviewCreate',
+      component: InterviewCreate
+    },
+
+    {
+      path: '/admin_panel/editor/interview/edit',
+      name: 'InterviewChange',
+      component: InterviewChange
     }
+
+
+    
 
 
 
