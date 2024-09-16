@@ -50,7 +50,6 @@ onMounted(async () => {
     <NewsBlock :carouselList='carouselList' />
     <Selection />
     <RegionNews/>
-    <PointOfView/>
     <div class="grid grid-cols-3 px-[10%] gap-[20px]">
       <NewsWithLinks
           class="md:col-span-1 col-span-3"

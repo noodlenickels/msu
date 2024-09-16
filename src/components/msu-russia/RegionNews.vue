@@ -57,7 +57,7 @@ const changePage = async (i) => {
 </script>
 
 <template>
-  <div class="grid grid-cols-2 px-[10%] gap-[35px]">
+  <div class="grid md:grid-cols-2 grid-cols-1 px-[10%] gap-[35px]">
     <div class="">
       <div class="flex items-end mb-[30px] gap-[15px] w100">
         <div class="md:w-auto w-full text-center md:text-[18px] m-auto text-[15px] font-somic bg-primary px-[15px] py-[10px]  text-white rounded-xl font-semibold">Новости регионов</div>
@@ -74,7 +74,7 @@ const changePage = async (i) => {
       </div>
     </div>
     <div class="">
-      <div class="flex items-end mb-[30px] gap-[15px] w100">
+      <div class="flex items-end gap-[15px] w100">
         <div class="md:w-auto w-full text-center md:text-[18px] m-auto text-[15px] font-somic bg-primary px-[15px] py-[10px]  text-white rounded-xl font-semibold">Федеральные новости</div>
         <div class="md:flex-grow col-span-6 border-b-[2px] border-primary"></div>
       </div>
@@ -84,7 +84,7 @@ const changePage = async (i) => {
             <NewsCard v-for="news in newsData" :data="news" />
           </div>
           <Loader v-else/>
-          <Pagination @paged="changePage" :perPage="perPage" :totalPages="totalPages" :currentPage="currentPage" />
+<!--          <Pagination @paged="changePage" :perPage="perPage" :totalPages="totalPages" :currentPage="currentPage" />-->
         </div>
       </div>
     </div>

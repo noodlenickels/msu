@@ -28,7 +28,6 @@ const interviewsData = await getInterviews();
 const opinionData = await getOpinions();
 const peopleData = await getPeople();
 const newsData = await getNews();
-const pointData = await getPointOfView();
 const regionData = await getRegions();
 
 const router = createRouter({
@@ -44,44 +43,9 @@ const router = createRouter({
       key: 5
     },
     {
-      path: '/admin_panel/news',
-      name: 'admin_news',
+      path: '/admin_panel/login',
+      name: 'admin_panel',
       component: AdminPanel,
-      props: {
-        data: newsData?.data,
-        caption: 'Новости',
-        type: 'news'
-      }
-    },
-    {
-      path: '/admin_panel/opinion',
-      name: 'admin_opinion',
-      component: AdminPanel,
-      props: {
-        data: opinionData,
-        caption: 'Мнения',
-        type: 'opinion'
-      }
-    },
-    {
-      path: '/admin_panel/interview',
-      name: 'admin_interview',
-      component: AdminPanel,
-      props: {
-        data: interviewsData,
-        caption: 'Интервью',
-        type: 'interview'
-      }
-    },
-    {
-      path: '/admin_panel/point_of_view',
-      name: 'admin_point_of_view',
-      component: AdminPanel,
-      props: {
-        data: pointData,
-        caption: 'Точки зрения',
-        type: 'point_of_view'
-      }
     },
     {
       path: '/admin_panel/point_of_view/create',
@@ -286,10 +250,27 @@ const router = createRouter({
     {
       path: '/admin_panel/editor/news',
       name: 'EditorNews',
-      component: EditNews
+      component: EditNews,
+      props: {
+        data: newsData.data
+      }
     },
-
-
+    {
+      path: '/admin_panel/editor/opinions',
+      name: 'EditorOpinions',
+      component: EditNews,
+      props: {
+        data: opinionData
+      }
+    },
+    {
+      path: '/admin_panel/editor/interviews',
+      name: 'EditorInterviews',
+      component: EditNews,
+      props: {
+        data: interviewsData
+      }
+    },
   ]
 })
 

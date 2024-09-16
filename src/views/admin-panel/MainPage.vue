@@ -52,7 +52,5 @@ onMounted(async () => {
 <template>
 <MainBlock class = "">
   <Login></Login>
-  <ListOfActions>
-  </ListOfActions>
 </MainBlock>
 </template>

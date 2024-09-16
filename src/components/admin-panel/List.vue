@@ -19,7 +19,7 @@ onMounted(async () => {
 });
 
 const formatDate = (d) => {
-  return `${d.getDay().toString().padStart(2, '0')}.${(d.getMonth()+1).toString().padStart(2, '0')}.${d.getFullYear()}`;
+  return `${d.getDate().toString().padStart(2, '0')}.${(d.getMonth()+1).toString().padStart(2, '0')}.${d.getFullYear()}`;
 }
 </script>
 
@@ -47,7 +47,7 @@ const formatDate = (d) => {
             <div class="strCLSitem p-5">Дата обновления</div>
           </td>
           <td class="">
-            <div class="  strCLSitem p-5">Комментарий</div>
+            <div class="  strCLSitem p-5">Коментарий</div>
           </td>
         </tr>
         </thead>
@@ -81,7 +81,7 @@ const formatDate = (d) => {
             </td>
             <td>
               <RouterLink :to="`/admin_panel/${route.name.split('_')[1]}/edit/${el.id}`">
-              <div class="  strCLSitem p-5">Комментарий</div>
+              <div class="  strCLSitem p-5">Коментарий</div>
               </RouterLink>
             </td>
           </tr>
