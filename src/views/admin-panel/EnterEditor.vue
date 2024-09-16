@@ -14,14 +14,14 @@ import {RouterLink} from "vue-router";
         <div class="flex-row rounded-md bg-primary text-[16px] ml-[15%] mt-9 text-white w-[110px] px-4 py-4">Новости</div>
       </RouterLink>
       <div class=" flex flex-row gap-[10px] ml-[15%]">
-        <RouterLink to="/admin_panel/editor/opinions">
+        <RouterLink to="/admin_panel/editor/opinion">
         <div class="bg-primary text-[16px] rounded-md mt-2 text-white w-[110px] px-4 py-4">Мнения</div>
         </RouterLink>
         <div class="bg-primary text-[16px] rounded-md mt-2 text-white w-[110px] px-4 py-4">Регионы</div>
       </div>
       <div class=" flex flex-row gap-[10px] ml-[15%]">
         <div class="bg-primary text-[16px] rounded-md mt-2 text-white w-[110px] px-4 py-4">Видео</div>
-        <RouterLink to="/admin_panel/editor/interviews">
+        <RouterLink to="/admin_panel/editor/interview">
         <div class="bg-primary text-[16px] rounded-md mt-2 text-white w-[110px] px-4 py-4">Интервью</div>
         </RouterLink>
         <div class="bg-primary text-[16px] rounded-md mt-2 text-white w-[110px] px-4 py-4">Персона</div>

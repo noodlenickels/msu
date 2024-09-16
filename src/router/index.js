@@ -11,11 +11,10 @@ import useApiOpinion from '@/use/api/opinion';
 import useApiPeople from '@/use/api/person';
 import useApiInterview from '@/use/api/interview';
 import useApiNews from '@/use/api/news';
-import useApiPoint from '@/use/api/point';
 import EnterEditor from '@/views/admin-panel/EnterEditor.vue';
 import EditNews from '@/views/admin-panel/EditNews';
 import useApiRegion from "@/use/api/region";
-import Interview from '@/views/admin-panel/Opinion.vue';
+import Interview from '@/views/admin-panel/Interview.vue';
 import Opinion from '@/views/admin-panel/Opinion.vue';
 import NewsChange from '@/views/admin-panel/NewsChange.vue';
 import NewsCreate from '@/views/admin-panel/NewsCreate.vue';
@@ -28,7 +27,6 @@ const { getOpinions } = useApiOpinion();
 const { getInterviews } = useApiInterview();
 const { getPeople } = useApiPeople();
 const { getNews } = useApiNews();
-const { getPointOfView } = useApiPoint();
 const { getRegions } = useApiRegion();
 
 
@@ -258,22 +256,31 @@ const router = createRouter({
     {
       path: '/admin_panel/editor/news',
       name: 'EditorNews',
-      component: EditNews
+      component: EditNews,
+      props: {
+        data: newsData.data
+      }
     },
 
     {
       path: '/admin_panel/editor/interview',
       name: 'Interview',
-      component: Interview
+      component: Interview,
+      props: {
+        data: interviewsData
+      }
     },
     {
       path: '/admin_panel/editor/opinion',
       name: 'Opinion',
-      component: Opinion
+      component: Opinion,
+      props: {
+        data: opinionData
+      }
     },
     {
       path: '/admin_panel/editor/news/edit',
-      name: 'Newschange',
+      name: 'NewsChange',
       component: NewsChange
     },
     {
@@ -302,12 +309,6 @@ const router = createRouter({
       name: 'InterviewChange',
       component: InterviewChange
     }
-
-
-
-
-
-
   ]
 })
 

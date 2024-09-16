@@ -11,14 +11,17 @@
     </div>
     <div class = "flex flex-row">
     <form>
-        <div class = "flex flex-col gap-[20px]">
-    <label for="name">Логин:</label>
-    <label for="password">Пароль:</label>
-    </div>
-    <div class = "flex flex-col">
-    <input type="text" name="name" id="name" required>
-    <input type="password" name="password" id="password" required>
-    <div class = "bg-primary text-white m-auto py-2 px-6"><a href = "/admin_panel/editor">Отправить</a></div>
+    <div class = "flex flex-col gap-[30px]">
+      <div class="flex">
+        <label for="name">Логин:</label>
+        <input type="text" name="name" id="name" required>
+      </div>
+      <div class="flex">
+        <label for="password">Пароль:</label>
+        <input type="password" name="password" id="password" required>
+      </div>
+
+    <div class = "bg-primary text-white self-center m-auto py-2 px-6"><a href = "/admin_panel/editor">Отправить</a></div>
     </div>
 </form>
 </div>

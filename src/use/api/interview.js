@@ -10,6 +10,7 @@ export default function useApiInterview() {
         return {
           id: data.id,
           image: data.path_to_image,
+          date: data.publication_date,
           title: data.title,
           text: data.content,
           source: data.source,

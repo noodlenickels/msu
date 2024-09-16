@@ -36,14 +36,9 @@ const props = defineProps({
 
 const {getPhotoUrl} = useApiMain();
 
-const carouselList = ref([]);
 const dataLoaded = ref(false);
-const topMenu = ref(null);
-const changeTopMenu = (val) => {
-  topMenu.value = val;
-}
+
 onMounted(async () => {
-  topMenu.value = props.type;
   dataLoaded.value = true;
 });
 
