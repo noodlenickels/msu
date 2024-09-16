@@ -2,6 +2,15 @@
 import MainBlock from './MainBlock.vue'
 import ListOfActions from './ListOfActions.vue'
 import {RouterLink} from "vue-router";
+import useApiRegion from '@/use/api/region';
+import {onMounted, ref} from "vue";
+
+const { getRegions } = useApiRegion();
+const regionData = ref([]);
+
+onMounted(async () => {
+  regionData.value = await getRegions();
+});
 </script>
 <template>
     <MainBlock class = "flex h-lvh">
@@ -45,9 +54,7 @@ import {RouterLink} from "vue-router";
                 <input type="datetime-local" class = "border-2 border-primary rounded-md">
                 <label for="" class = "mt-[3px] ml-[1px]">Регион:</label>
                 <select name="" id="" class = "border-2 border-primary rounded-md">
-                    <option value="">Краснодарский край</option>
-                    <option value="">Саратовская область</option>
-                    <option value="">Республика Адыгея</option>
+                  <option v-for="region in regionData" :value="region.id">{{ region.name }}</option>
                 </select>
                 <label for="">Источник</label>
                 <input type="text" class = "border-2 border-primary rounded-md">
