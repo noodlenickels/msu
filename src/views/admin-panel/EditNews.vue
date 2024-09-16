@@ -16,24 +16,20 @@ const formatDate = (d) => {
 }
 </script>
 <template>
-  <MainBlock class="flex h-lvh">
-    <ListOfActions></ListOfActions>
-    <div class=" h-[100%] w-[100%]">
-      <div class="flex flex-row mt-[5px] ml-[5px]">
-        <a href=""
-           class="flex text-center w-[120px] h-[48px] items-center justify-center bg-blue-300 rounded-sm border-2 ml-[3px] mr-[3px] border-blue-500"><span>Редактор</span></a>
-        <a href=""
-           class="flex text-center w-[120px] h-[48px] items-center justify-center bg-slate-200 rounded-sm border-2 ml-[3px] mr-[3px] border-neutral-600"><span>Субъекты<br>и люди</span></a>
-        <a href=""
-           class="flex text-center w-[120px] h-[48px] items-center justify-center bg-slate-200 rounded-sm border-2 ml-[3px] mr-[3px] border-neutral-600"><span>Видео</span></a>
-      </div>
-      <div class="flex flex-row ml-[5px] mt-[5px]">
-        <div>
-          <ul class="list-none">
-            <li class="inline">
-              <input type="checkbox" id="2" value=""
-                     class=" peer absolute opacity-0 focus:border-2 focus:border-[#e9a1ff]">
-              <label for="2" class="inline-block bg-neutral-100 border-2 border-gray-400 text-[#adadad] rounded-[25px] whitespace-nowrap mx-[3px] py-[8px] px-[12px] cursor-pointer
+    <MainBlock class = "flex h-lvh">
+        <ListOfActions></ListOfActions>
+        <div class = " h-[100%] w-[100%]">
+            <div class ="flex flex-row mt-[5px] ml-[5px]">
+                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center bg-blue-300 rounded-sm border-2 ml-[3px] mr-[3px] border-blue-500"><span>Новости</span></a>
+                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center bg-slate-200 rounded-sm border-2 ml-[3px] mr-[3px] border-neutral-600"><span>Мнения</span></a>
+                <a href="" class = "flex text-center w-[120px] h-[48px] items-center justify-center bg-slate-200 rounded-sm border-2 ml-[3px] mr-[3px] border-neutral-600"><span>Интервью</span></a>
+            </div>
+            <div class = "flex flex-row ml-[5px] mt-[5px]">
+                <div>
+                    <ul class = "list-none">
+                        <li class = "inline">
+                            <input type="checkbox" id = "2" value=""  class=" peer absolute opacity-0 focus:border-2 focus:border-[#e9a1ff]">
+                            <label for="2" class = "inline-block bg-neutral-100 border-2 border-gray-400 text-[#adadad] rounded-[25px] whitespace-nowrap mx-[3px] py-[8px] px-[12px] cursor-pointer
                             before:inline-block before:p-[2px 6px 2px 2px] before:content-['✖'] peer-checked:before:content-['✔'] peer-checked:border-2 peer-checked:border-[#1bdbf8] peer-checked:bg-[#12bbd4] peer-checked:text-white text-[16px]">Опубликованные</label>
             </li>
             <li class="inline">
@@ -74,7 +70,7 @@ const formatDate = (d) => {
         </div>
         <div class="flex">
           <button class='text-[16px]  w-[180px] rounded-md ml-[10px] h-[48px] bg-primary text-white'>Отображать
-            статтусы
+            статусы
           </button>
         </div>
         <div class="flex ml-[250px] mt-[10px]">
